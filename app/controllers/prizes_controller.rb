@@ -1,0 +1,2 @@
+class PrizesController < ApplicationController
+end

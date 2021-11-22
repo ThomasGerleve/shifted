@@ -1,0 +1,2 @@
+class PreferredSlotsController < ApplicationController
+end

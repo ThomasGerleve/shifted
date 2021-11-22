@@ -1,0 +1,2 @@
+class UserShiftsController < ApplicationController
+end
