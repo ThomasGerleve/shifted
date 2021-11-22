@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_154436) do
+ActiveRecord::Schema.define(version: 2021_11_22_155329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,52 @@ ActiveRecord::Schema.define(version: 2021_11_22_154436) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "preferred_slots", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "slot_id", null: false
+    t.string "weekday"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slot_id"], name: "index_preferred_slots_on_slot_id"
+    t.index ["user_id"], name: "index_preferred_slots_on_user_id"
+  end
+
+  create_table "prizes", force: :cascade do |t|
+    t.integer "bonus_points"
+    t.string "prize"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.date "date"
+    t.bigint "slot_id", null: false
+    t.integer "bonus_points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slot_id"], name: "index_shifts_on_slot_id"
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.string "name"
+    t.time "start_time"
+    t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_shifts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shift_id", null: false
+    t.integer "bonus_points"
+    t.string "status"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shift_id"], name: "index_user_shifts_on_shift_id"
+    t.index ["user_id"], name: "index_user_shifts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,4 +88,9 @@ ActiveRecord::Schema.define(version: 2021_11_22_154436) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "preferred_slots", "slots"
+  add_foreign_key "preferred_slots", "users"
+  add_foreign_key "shifts", "slots"
+  add_foreign_key "user_shifts", "shifts"
+  add_foreign_key "user_shifts", "users"
 end
