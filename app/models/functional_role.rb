@@ -1,0 +1,2 @@
+class FunctionalRole < ApplicationRecord
+end
