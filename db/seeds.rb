@@ -74,7 +74,7 @@ i = 0
 end
 puts "Created 20 preferred slots"
 
-shift_dates = [Date.new(2021, 11, 27), Date.new(2021, 11, 28), Date.new(2021, 11, 29), Date.new(2021, 11, 30), Date.new(2021, 12, 1), Date.new(2021, 12, 2), Date.new(2021, 12, 3), Date.new(2021, 12, 4), Date.new(2021, 12, 5), Date.new(2021, 12, 6), Date.new(2021, 12, 7), Date.new(2021, 12, 8), Date.new(2021, 12, 9), Date.new(2021, 12, 10), Date.new(2021, 12, 11), Date.new(2021, 12, 12)]
+shift_dates = [Date.new(2021, 12, 4), Date.new(2021, 12, 5), Date.new(2021, 12, 6), Date.new(2021, 12, 7), Date.new(2021, 12, 8), Date.new(2021, 12, 9), Date.new(2021, 12, 10), Date.new(2021, 12, 11), Date.new(2021, 12, 12), Date.new(2021, 12, 13), Date.new(2021, 12, 14), Date.new(2021, 12, 15), Date.new(2021, 12, 16), Date.new(2021, 12, 17), Date.new(2021, 12, 18), Date.new(2021, 12, 19), Date.new(2021, 12, 20)]
 
 shifts = []
 j = 0
@@ -92,7 +92,6 @@ j = 0
   j += 1
 end
 puts "Created 48 shifts"
-user_shift_details_emergency = ["Premature baby needs 1 to 1 care", "emergency - terrorist attack on the subway, 50 peole injured", "emergency - major car accident", "early delivery", "influx of Covid patients - support needed", "we have many emmergency cases on our station - help is needed", "Baby coming", "we will need some help on the station", "we need help the in the operating room, nothing too serious😉", "help needed for the oncology"]
 
 def create_new_user_shift(shift, users)
   user_shift_details_standard = "Standard shift"
@@ -100,7 +99,7 @@ def create_new_user_shift(shift, users)
   user_shift = UserShift.new(
     user_id: users[rand(0..19)].id,
     shift_id: shift.id,
-    bonus_points: shift.bonus_points + rand(0..5),
+    bonus_points: shift.bonus_points,
     open: (rand(1..100) < 11),
     details: user_shift_details_standard
   )
@@ -108,7 +107,7 @@ def create_new_user_shift(shift, users)
     user_shift = UserShift.new(
       user_id: users[rand(0..20)].id,
       shift_id: shift.id,
-      bonus_points: shift.bonus_points + rand(0..5),
+      bonus_points: shift.bonus_points,
       open: (rand(1..100) < 11),
       details: user_shift_details_standard
     )
@@ -116,9 +115,12 @@ def create_new_user_shift(shift, users)
   user_shift.save!
   if user_shift.open
     user_shift.details = user_shift_details_swap.sample
+    user_shift.bonus_points += rand(0..5)
     user_shift.save!
   end
 end
+
+user_shift_details_emergency = ["Premature baby needs 1 to 1 care", "emergency - terrorist attack on the subway, 50 peole injured", "emergency - major car accident", "early delivery", "influx of Covid patients - support needed", "we have many emmergency cases on our station - help is needed", "Baby coming", "we will need some help on the station", "we need help the in the operating room, nothing too serious😉", "help needed for the oncology"]
 
 shifts.each do |shift|
   l = 0
