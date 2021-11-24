@@ -1,7 +1,20 @@
+UserShift.destroy_all
+puts "Deleted user shifts"
+Shift.destroy_all
+puts "Deleted shifts"
+PreferredSlot.destroy_all
+puts "Deleted preferred slots"
+Slot.destroy_all
+puts "Deleted slots"
+User.destroy_all
+puts "Deleted users"
+FunctionalRole.destroy_all
+puts "Deleted functional roles"
+
 functional_role_names = ["nurse manager", "radiology nurse", "labor & delivery nurse", "emergency-room nurse", "intensive-care-unit nurse"]
 
 functional_roles = functional_role_names.map do |name|
-  FunctionalRole.create(name: name)
+  FunctionalRole.create!(name: name)
 end
 
 user_admin = [true, false]
@@ -13,31 +26,34 @@ user_experience_level = ["experienced", "beginner"]
 index = 0
 users = []
 20.times do
-  user = User.create(
+  user = User.create!(
     admin: user_admin.sample,
     first_name: user_first_name[index],
     last_name: user_last_name[index],
     additional_infos: user_additional_infos[index],
     experience_level: user_experience_level.sample,
     bonus_points: rand(0..20) * 5,
-    functional_role_id: functional_roles.sample.id
+    functional_role_id: functional_roles.sample.id,
+    email: "#{user_first_name[index]}.#{user_last_name[index]}@mailbox.com",
+    password: "asdfff",
+    password_confirmation: "asdfff"
   )
   users << user
   index += 1
 end
-puts "Created 20 users"
-early = Slot.create(
-  name: early,
+puts "Created #{users.length} users"
+early = Slot.create!(
+  name: "early",
   start_time: Time.new(2021, 1, 1, 5, 45, 0),
   end_time: Time.new(2021, 1, 1, 14, 15, 0)
 )
-late = Slot.create(
-  name: late,
+late = Slot.create!(
+  name: "late",
   start_time: Time.new(2021, 1, 1, 13, 45, 0),
   end_time: Time.new(2021, 1, 1, 22, 15, 0)
 )
-night = Slot.create(
-  name: night,
+night = Slot.create!(
+  name: "night",
   start_time: Time.new(2021, 1, 1, 21, 45, 0),
   end_time: Time.new(2021, 1, 1, 6, 15, 0)
 )
@@ -49,7 +65,7 @@ preferred_slot_weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 
 i = 0
 20.times do
-  PreferredSlot.create(
+  PreferredSlot.create!(
     user_id: users[i].id,
     slot_id: slots.sample.id,
     weekday: preferred_slot_weekdays.sample
@@ -65,7 +81,7 @@ j = 0
 3.times do
   k = 0
   16.times do
-    shift = Shift.create(
+    shift = Shift.create!(
       bonus_points: rand(0..10),
       slot_id: slots[j].id,
       date: shift_dates[k]
@@ -82,7 +98,7 @@ def create_new_user_shift(shift, users)
   user_shift_details_standard = "Standard shift"
   user_shift_details_swap = ["burned out... please someone take over", "Have to go to the vet with my dog", "My kids are sick", "I'm sick :(", "private circumstances", "There is a family event i forgot, can someone please jump in for me?"]
   user_shift = UserShift.new(
-    user_id: users[rand(0..20)].id,
+    user_id: users[rand(0..19)].id,
     shift_id: shift.id,
     bonus_points: shift.bonus_points + rand(0..5),
     open: (rand(1..100) < 11),
@@ -98,8 +114,8 @@ def create_new_user_shift(shift, users)
     )
   end
   user_shift.save!
-  if user_shift.open == true
-    usershift.details = user_shift_details_swap.sample
+  if user_shift.open
+    user_shift.details = user_shift_details_swap.sample
     user_shift.save!
   end
 end
@@ -115,4 +131,13 @@ shifts.each do |shift|
     UserShift.last.details = user_shift_details_emergency.sample
   end
 end
-puts "Created about 264 user shifts"
+puts "Created about #{UserShift.count} user shifts"
+
+Prize.new(
+  bonus_points: 100,
+  prize: "One day off!"
+)
+Prize.new(
+  bonus_points: 100,
+  prize: "A voucher of your choice for 100€."
+)
