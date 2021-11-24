@@ -13,16 +13,11 @@
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
     <%= f.input :experience_level,
+                collection: User::EXPERIENCE_LEVEL,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "experience_level" }%>
-    <%= f.association :functional_role do |c| %>
-      <%= c.input :name,
-        label: "Functional Role",
-        required: true,
-        autofocus: true,
-        input_html: { autocomplete: "name" }%>
-    <% end %>
+    <%= f.association :functional_role, collection: FunctionalRole.order(:name) %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
