@@ -5,11 +5,13 @@ class ShiftsController < ApplicationController
     else
       @shifts = Shift.all
     end
+
     if params[:year].present? && params[:year].year?
       @year = params[:year].to_i
     else
       @year = Time.new.year
     end
+
     if params[:month].present? && (1..12).include?(params[:month].to_i)
       @month = params[:month].to_i
     else
