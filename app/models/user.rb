@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :user_shifts
   has_many :preferred_slots
 
-  validates :admin, :first_name, :last_name, :experience_level, :functional_role, presence: true
+  validates :first_name, :last_name, :experience_level, :functional_role, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
