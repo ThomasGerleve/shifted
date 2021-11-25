@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+.banner-landing-page {
+  background-image: url("doctor.png");
+  background-size: cover;
+  background-position: center;
+  padding: 200px 200px;
+}
+
+.login-btn:hover {
+  color: $dark-purple !important;
+}
