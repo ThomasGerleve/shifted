@@ -1,5 +1,9 @@
 <div class="banner-landing-page">
-  <h1><strong>Shifted</strong></h1>
-  <p><strong>Finally loving work planning.</strong></p>
-  <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+  <h1 id="h1-tag"><strong>Shifted</strong></h1>
+  <p id="p-tag"><strong>Finally loving work planning.</strong></p>
+  <% if user_signed_in? %>
+    <%= link_to 'Sign out', destroy_user_session_path, class: "btn btn-secondary", method: :delete %>
+  <% else %>
+    <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+  <% end %>
 </div>
