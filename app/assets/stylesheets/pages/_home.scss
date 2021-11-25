@@ -3,9 +3,27 @@
   background-image: url("doctor.png");
   background-size: cover;
   background-position: center;
-  padding: 200px 200px;
+  padding: 40vh 8vh;
+}
+h1, p {
+  color: $white;
+  text-shadow: 1px 1px 1px $dark-grey, 0 0 1em $pink, 0 0 0.2em $white;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.login-btn {
+  color: $white;
 }
 
 .login-btn:hover {
-  color: $dark-purple !important;
+  color: $white;
+  background-color: #974397;
+  border-color: #974397;
 }
