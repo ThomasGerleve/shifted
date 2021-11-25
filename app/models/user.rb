@@ -4,8 +4,10 @@ class User < ApplicationRecord
   belongs_to :functional_role
   has_many :user_shifts
   has_many :preferred_slots
+  EXPERIENCE_LEVEL = ["beginner", "experienced"]
 
   validates :first_name, :last_name, :experience_level, :functional_role, presence: true
+  validates :experience_level, inclusion: { in: EXPERIENCE_LEVEL }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

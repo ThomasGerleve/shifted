@@ -1,0 +1,29 @@
+<div class="d-flex align-items-center justify-content-around menu-bar">
+  <% if user_signed_in? %>
+    <a href="#">
+      <i class="fas fa-user"></i>
+    </a>
+    <a href="#">
+      <i class="fas fa-users"></i>
+    </a>
+    <div class="btn-group dropup">
+      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a href="#">
+          <i class="fas fa-calendar-alt"></i>
+        </a>
+      </button>
+      <div class="dropdown-menu">
+        <%# <%= link_to 'My shifts', shift_path, class: "dropdown-item" %>
+        <%# <%= link_to 'Team shifts', shifts_path, class: "dropdown-item" %>
+        <%# <%= link_to 'Open shifts', shifts_path, class: "dropdown-item" %>
+      </div>
+    </div>
+    <a href="#">
+      <i class="fas fa-home"></i>
+    </a>
+  <% else %>
+    <a href="#">
+      <i class="fas fa-home"></i>
+    </a>
+  <% end %>
+</div>

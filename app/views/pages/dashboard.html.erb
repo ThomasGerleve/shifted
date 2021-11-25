@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <h2>Hello <%= current_user.first_name %> </h2>
+  <div class="shift-box">
+    <h3>Your next Shift</h3>
+    <div class="shift-card">
+      <%= current_user.user_shifts.first %>
+    </div>
+  </div>
+  <div class="shift-box">
+    <h3>New open shifts</h3>
+    <div class="shift-card">
+      <%= current_user.user_shifts.first %>
+      <%= current_user.user_shifts.first %>
+      <%= current_user.user_shifts.first %>
+    </div>
+  </div>
+</div>
