@@ -7,7 +7,7 @@
         }/#{
           month == 1 ? 12 : (month - 1)
         }",
-        query: @query,
+        query: query,
         class: "arrows prev-mth",
         remote: true,
         data: {
@@ -22,7 +22,7 @@
         }/#{
           month == 12 ? 1 : (month + 1)
         }",
-        query: @query,
+        query: query,
         class: "arrows next-mth",
         remote: true,
         data: {
@@ -32,7 +32,16 @@
       </div>
 		</div>
 		<div class="days">
-
+      <% if query %>
+        <% days.each do |day| %>
+          <% shifts.each do |shift| %>
+            <%= link_to shift_path(shift) do %>
+            <div class="day">
+            </div>
+            <% do %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 	</div>
 </div>

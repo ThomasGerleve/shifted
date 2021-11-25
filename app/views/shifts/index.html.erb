@@ -2,6 +2,12 @@
 <%= @month %>
 <%= @shifts.length %>
 <%= @user.first_name %>
-<% if @year && @month %>
+
+<div class="day">
+  <div>
+  </div>
+</div>
+
+<%# <% if @year && @month %>
   <%= render 'calendar', shifts: @shifts, year: @year, month: @month, mth: @mth %>
-<% end %>
+<% end %> %>
