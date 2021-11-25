@@ -1,3 +1,5 @@
+Prize.destroy_all
+puts "Deleted prizes"
 UserShift.destroy_all
 puts "Deleted user shifts"
 Shift.destroy_all
@@ -16,6 +18,7 @@ functional_role_names = ["nurse manager", "radiology nurse", "labor & delivery n
 functional_roles = functional_role_names.map do |name|
   FunctionalRole.create!(name: name)
 end
+puts "Created 5 functional roles"
 
 user_admin = [true, false]
 user_first_name = ["Peter", "Veronika", "Thomas", "Karl", "Morgan", "Tim", "Marita", "Bernhard", "Bianca", "Sia", "Claudio", "Laura", "Marie", "Luis", "Alex", "Manfred", "Alissa", "Ken", "Sebastian", "Zita"]
@@ -42,6 +45,7 @@ users = []
   index += 1
 end
 puts "Created #{users.length} users"
+
 early = Slot.create!(
   name: "early",
   start_time: Time.new(2021, 1, 1, 5, 45, 0),
@@ -133,7 +137,7 @@ shifts.each do |shift|
     UserShift.last.details = user_shift_details_emergency.sample
   end
 end
-puts "Created about #{UserShift.count} user shifts"
+puts "Created #{UserShift.count} user shifts"
 
 Prize.new(
   bonus_points: 100,
@@ -143,3 +147,4 @@ Prize.new(
   bonus_points: 100,
   prize: "A voucher of your choice for 100€."
 )
+puts "Created 2 prizes"
