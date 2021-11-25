@@ -3,18 +3,18 @@
   background-image: url("doctor.png");
   background-size: cover;
   background-position: center;
-  padding: 40vh 8vh;
+  padding: 8em 2em;
 }
-h1, p {
+#h1-tag, #p-tag {
   color: $white;
   text-shadow: 1px 1px 1px $dark-grey, 0 0 1em $pink, 0 0 0.2em $white;
 }
 
-h1 {
+#h1-tag {
   font-size: 50px;
 }
 
-p {
+#p-tag {
   font-size: 16px;
 }
 

@@ -12,6 +12,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last_name" }%>
+    <%= f.input :additional_infos,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "additional_infos" }%>
     <%= f.input :experience_level,
                 collection: User::EXPERIENCE_LEVEL,
                 required: true,
