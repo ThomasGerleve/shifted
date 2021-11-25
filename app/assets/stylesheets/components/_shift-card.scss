@@ -1,4 +1,5 @@
 .shift-card {
+  color: white;
   width: 90vw;
   display: flex;
   background-color: $purple;
@@ -28,6 +29,7 @@
 }
 
 .shift-card-date {
+  color: white;
   background-color: $lilac;
   border-radius: 20px;
   padding: 1px 5px;
@@ -35,6 +37,7 @@
 }
 
 .shift-card-points {
+  color: white;
   font-size: 12px;
   margin-bottom: 0;
   margin-left: 4px;
@@ -42,6 +45,7 @@
 }
 
 .shift-card-time {
+  color: white;
   margin-bottom: 0;
   margin-left: 3px;
   display: inline;

@@ -1,0 +1,35 @@
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <div class="col1 box1">
+    <img src="https://kitt.lewagon.com/placeholder/users/fullyouu" class="card-trip-user avatar-bordered" />
+  </div>
+
+  <div class="col2 box">
+    <%= current_user.first_name %>&nbsp<%= current_user.last_name %>
+    <div>
+      <p>Infos: <%= current_user.additional_infos %></p>
+      <%= link_to "Edit profile", edit_user_registration_path %>
+    </div>
+    <div>
+      <p>Experience level: <%= current_user.experience_level %></p>
+    </div>
+    <div>
+      <p>Bonus points: <%= current_user.bonus_points %></p>
+    </div>
+  </div>
+
+  <div class="col3 box">
+    <%# # see prices %>
+  </div>
+
+  <div class="col4 box">
+  <%# # preferred slot %>
+  </div>
+
+  <div class="col5 box">
+    <%# # offer shift to colleague %>
+  </div>
+
+  <div class="col6 box">
+    <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-primary" %>
+  </div>
+</div>
