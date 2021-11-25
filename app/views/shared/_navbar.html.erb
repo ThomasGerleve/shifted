@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center justify-content-around menu-bar">
   <% if user_signed_in? %>
-    <a href="#">
+    <%= link_to profile_path do %>
       <i class="fas fa-user"></i>
-    </a>
+    <% end %>
     <a href="#">
       <i class="fas fa-users"></i>
     </a>
@@ -13,17 +13,17 @@
         </a>
       </button>
       <div class="dropdown-menu">
-        <%# <%= link_to 'My shifts', shift_path, class: "dropdown-item" %>
+        <%# <%= link_to 'My shifts', shifts_path, class: "dropdown-item" %>
         <%# <%= link_to 'Team shifts', shifts_path, class: "dropdown-item" %>
         <%# <%= link_to 'Open shifts', shifts_path, class: "dropdown-item" %>
       </div>
     </div>
-    <a href="#">
+    <%= link_to root_path do %>
       <i class="fas fa-home"></i>
-    </a>
+    <% end %>
   <% else %>
-    <a href="#">
+    <%= link_to root_path do %>
       <i class="fas fa-home"></i>
-    </a>
+    <% end %>
   <% end %>
 </div>
