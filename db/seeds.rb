@@ -26,9 +26,10 @@ user_last_name = ["Hill", "Landberg", "Hintermeyer", "Leoni", "Richardson", "Lag
 user_additional_infos = ["Hey there - your cardiologist is here.", "I am new to the team - whoop, whoop.", "Busy", "📈🩺👨🏼‍⚕️", "Saving some babies! #neonatal", "I want icecream 🍦",  "👩🏼‍⚕️", "In the gym", "Do not disturb - not taking any offers🤪", "Nihil since causa", "29.05.2022", "💙", "Passionate delivery nurse #lovemyjob", "All these christmas lights 🎶🎵", "tired😴", "Hey there!", "Pregnant - so excited🤰🏼", "Caught Covid 😥", "Looking forward to my vacantions." "I got a new pair of shoes😎"]
 user_experience_level = ["experienced", "beginner"]
 
+
 index = 0
 users = []
-20.times do
+19.times do
   user = User.create!(
     admin: user_admin.sample,
     first_name: user_first_name[index],
@@ -44,6 +45,19 @@ users = []
   users << user
   index += 1
 end
+karl = User.create!(
+  admin: true,
+  first_name: "Shmarl",
+  last_name: "Shmonder",
+  additional_infos: user_additional_infos[index],
+  experience_level: user_experience_level.sample,
+  bonus_points: rand(0..20) * 5,
+  functional_role_id: functional_roles.sample.id,
+  email: "shmarl.shmonder@mailbox.com",
+  password: "coachoo",
+  password_confirmation: "coachoo"
+)
+users << karl
 puts "Created #{users.length} users"
 
 early = Slot.create!(
