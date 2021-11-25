@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :functional_role
   has_many :user_shifts
+  has_many :shifts, through: :user_shifts
   has_many :preferred_slots
   EXPERIENCE_LEVEL = ["beginner", "experienced"]
 
