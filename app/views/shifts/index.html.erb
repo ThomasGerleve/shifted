@@ -1,0 +1,7 @@
+<%= @year %>
+<%= @month %>
+<%= @shifts.length %>
+<%= @user.first_name %>
+<% if @year && @month %>
+  <%= render 'calendar', shifts: @shifts, year: @year, month: @month, mth: @mth %>
+<% end %>
