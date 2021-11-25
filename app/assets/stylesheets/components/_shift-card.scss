@@ -1,8 +1,7 @@
-.shiftCard {
+.shift-card {
   width: 90vw;
   display: flex;
   background-color: $purple;
-
   padding: 12px;
   flex-direction: row;
   justify-content: space-between;
@@ -10,39 +9,46 @@
   border-radius: 10px;
 }
 
-.card-frame {
+.shift-card-left-side {
   background-color: transparent;
   display: block;
 }
 
-.date-box {
+.shift-card-right-side {
   display: flex;
   background-color: transparent;
   align-content: flex-end;
   flex-direction: column;
 }
 
-#date {
+.shift-card-left-side-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.shift-card-date {
   background-color: $lilac;
   border-radius: 20px;
   padding: 1px 5px;
-  margin-bottom: 10px;
+  margin-bottom: 23px;
 }
 
-#points {
+.shift-card-points {
   font-size: 12px;
   margin-bottom: 0;
   margin-left: 4px;
   display: inline;
 }
 
-#shift {
-  margin-bottom: 10px;
-}
-
-#time {
+.shift-card-time {
   margin-bottom: 0;
   margin-left: 3px;
   display: inline;
   font-size: 15px;
+}
+
+.shift-card-icon {
+  color: white;
+  font-size: large;
 }

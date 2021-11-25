@@ -2,22 +2,22 @@
   <h2>Hello <%= current_user.first_name %> </h2>
   <div class="shift-box">
     <h3>Your next Shift</h3>
-    <div class="shiftCard">
 
 
-    <div class="card-frame">
-      <p id="shift">Night shift</p>
-      <div class="d-flex align-items-center">
-        <%= image_tag "time.png", alt: "clock-icon", width: 15, class:"align-self-flex-start" %>
-        <p id="time">06:00 - 18:00</p>
-      </div>
-    </div>
-
-      <div class="date-box">
-        <p id="date">16 Nov</p>
+    <div class="shift-card">
+      <div class="shift-card-left-side">
+        <h2 class="shift-card-left-side-title">Night shift</h2>
         <div class="d-flex align-items-center">
-          <%= image_tag "points.png", alt: "coins-icon", width: 15 %>
-          <p id="points">30 bps</p>
+        <i class="shift-card-icon fas fa-clock"></i>
+          <p class="shift-card-time">06:00 - 18:00</p>
+        </div>
+      </div>
+
+      <div class="shift-card-right-side">
+        <p class="shift-card-date">16 Nov</p>
+        <div class="d-flex align-items-center">
+          <i class="shift-card-icon fas fa-coins"></i>
+          <p class="shift-card-points">30 bps</p>
         </div>
       </div>
     </div>
