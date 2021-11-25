@@ -1,0 +1,38 @@
+
+<div class="calendar">
+	<div class="dates">
+		<div class="month">
+      <div>
+        <%= link_to '<', "/shifts/#{
+          month == 1 ? (year - 1) : year
+        }/#{
+          month == 1 ? 12 : (month - 1)
+        }",
+        query: @query,
+        class: "arrows prev-mth",
+        remote: true,
+        data: {
+          controller: "calendar",
+          action: "click->calendar#disable"
+        } %>
+      </div>
+			<div class="mth"><%= mth[month] %> <%= year %></div>
+      <div>
+        <%= link_to '>', "/shifts/#{
+          month == 12 ? (year + 1) : year
+        }/#{
+          month == 12 ? 1 : (month + 1)
+        }",
+        query: @query,
+        class: "arrows next-mth",
+        remote: true,
+        data: {
+          controller: "calendar",
+          action: "click->calendar#disable"
+        } %>
+      </div>
+		</div>
+		<div class="days">
+    </div>
+	</div>
+</div>

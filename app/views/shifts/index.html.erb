@@ -1,0 +1,7 @@
+
+<h1>Hello Karl</h1>
+<%= @year %>
+<%= @month %>
+<% if @year && @month %>
+  <%= render 'calendar', shifts: @shifts, year: @year,month: @month, mth: @mth %>
+<% end %>
