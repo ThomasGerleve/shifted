@@ -6,7 +6,7 @@ class ShiftsController < ApplicationController
       # this is if we want to display a calendar
       @query = params[:query]
 
-      shifts = @query == "open" ? Shift.search_by_open : current_user.shifts
+      shifts = (@query == "open") ? UserShift.all.select(&:open).map(&:shift) : current_user.shifts
       # if the searchword is exactly "open": index open shifts, else: index current user's shifts
 
       @year = params[:year].present? && year?(params[:year]) ? params[:year].to_i : Time.new.year
@@ -18,9 +18,10 @@ class ShiftsController < ApplicationController
       @shifts = shifts.select { |shift| shift.slot.start_time.year == @year && shift.slot.start_time.month == month }
     else
       # this is if we want to view all shifts - without calendar
-      shifts = Shift.all
-      @shifts = shifts.select { |shift| shift.slot.start_time > Time.new }
+      @shifts = Shift.all
+      # @shifts = shifts.select { |shift| shift.slot.start_time > Time.new }
     end
+    @user = current_user
   end
 
   private
