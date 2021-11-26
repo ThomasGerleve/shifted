@@ -5,6 +5,6 @@ class Shift < ApplicationRecord
 
   validates :date, presence: true
 
-  include PgSearch::Model
-  pg_search_scope :search_by_open, against: :open
+  # include PgSearch: :Model
+  # pg_search_scope :search_by_open, against: :open
 end
