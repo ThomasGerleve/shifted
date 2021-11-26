@@ -1,17 +1,30 @@
 // Specific CSS for your home-page
-.banner-landing-page {
+.page-container {
   background-image: url("doctor.png");
-  background-size: cover;
-  background-position: center;
-  padding: 8em 2em;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 92vh;
 }
-#h1-tag, #p-tag {
+
+.banner-landing-page {
+  display: flex;
+  padding: 80px 0 0 40px;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+#h1-tag,
+#p-tag {
   color: $white;
   text-shadow: 1px 1px 1px $dark-grey, 0 0 1em $pink, 0 0 0.2em $white;
 }
 
 #h1-tag {
+  margin: 2px 0;
   font-size: 50px;
+  align-self: flex-start;
 }
 
 #p-tag {
@@ -20,6 +33,7 @@
 
 .login-btn {
   color: $white;
+  width: fit-content;
 }
 
 .login-btn:hover {
