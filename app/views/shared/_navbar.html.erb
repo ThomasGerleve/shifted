@@ -11,9 +11,9 @@
         <i class="fas fa-calendar-alt i"></i>
       </button>
       <ul class="dropdown-menu">
-        <li><%= link_to 'My shifts', shifts_path, class: "dropdown-item" %></li>
+        <%= link_to 'My shifts', shifts_path, class: "dropdown-item" %>
         <%#= link_to 'Team shifts', shifts__path, class: "dropdown-item" %>
-        <%# <%= link_to 'Open shifts', shifts_open_path, class: "dropdown-item" %>
+        <%= link_to 'Open shifts', shifts_path(version: "open"), class: "dropdown-item" %>
       </ul>
     </div>
     <%= link_to root_path do %>
