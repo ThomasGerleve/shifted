@@ -7,7 +7,7 @@
         <h2 class="shift-card-left-side-title"><%= @next_shift_slot.capitalize %> shift</h2>
         <div class="d-flex align-items-center">
         <i class="shift-card-icon fas fa-clock"></i>
-          <p class="shift-card-time"><%= @next_shift.slot.start_time %> - <%= @next_shift.slot.end_time %></p>
+        <p class="shift-card-time"><%= @next_shift.slot.start_time %> - <%= @next_shift.slot.end_time %></p>
         </div>
       </div>
       <div class="shift-card-right-side">
@@ -27,7 +27,7 @@
     <div class="shiftCard">
       <div class="shift-card shift-card-active">
         <div class="shift-card-left-side">
-          <h2 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name %> shift</h2>
+          <h2 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h2>
           <div class="d-flex align-items-center">
           <i class="shift-card-icon fas fa-clock shift-card-active"></i>
             <p class="shift-card-time shift-card-active"><%= shift.slot.start_time %> - <%= shift.slot.start_time %></p>
