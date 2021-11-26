@@ -8,7 +8,7 @@
           <h2 class="shift-card-left-side-title"><%= @next_shift_slot.capitalize %> shift</h2>
           <div class="d-flex align-items-center">
           <i class="shift-card-icon fas fa-clock"></i>
-          <p class="shift-card-time"><%= @next_shift.slot.start_time %> - <%= @next_shift.slot.end_time %></p>
+          <p class="shift-card-time"><%= @next_shift.slot.start_time.strftime("%H:%M") %>h - <%= @next_shift.slot.end_time.strftime("%H:%M") %>h</p>
           </div>
         </div>
         <div class="shift-card-right-side">
@@ -21,15 +21,15 @@
       </div>
     </div>
     <div class="shift-box">
-      <h3>New open shifts</h3>
-      <% Shift.all.each do |shift| %>
+      <h3>Open shifts</h3>
+      <% @open_shifts.each do |shift| %>
         <div class="shiftCard">
           <div class="shift-card shift-card-active">
             <div class="shift-card-left-side">
               <h2 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h2>
               <div class="d-flex align-items-center">
-              <i class="shift-card-icon fas fa-clock shift-card-active"></i>
-                <p class="shift-card-time shift-card-active"><%= shift.slot.start_time %> - <%= shift.slot.start_time %></p>
+                <i class="shift-card-icon fas fa-clock shift-card-active"></i>
+                <p class="shift-card-time shift-card-active"><%= shift.slot.start_time.strftime("%H:%M") %>h - <%= shift.slot.end_time.strftime("%H:%M") %>h</p>
               </div>
             </div>
             <div class="shift-card-right-side">
@@ -42,12 +42,6 @@
           </div>
         </div>
       <% end %>
-  </div>
-
-<% else %>
-  <div class="banner-landing-page">
-    <h1 id="h1-tag"><strong>Shifted</strong></h1>
-    <p id="p-tag"><strong>Finally loving work planning.</strong></p>
-      <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+    </div>
   </div>
 <% end %>
