@@ -1,35 +1,50 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
-  <div class="col1 box1">
-    <img src="https://kitt.lewagon.com/placeholder/users/fullyouu" class="card-trip-user avatar-bordered" />
+  <br>
+  <h2><strong>Your profile</strong></h2>
+  <div class="col1 avatar-box">
+    <img src="https://kitt.lewagon.com/placeholder/users/thomasgerleve" class="card-trip-user avatar-bordered" />
   </div>
 
   <div class="col2 box">
-    <%= current_user.first_name %>&nbsp<%= current_user.last_name %>
-    <div>
-      <p>Infos: <%= current_user.additional_infos %></p>
-      <%= link_to "Edit profile", edit_user_registration_path %>
+    <div class="text">
+      <i class="fas fa-user"></i>
+      <%= current_user.first_name %>&nbsp<%= current_user.last_name %>
     </div>
-    <div>
-      <p>Experience level: <%= current_user.experience_level %></p>
+    <div class="text">
+      <i class="fas fa-book-medical"></i>
+      <%= current_user.experience_level %>
+      <%= current_user.functional_role.name %>
     </div>
-    <div>
-      <p>Bonus points: <%= current_user.bonus_points %></p>
+    <div class="text">
+      <i class="fas fa-coins"><%= current_user.bonus_points %></i>
+    </div>
+    <div class="text">
+      <i class="fas fa-info"><%= current_user.additional_infos %></i>
     </div>
   </div>
 
   <div class="col3 box">
-    <%# # see prices %>
+    <% Prize.all.each do |prize| %>
+      <div>
+        <%= prize.bonus_points %> <i class="fas fa-coins">
+        </i><%= prize.prize %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col4 box">
-  <%# # preferred slot %>
-  </div>
-
-  <div class="col5 box">
-    <%# # offer shift to colleague %>
+    <% current_user.preferred_slots.each do |preferred_slot| %>
+      <div>
+        <i class="fas fa-clock"></i>
+        <%= preferred_slot.weekday %>
+        <%= preferred_slot.slot.name %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col6 box">
     <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to 'Set preferred slots', edit_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to 'Set notifications', edit_user_registration_path, class: "btn btn-primary" %>
   </div>
 </div>
