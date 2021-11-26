@@ -44,4 +44,10 @@
       <% end %>
     </div>
   </div>
+<% else %>
+  <div class="banner-landing-page">
+    <h1 id="h1-tag"><strong>Shifted</strong></h1>
+    <p id="p-tag"><strong>Finally loving work planning.</strong></p>
+      <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+  </div>
 <% end %>
