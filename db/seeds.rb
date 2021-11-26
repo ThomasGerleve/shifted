@@ -49,7 +49,7 @@ karl = User.create!(
   admin: true,
   first_name: "Shmarl",
   last_name: "Shmonder",
-  additional_infos: user_additional_infos[index],
+  additional_infos: user_additional_infos[0],
   experience_level: user_experience_level.sample,
   bonus_points: rand(0..20) * 5,
   functional_role_id: functional_roles.sample.id,
@@ -153,11 +153,11 @@ shifts.each do |shift|
 end
 puts "Created #{UserShift.count} user shifts"
 
-Prize.new(
+Prize.create!(
   bonus_points: 100,
   prize: "One day off!"
 )
-Prize.new(
+Prize.create!(
   bonus_points: 100,
   prize: "A voucher of your choice for 100€."
 )

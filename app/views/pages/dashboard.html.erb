@@ -3,15 +3,40 @@
   <div class="shift-box">
     <h3>Your next Shift</h3>
     <div class="shift-card">
-      <%= @next_shift.date %>
+      <div class="shift-card-left-side">
+        <h2 class="shift-card-left-side-title">Night shift</h2>
+        <div class="d-flex align-items-center">
+        <i class="shift-card-icon fas fa-clock"></i>
+          <p class="shift-card-time">06:00 - 18:00</p>
+        </div>
+      </div>
+      <div class="shift-card-right-side">
+        <p class="shift-card-date">16 Nov</p>
+        <div class="d-flex align-items-center">
+          <i class="shift-card-icon fas fa-coins"></i>
+          <p class="shift-card-points">30 bps</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="shift-box">
     <h3>New open shifts</h3>
-    <div class="shift-card">
-      <%= current_user.user_shifts.first %>
-      <%= current_user.user_shifts.first %>
-      <%= current_user.user_shifts.first %>
+    <div class="shiftCard">
+    <div class="shift-card shift-card-active">
+      <div class="shift-card-left-side">
+        <h2 class="shift-card-left-side-title shift-card-active">Night shift</h2>
+        <div class="d-flex align-items-center">
+        <i class="shift-card-icon fas fa-clock shift-card-active"></i>
+          <p class="shift-card-time shift-card-active">06:00 - 18:00</p>
+        </div>
+      </div>
+      <div class="shift-card-right-side">
+        <p class="shift-card-date">16 Nov</p>
+        <div class="d-flex align-items-center">
+          <i class="shift-card-icon fas fa-coins shift-card-active"></i>
+          <p class="shift-card-points shift-card-active">30 bps</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
