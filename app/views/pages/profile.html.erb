@@ -6,6 +6,7 @@
   </div>
 
   <div class="col2 box">
+    <h3>Your infos</h3>
     <div class="text">
       <i class="fas fa-user"></i>
       <%= current_user.first_name %>&nbsp<%= current_user.last_name %>
@@ -24,6 +25,7 @@
   </div>
 
   <div class="col3 box">
+    <h3>Currently offered prizes</h3>
     <% Prize.all.each do |prize| %>
       <div>
         <%= prize.bonus_points %> <i class="fas fa-coins">
@@ -33,10 +35,11 @@
   </div>
 
   <div class="col4 box">
+    <h3>Your preferred slots</h3>
     <% current_user.preferred_slots.each do |preferred_slot| %>
+      <i class="fas fa-clock"></i>
       <div>
-        <i class="fas fa-clock"></i>
-        <%= preferred_slot.weekday %>
+        <%= preferred_slot.weekday %> <p>bps for</p>
         <%= preferred_slot.slot.name %>
       </div>
     <% end %>
