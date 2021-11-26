@@ -6,48 +6,57 @@
   </div>
 
   <div class="col2 box">
-    <h3>Your infos</h3>
-    <div class="text">
-      <i class="fas fa-user"></i>
-      <%= current_user.first_name %>&nbsp<%= current_user.last_name %>
+    <div class="d-flex justify-content-between">
+      <h3 id="name"><%= current_user.first_name %>&nbsp<%= current_user.last_name %></h3>
+      <%= link_to '', edit_user_registration_path, class: "fas fa-pencil-alt pencil" %>
     </div>
     <div class="text">
-      <i class="fas fa-book-medical"></i>
+      <i class="fas fa-book-medical i"></i>
       <%= current_user.experience_level %>
+    </div>
+    <div class="text">
+      <i class="fas fa-user-tie i"></i>
       <%= current_user.functional_role.name %>
     </div>
     <div class="text">
-      <i class="fas fa-coins"><%= current_user.bonus_points %></i>
+      <i class="fas fa-coins i"></i>
+      <%= current_user.bonus_points %> bps
     </div>
     <div class="text">
-      <i class="fas fa-info"><%= current_user.additional_infos %></i>
+      <i class="fas fa-comments i"></i>
+      "<%= current_user.additional_infos %>"
     </div>
   </div>
 
   <div class="col3 box">
-    <h3>Currently offered prizes</h3>
+    <div class="d-flex justify-content-between">
+      <h3 id="name">Currently offered prizes</h3>
+      <a href="#">
+        <i class="fas fa-pencil-alt pencil"></i>
+      </a>
+    </div>
     <% Prize.all.each do |prize| %>
-      <div>
-        <%= prize.bonus_points %> <i class="fas fa-coins">
-        </i><%= prize.prize %>
+      <div class="text">
+        <i class="fas fa-award i"></i>
+        <%= prize.bonus_points %> bps for:
+        <%= prize.prize %>
       </div>
     <% end %>
   </div>
 
   <div class="col4 box">
-    <h3>Your preferred slots</h3>
+    <div class="d-flex justify-content-between">
+      <h3 id="name">Your preferred slots</h3>
+      <a href="#">
+        <i class="fas fa-pencil-alt pencil"></i>
+      </a>
+    </div>
     <% current_user.preferred_slots.each do |preferred_slot| %>
-      <i class="fas fa-clock"></i>
-      <div>
-        <%= preferred_slot.weekday %> <p>bps for</p>
+      <div class="text">
+        <i class="fas fa-clock i"></i>
+        <%= preferred_slot.weekday %>
         <%= preferred_slot.slot.name %>
       </div>
     <% end %>
-  </div>
-
-  <div class="col6 box">
-    <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-primary" %>
-    <%= link_to 'Set preferred slots', edit_user_registration_path, class: "btn btn-primary" %>
-    <%= link_to 'Set notifications', edit_user_registration_path, class: "btn btn-primary" %>
   </div>
 </div>

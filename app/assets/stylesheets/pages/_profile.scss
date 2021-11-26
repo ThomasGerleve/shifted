@@ -4,6 +4,8 @@
   background-color: $white;
   margin: 8px !important;
   min-width: 90%;
+  max-width: 90%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .avatar-box {
@@ -12,19 +14,37 @@
   background-color: $white;
   margin: 8px !important;
   min-width: 90%;
+  max-width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   img {
     flex-grow: 0.3;
+    box-shadow: 18px 9px 15px -3px $lilac;
   }
 }
 
-.text {
+#name {
   color: $purple;
+  font-weight: bold;
+}
+
+.text {
+  color: $darker-purple;
   font-size: 20px;
-  i {
+  .i {
     color: $purple;
     font-size: 16px;
   }
+}
+
+.pencil {
+  color: $purple;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.pencil:hover {
+  color: $dark-purple;
 }
