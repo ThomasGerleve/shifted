@@ -1,13 +1,3 @@
-<%= @year %>
-<%= @month %>
-<%= @shifts.length %>
-<%= @user.first_name %>
-
-<div class="day">
-  <div>
-  </div>
-</div>
-
-<%# <% if @year && @month %>
-  <%= render 'calendar', shifts: @shifts, year: @year, month: @month, mth: @mth %>
-<% end %> %>
+<% if @version %>
+  <%= render 'calendar', version: @version, shifts_controller_output: @shifts, year: @year, month: @month, mth: @mth, days: @days %>
+<% end %>
