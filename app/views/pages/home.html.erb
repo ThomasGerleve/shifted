@@ -22,27 +22,26 @@
     </div>
     <div class="shift-box">
       <h3>Open shifts</h3>
-
-
-    <% @open_shifts.each do |shift| %>
-      <div class="shiftCard">
-        <div class="shift-card shift-card-active">
-          <div class="shift-card-left-side">
-            <h2 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h2>
-            <div class="d-flex align-items-center">
-            <i class="shift-card-icon fas fa-clock shift-card-active"></i>
-              <p class="shift-card-time shift-card-active"><%= shift.slot.start_time.strftime("%H:%M") %>h - <%= shift.slot.end_time.strftime("%H:%M") %>h</p>
+      <% @open_shifts.each do |shift| %>
+        <div class="shiftCard">
+          <div class="shift-card shift-card-active">
+            <div class="shift-card-left-side">
+              <h2 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h2>
+              <div class="d-flex align-items-center">
+                <i class="shift-card-icon fas fa-clock shift-card-active"></i>
+                <p class="shift-card-time shift-card-active"><%= shift.slot.start_time.strftime("%H:%M") %>h - <%= shift.slot.end_time.strftime("%H:%M") %>h</p>
+              </div>
             </div>
-          </div>
-          <div class="shift-card-right-side">
-            <p class="shift-card-date"><%= shift.date %></p>
-            <div class="d-flex align-items-center">
-              <i class="shift-card-icon fas fa-coins shift-card-active"></i>
-              <p class="shift-card-points shift-card-active"> <%= shift.bonus_points %></p>
+            <div class="shift-card-right-side">
+              <p class="shift-card-date"><%= shift.date %></p>
+              <div class="d-flex align-items-center">
+                <i class="shift-card-icon fas fa-coins shift-card-active"></i>
+                <p class="shift-card-points shift-card-active"> <%= shift.bonus_points %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
