@@ -4,17 +4,17 @@
     <h3>Your next Shift</h3>
     <div class="shift-card">
       <div class="shift-card-left-side">
-        <h2 class="shift-card-left-side-title">Night shift</h2>
+        <h2 class="shift-card-left-side-title"><%= @next_shift_slot.capitalize %> shift</h2>
         <div class="d-flex align-items-center">
         <i class="shift-card-icon fas fa-clock"></i>
-          <p class="shift-card-time">06:00 - 18:00</p>
+          <p class="shift-card-time"><%= @next_shift_start %> - <%= @next_shift_end %></p>
         </div>
       </div>
       <div class="shift-card-right-side">
-        <p class="shift-card-date">16 Nov</p>
+        <p class="shift-card-date"><%= @next_shift.date %></p>
         <div class="d-flex align-items-center">
           <i class="shift-card-icon fas fa-coins"></i>
-          <p class="shift-card-points">30 bps</p>
+          <p class="shift-card-points"><%= current_user.bonus_points %> bps</p>
         </div>
       </div>
     </div>
