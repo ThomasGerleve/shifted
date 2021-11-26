@@ -1,5 +1,4 @@
 .shift-card {
-  color: white;
   width: 90vw;
   display: flex;
   background-color: $purple;
@@ -8,11 +7,11 @@
   justify-content: space-between;
   flex-wrap: wrap;
   border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .shift-card-left-side {
   background-color: transparent;
-  display: block;
 }
 
 .shift-card-right-side {
@@ -29,7 +28,7 @@
 }
 
 .shift-card-date {
-  color: white;
+  color: $purple;
   background-color: $lilac;
   border-radius: 20px;
   padding: 1px 5px;
@@ -41,18 +40,32 @@
   font-size: 12px;
   margin-bottom: 0;
   margin-left: 4px;
-  display: inline;
 }
 
 .shift-card-time {
   color: white;
   margin-bottom: 0;
   margin-left: 3px;
-  display: inline;
   font-size: 15px;
 }
 
 .shift-card-icon {
   color: white;
   font-size: large;
+}
+
+.shift-card-active {
+  background-color: white;
+  color: $purple;
+  i {
+    color: gray;
+  }
+
+  .shift-card-points {
+    color: gray;
+  }
+
+  .shift-card-time {
+    color: gray;
+  }
 }
