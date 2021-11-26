@@ -4,7 +4,4 @@ class Shift < ApplicationRecord
   has_many :users, through: :user_shifts
 
   validates :date, presence: true
-
-  include PgSearch::Model
-  pg_search_scope :search_by_open, against: :open
 end
