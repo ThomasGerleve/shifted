@@ -32,11 +32,9 @@
           <div class="day-number"><%= day %></div>
           <% user_shifts.each do |user_shift| %>
             <% if user_shift.shift.date.day == day %>
-              <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
-                <div class="shift">
-                  <div class="shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
-              <% end %>
+              <div class="shift">
+                <div class="shift-time"><%= user_shift.shift.slot.name %></div>
+              </div>
             <% end %>
           <% end %>
         </div>
