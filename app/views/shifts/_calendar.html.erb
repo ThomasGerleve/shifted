@@ -1,33 +1,40 @@
 <% shifts = shifts_controller_output.map(&:shift) %>
 <% user_shifts = shifts_controller_output %>
-<%#  %>
 <div class="calendar">
-	<div class="dates">
-		<div class="month">
+  <div class="calendar-dates">
+    <div class="calendar-dates-month">
       <div>
         <%= link_to '<',
         shifts_with_calendar_path(version: version, year: (month == 1 ? (year - 1) : year), month: (month == 1 ? 12 : (month - 1)) ),
-        class: "arrows prev-mth"
+        class: "calendar-dates-month-arrows"
         %>
       </div>
-			<div class="mth"><%= mth %> <%= year %></div>
+      <div><%= mth %> <%= year %></div>
       <div>
         <%= link_to '>',
         shifts_with_calendar_path(version: version, year: (month == 12 ? (year + 1) : year), month: (month == 12 ? 1 : (month + 1)) ),
-        class: "arrows next-mth"
+        class: "calendar-dates-month-arrows"
         %>
       </div>
-		</div>
-		<div class="days">
+    </div>
+    <div class="calendar-dates-weekdays">
+      <div class="calendar-dates-weekdays-weekday">Mon</div>
+      <div class="calendar-dates-weekdays-weekday">Tue</div>
+      <div class="calendar-dates-weekdays-weekday">Wed</div>
+      <div class="calendar-dates-weekdays-weekday">Thu</div>
+      <div class="calendar-dates-weekdays-weekday">Fri</div>
+      <div class="calendar-dates-weekdays-weekday">Sat</div>
+      <div class="calendar-dates-weekdays-weekday">Sun</div>
+    </div>
+    <div class="calendar-dates-days">
       <% days.each do |day| %>
-        <div class="day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day } %>">
+        <div class="calendar-dates-days-day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day } %>">
           <div class="day-number"><%= day %></div>
           <% user_shifts.each do |user_shift| %>
             <% if user_shift.shift.date.day == day %>
               <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
                 <div class="shift">
-                  <div class="shift-time"><%= user_shift.shift.slot.start_time.hour %> - <%= user_shift.shift.slot.end_time.hour %></div>
-                  <div class="shift-points"><%= user_shift.bonus_points %></div>
+                  <div class="shift-time"><%= user_shift.shift.slot.name %></div>
                 </div>
               <% end %>
             <% end %>
@@ -35,5 +42,5 @@
         </div>
       <% end %>
     </div>
-	</div>
+  </div>
 </div>
