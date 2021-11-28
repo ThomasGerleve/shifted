@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_111017) do
+ActiveRecord::Schema.define(version: 2021_11_28_125519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_111017) do
   end
 
   create_table "user_shifts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "shift_id", null: false
     t.integer "bonus_points"
     t.text "details"
