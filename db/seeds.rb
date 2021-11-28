@@ -26,11 +26,17 @@ user_admin = [true, false]
 user_first_name = ["Peter", "Veronika", "Thomas", "Karl", "Morgan", "Tim",
                    "Marita", "Bernhard", "Bianca", "Sia", "Claudio", "Laura",
                    "Marie", "Luis", "Alex", "Manfred", "Alissa", "Ken",
-                   "Sebastian", "Zita"]
+                   "Sebastian", "Zita", "Andre", "Bernd", "Caspar", "David",
+                   "Elena", "Fiona", "Gisela", "Hannah", "Inga", "Julia", "Kip",
+                   "Ludwig", "Mona", "Nina", "Olga", "Paul", "Quentin", "Ria",
+                   "Susi"]
 user_last_name = ["Hill", "Landberg", "Hintermeyer", "Leoni", "Richardson",
                   "Lagerfeld", "Arana", "Apmann", "Arco", "Sadi", "Tiedemann",
                   "Wittelberg", "Neisemeier", "Iarossi", "Jenkara",
-                  "Scherhausen", "Linkhammer", "Ginser", "Patoli", "Dahme"]
+                  "Scherhausen", "Linkhammer", "Ginser", "Patoli", "Dahme",
+                  "Zahl", "Yptos", "Xaver", "Wort", "Vogt", "Ullmann", "Tran",
+                  "Seifert", "Reiter", "Quacks", "Guile", "Plinter", "Ortmann",
+                  "Narso", "Muks", "Leiter", "Klug", "Jung", "Ifdah"]
 user_additional_infos = ["Hey there - your cardiologist is here.",
                          "I am new to the team - whoop, whoop.", "Busy",
                          "📈🩺👨🏼‍⚕️", "Saving some babies! #neonatal",
@@ -41,7 +47,12 @@ user_additional_infos = ["Hey there - your cardiologist is here.",
                          "All these christmas lights 🎶🎵", "tired😴",
                          "Hey there!", "We are expecting - so excited🤰🏼",
                          "Caught Covid 😥", "Looking forward to my vacantions.",
-                         "I got a new pair of shoes😎"]
+                         "I got a new pair of shoes😎", "Work work", "🥱", "😁",
+                         "Habemus papam!", "is typing...", "I know, right?!",
+                         "🥶", "So cold outside...", "User details", "Meow!🐱",
+                         "I'm a dogperson", "21 days untill...", "Hey there!",
+                         "42", "I like turtles", "Be your best self!", "🤩",
+                         "Harder, better, stronger, faster", "What are thooose?"]
 user_experience_level = ["experienced", "beginner"]
 
 index = 0
@@ -155,7 +166,8 @@ shift_dates.each do |date|
       date: date
     )
     shifts << shift
-    5.times do
+    users_per_shift = 5
+    users_per_shift.times do
       user_shift = UserShift.new(
         user_id: users_copy.delete(users_copy.sample).id,
         shift_id: shift.id,
@@ -186,25 +198,28 @@ end
 puts "Created #{shifts.length} shifts"
 puts "Created #{user_shifts.length} user shifts"
 
-# emergency_days = shifts.select { |shift| TimeDate.now <= shift.date && (shift.date - TimeDate.now) < 7 }
+emergency_days = shifts.select { |shift| DateTime.now <= shift.date && (shift.date - DateTime.now) < 7 }
 
-# user_shift_details_emergency = ["Premature baby needs 1 to 1 care",
-#                                 "early delivery",
-#                                 "many intensive care patients - support needed",
-#                                 "we have many emergency cases - help is needed",
-#                                 "we will need some help on the station",
-#                                 "we need help the in the operating room",
-#                                 "help needed for the oncology"]
+user_shift_details_emergency = ["Premature baby needs 1 to 1 care",
+                                "early delivery",
+                                "many intensive care patients - support needed",
+                                "we have many emergency cases - help is needed",
+                                "we will need some help on the station",
+                                "we need help the in the operating room",
+                                "help needed for the oncology"]
 
-# rand(3..7).times do
-#   UserShift.create!(
-#     user_id: nil,
-#     shift_id: emergency_days.sample.id,
-#     bonus_points: rand(3..10),
-#     open: rand(1..100) < 11,
-#     details: user_shift_details_emergency.sample
-#   )
-# end
+emergency_shifts = []
+rand(3..7).times do
+  emergency_shift = UserShift.create!(
+    user_id: nil,
+    shift_id: emergency_days.sample.id,
+    bonus_points: rand(3..10),
+    open: rand(1..100) < 11,
+    details: user_shift_details_emergency.sample
+  )
+  emergency_shifts << emergency_shift
+end
+puts "Created #{emergency_shifts.length} emergencies"
 
 Prize.create!(
   bonus_points: 50,
