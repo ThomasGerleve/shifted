@@ -214,7 +214,7 @@ rand(3..7).times do
     user_id: nil,
     shift_id: emergency_days.sample.id,
     bonus_points: rand(3..10),
-    open: rand(1..100) < 11,
+    open: true,
     details: user_shift_details_emergency.sample
   )
   emergency_shifts << emergency_shift
