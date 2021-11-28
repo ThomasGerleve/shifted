@@ -29,11 +29,11 @@
     <div class="calendar-dates-days">
       <% days.each do |day| %>
         <div class="calendar-dates-days-day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day } %>">
-          <div class="day-number"><%= day %></div>
+          <div><%= day %></div>
           <% user_shifts.each do |user_shift| %>
             <% if user_shift.shift.date.day == day %>
-              <div class="shift">
-                <div class="shift-time"><%= user_shift.shift.slot.name %></div>
+              <div class="calendar-shift">
+                <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
               </div>
             <% end %>
           <% end %>
