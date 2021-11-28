@@ -144,29 +144,31 @@ shift_dates = [Date.new(2021, 11, 30), Date.new(2021, 12, 1),
                Date.new(2022, 1, 29), Date.new(2022, 1, 30)]
 
 shifts = []
-j = 0
-slots.length.times do
-  k = 0
-  shift_dates.length.times do
+user_shifts = []
+shift_dates.each do |date|
+  users_copy = users.map { |u| u }
+  x = 0
+  slots.length.times do
     shift = Shift.create!(
       bonus_points: 0,
-      slot_id: slots[j].id,
-      date: shift_dates[k]
+      slot_id: slots[x].id,
+      date: date
     )
     shifts << shift
-    k += 1
+    5.times do
+      user_shift = UserShift.new(
+        user_id: users_copy.delete(users_copy.sample).id,
+        shift_id: shift.id,
+        bonus_points: 0,
+        open: rand(1..100) < 2,
+        details: "Standard shift"
+      )
+      user_shift.save!
+      user_shifts << user_shift
+    end
+    x += 1
   end
-  j += 1
 end
-puts "Created #{shifts.length} shifts"
-
-user_shift = UserShift.new(
-  user_id: users[rand(0..users.length)].id,
-  shift_id: shift.id,
-  bonus_points: shift.bonus_points,
-  open: (rand(1..100) < 11),
-  details: "Standard shift"
-)
 
 user_shift_details_swap = ["burned out... please someone take over",
                            "Have to go to the vet with my dog",
@@ -174,37 +176,35 @@ user_shift_details_swap = ["burned out... please someone take over",
                            "private circumstances",
                            "There's a family event I forgot, please jump in"]
 
-user_shift_details_emergency = ["Premature baby needs 1 to 1 care",
-                                "early delivery",
-                                "many intensive care patients - support needed",
-                                "we have many emergency cases - help is needed",
-                                "we will need some help on the station",
-                                "we need help the in the operating room",
-                                "help needed for the oncology"]
-
-def create_new_user_shift(shift, user_shift, user_shift_details_swap)
-  user_shift while shift.user_shifts.any? { |u_shift| u_shift.user == User.find(user_shift.user_id) }
-  user_shift.save!
-  return unless user_shift.open
-
-  user_shift.details = user_shift_details_swap.sample
-  user_shift.bonus_points += rand(0..5)
-  user_shift.save!
+open_user_shifts = user_shifts.select(&:open)
+open_user_shifts.each do |shift|
+  shift.details = user_shift_details_swap.sample
+  shift.bonus_points += rand(0..5)
+  shift.save!
 end
 
-users_per_shift = 5
-shifts.each do |shift|
-  l = 0
-  users_per_shift.times do
-    create_new_user_shift(shift, user_shift, user_shift_details_swap)
-    l += 1
-  end
-  if rand(1..100) < 11
-    create_new_user_shift(shift, user_shift, user_shift_details_swap)
-    UserShift.last.details = user_shift_details_emergency.sample
-  end
-end
-puts "Created #{UserShift.count} user shifts"
+puts "Created #{shifts.length} shifts"
+puts "Created #{user_shifts.length} user shifts"
+
+# emergency_days = shifts.select { |shift| TimeDate.now <= shift.date && (shift.date - TimeDate.now) < 7 }
+
+# user_shift_details_emergency = ["Premature baby needs 1 to 1 care",
+#                                 "early delivery",
+#                                 "many intensive care patients - support needed",
+#                                 "we have many emergency cases - help is needed",
+#                                 "we will need some help on the station",
+#                                 "we need help the in the operating room",
+#                                 "help needed for the oncology"]
+
+# rand(3..7).times do
+#   UserShift.create!(
+#     user_id: nil,
+#     shift_id: emergency_days.sample.id,
+#     bonus_points: rand(3..10),
+#     open: rand(1..100) < 11,
+#     details: user_shift_details_emergency.sample
+#   )
+# end
 
 Prize.create!(
   bonus_points: 50,
