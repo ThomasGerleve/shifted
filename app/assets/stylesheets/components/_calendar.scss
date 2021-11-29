@@ -58,6 +58,15 @@
         background-color: rgba(211, 213, 248, 0.9);
         display: grid;
         grid-template-rows: repeat(3, 1fr);
+
+        &-myshift {
+          height: 20px;
+        }
+
+        &-openshifts {
+          display: flex;
+          justify-content: center;
+        }
       }
     }
   }
@@ -78,5 +87,9 @@
     border-radius: 50%;
     background-color: rgb(218, 64, 64);
     color: $white;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
