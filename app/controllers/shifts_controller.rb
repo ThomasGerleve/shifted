@@ -1,5 +1,3 @@
-require 'time'
-
 class ShiftsController < ApplicationController
   def index
     if params.present?
@@ -17,10 +15,15 @@ class ShiftsController < ApplicationController
       mth = %w[nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
       @mth = mth[@month]
 
-      @days = days(@year, @month)
+      @days = days(@month, @year)
       # range of amount of days in that month
+      @current = Time.parse("#{@year}-#{@month}-01")
 
-      @shifts = shifts.select { |user_shift| user_shift.shift.date.year == @year && user_shift.shift.date.month == @month }
+      @shifts = shifts.select do |user_shift|
+        (user_shift.shift.date.year == @year && user_shift.shift.date.month == @month) \
+        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month) \
+        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month)
+      end
     else
       # this is if we want to view all shifts - without calendar
       shifts = Shift.all
@@ -28,6 +31,10 @@ class ShiftsController < ApplicationController
     end
     @user = current_user
     @shifts = @shifts.uniq
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private
@@ -36,12 +43,21 @@ class ShiftsController < ApplicationController
     year.to_i.to_s == year && year.length == 4
   end
 
-  def days(year, month)
-    days = 30
-    days = 31 if month > 7 && month.even?
-    days = 31 if month <= 7 && month.odd?
-    days = 28 if month == 2
-    days = 29 if month == 2 && (year % 4).zero?
-    (1..days)
+  def days(month, year)
+    days = {}
+    first = Time.parse("#{year}-#{month}-01")
+    # determine first day of the month we want to show
+    last_weekday_last_month = first.wday.zero? ? 6 : first.wday - 1
+    days_last_month = (23..Time.days_in_month(first.last_month.month, first.last_month.year)).last(last_weekday_last_month)
+    # determine the last days of the previous month that belong to this month's first week
+    days[:last_month] = days_last_month.length.positive? ? days_last_month : []
+
+    days_this_month = (1..Time.days_in_month(month, year))
+    days[:this_month] = days_this_month
+    # inject the amount of days this month
+    missing = (days_this_month.last + last_weekday_last_month) % 7
+    days[:next_month] = missing.zero? ? [] : (1..(7 - missing))
+    # populate rest of last week with start of next month
+    days
   end
 end
