@@ -32,7 +32,7 @@
 
       <h2>Open shifts</h2>
       <% @open_shifts.each do |shift| %>
-      <div class="shift-card shift-card-active" data-bs-toggle="collapse" data-bs-target="#cardForShift<% shift.id %>" aria-expanded="false" aria-controls="cardForShift<% shift.id %>">
+      <div class="shift-card shift-card-active" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= shift.id %>">
         <div class="shift-card-left-side">
           <h3 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h3>
           <div class="d-flex align-items-center">
@@ -47,16 +47,16 @@
             <p class="shift-card-points shift-card-active"> <%= shift.bonus_points %></p>
           </div>
         </div>
-      <div class="collapse mt-1" id="cardForShift<% shift.id %>">
-        <div class="card card-body shift-card-drop">
-          <strong>Details</strong>
-          <p class="shift-card-drop-details">Expecting surge due to COVID-19 wave evolution.</p>
-          <div class="shift-card-drop-buttons">
-            <p class="btn btn-primary mb-0">accept</p>
-            <p class="btn btn-secondary mb-0">reject</p>
+        <div class="collapse mt-1" id="cardForShift<%= shift.id %>">
+          <div class="card card-body shift-card-drop">
+            <strong>Details</strong>
+            <p class="shift-card-drop-details">Expecting surge due to COVID-19 wave evolution.</p>
+            <div class="shift-card-drop-buttons">
+              <p class="btn btn-primary mb-0">accept</p>
+              <p class="btn btn-secondary mb-0">reject</p>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     <% end %>
   </div>
