@@ -1,9 +1,32 @@
+.colleague-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.colleague-full-name {
+}
+
+.colleague-banner {
+  display: flex;
+  justify-content: space-between;
+}
+
 .role {
   display: flex;
   justify-content: right;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .colleague-card-drop {
   background-color: $lighter-purple;
   border: none;
 }
+
+.colleague-card-avatar {
+  width: 20vw;
+}
+
+// // .colleague-name {
+// //   position: relative;
+// // }
