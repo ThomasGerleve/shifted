@@ -8,7 +8,6 @@
   <div class="col2 box">
     <div class="d-flex justify-content-between">
       <h3 id="name"><%= current_user.first_name %>&nbsp<%= current_user.last_name %></h3>
-      <%= link_to '', edit_user_registration_path, class: "fas fa-pencil-alt pencil" %>
     </div>
     <div class="text">
       <i class="fas fa-book-medical i"></i>
@@ -31,9 +30,6 @@
   <div class="col3 box">
     <div class="d-flex justify-content-between">
       <h3 id="name">Currently offered prizes</h3>
-      <a href="#">
-        <i class="fas fa-pencil-alt pencil"></i>
-      </a>
     </div>
     <% Prize.all.each do |prize| %>
       <div class="text">
