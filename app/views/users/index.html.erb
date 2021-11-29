@@ -6,17 +6,12 @@
       <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered" />
       <%= user.first_name %>
       <%= user.last_name %>
-        <div class="text">
-          <i class="fas fa-user-tie i"></i>
+        <div class="text role">
           <%= user.functional_role.name %>
         </div>
-        <div class="text">
-          <i class="fas fa-coins i"></i>
-          <%= user.bonus_points %> bps
-        </div>
-        <div class="collapse mt-1" id="colleagueCard<%= user.id %>">
-          <div class="card card-body shift-card-drop col2">
-            <div class="d-flex flex-column align-items-center justify-content-center">
+        <div class="collapse mt-1 colleague-card" id="colleagueCard<%= user.id %>">
+          <div class="card card-body colleague-card-drop col2">
+            <div class="d-flex flex-column">
               <div class="text">
                 <i class="fas fa-book-medical i"></i>
                 <%= user.experience_level %>
@@ -29,9 +24,8 @@
                 <i class="fas fa-coins i"></i>
                 <%= user.bonus_points %> bps
               </div>
-              <div class="text">
-                <i class="fas fa-comments i"></i>
-                "<%= user.additional_infos %>"
+              <div class="text personal">
+                <em>"<%= user.additional_infos %>"</em>
               </div>
             </div>
           </div>
