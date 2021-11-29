@@ -9,7 +9,11 @@
             <h2><%= user.first_name %></h2>
             <h2><%= user.last_name %></h2>
           </div>
-          <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered colleague-card-avatar" />
+          <% unless user.photo.attached? %>
+            <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+          <% else %>
+            <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+          <% end %>
         </div>
         <div class="text role">
           <i class="fas fa-user-tie i mx-1"></i>
