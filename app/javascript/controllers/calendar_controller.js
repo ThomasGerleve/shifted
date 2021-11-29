@@ -5,7 +5,6 @@ export default class extends Controller {
 
   navigate(event) {
     event.preventDefault();
-    console.log(event.currentTarget.href)
 
     fetch(event.currentTarget.href, {
       method: 'GET',
@@ -13,8 +12,6 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
-        console.log(this.targets)
         this.containerTarget.outerHTML = data.calendar;
       });
   };
