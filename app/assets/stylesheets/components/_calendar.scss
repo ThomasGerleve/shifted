@@ -56,6 +56,8 @@
         border-radius: .25rem;
         height: 80px;
         background-color: rgba(211, 213, 248, 0.9);
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
       }
     }
   }
@@ -64,9 +66,17 @@
 .calendar-shift {
   height: 20px;
 
-  &-time {
+  &-timeslot {
     background-color: #00bfba;
     border-radius: 1rem;
+    color: $white;
+  }
+
+  &-circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: rgb(218, 64, 64);
     color: $white;
   }
 }
