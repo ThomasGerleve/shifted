@@ -3,7 +3,11 @@
   <h2><strong>Your colleagues</strong></h2>
   <% @users.each do |user|  %>
     <div class="box" data-bs-toggle="collapse" data-bs-target="#profileCard<%= user.id %>" aria-expanded="false" aria-controls="profileCard<%= user.id %>">
-      <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered" />
+      <% unless user.photo.attached? %>
+        <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-image" class="card-trip-user avatar-bordered">
+      <% else %>
+        <img src="<%= cl_image_path(user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered">
+      <% end %>
       <%= user.first_name %>
       <%= user.last_name %>
       <div class="text">
