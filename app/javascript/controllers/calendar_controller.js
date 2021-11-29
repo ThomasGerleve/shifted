@@ -5,10 +5,11 @@ export default class extends Controller {
 
   navigate(event) {
     event.preventDefault();
+    console.log(event.currentTarget.href)
 
     fetch(event.currentTarget.href, {
       method: 'GET',
-      headers: { 'Accept': "application/json" },
+      headers: { 'Accept': "application/json" }
     })
       .then(response => response.json())
       .then((data) => {
