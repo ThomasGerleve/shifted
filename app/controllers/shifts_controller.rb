@@ -4,7 +4,8 @@ class ShiftsController < ApplicationController
       # this is if we want to display a calendar
       @version = params[:version]
 
-      shifts = @version == "open" ? UserShift.all.select(&:open) : current_user.user_shifts
+      open_user_shifts = UserShift.all.select(&:open)
+      my_user_shifts = current_user.user_shifts
       # if the searchword is exactly "open": index open shifts, else: index current user's shifts
 
       @year = params[:year].present? && year?(params[:year]) ? params[:year].to_i : Time.new.year
@@ -19,7 +20,13 @@ class ShiftsController < ApplicationController
       # range of amount of days in that month
       @current = Time.parse("#{@year}-#{@month}-01")
 
-      @shifts = shifts.select do |user_shift|
+      @open_user_shifts = open_user_shifts.select do |user_shift|
+        (user_shift.shift.date.year == @year && user_shift.shift.date.month == @month) \
+        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month) \
+        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month)
+      end
+
+      @my_user_shifts = my_user_shifts.select do |user_shift|
         (user_shift.shift.date.year == @year && user_shift.shift.date.month == @month) \
         || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month) \
         || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month)
@@ -30,7 +37,6 @@ class ShiftsController < ApplicationController
       @shifts = shifts.select { |shift| shift.date > DateTime.new }
     end
     @user = current_user
-    @shifts = @shifts.uniq
     respond_to do |format|
       format.html
       format.json
