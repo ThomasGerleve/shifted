@@ -1,3 +1,3 @@
 <% if @version %>
-    <%= render 'calendar', version: @version, shifts_controller_output: @shifts, year: @year, month: @month, mth: @mth, days: @days, current: @current %>
+    <%= render 'calendar', version: @version, my_user_shifts: @my_user_shifts, open_user_shifts: @open_user_shifts, year: @year, month: @month, mth: @mth, days: @days, current: @current %>
 <% end %>
