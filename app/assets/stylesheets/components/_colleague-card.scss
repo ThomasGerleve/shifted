@@ -20,13 +20,30 @@
 
 .colleague-card-drop {
   background-color: $lighter-purple;
+  color: black;
   border: none;
+  padding: 10px 20px;
 }
 
 .colleague-card-avatar {
   width: 20vw;
 }
 
-// // .colleague-name {
-// //   position: relative;
-// // }
+.user-infos-box {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-infos {
+  margin-top: 10px;
+  align-self: center;
+}
+
+// .colleagues-card-drop {
+//   background-color: $lighter-purple;
+//   color: black;
+//   position: relative;
+//   border: none;
+// }

@@ -16,7 +16,7 @@
           <%= user.functional_role.name.capitalize %>
         </div>
         <div class="collapse mt-1 colleague-card" id="colleagueCard<%= user.id %>">
-          <div class="card card-body colleague-card-drop col2">
+          <div class="card colleague-card-drop col2">
             <div class="d-flex flex-row justify-content-between">
               <div class="text">
                 <i class="fas fa-book-medical i"></i>
@@ -27,7 +27,8 @@
                 <%= user.bonus_points %> bps
               </div>
             </div>
-              <div class="text personal">
+              <div class="user-infos-box">
+                <i class="fas fa-bullhorn mx-3"></i>
                 <em>"<%= user.additional_infos %>"</em>
               </div>
           </div>
