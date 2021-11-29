@@ -18,22 +18,23 @@
 }
 
 .shift-card-right-side {
-  display: flex;
   background-color: transparent;
-  align-content: flex-end;
+  justify-content: space-between;
   flex-direction: column;
 }
 
 .shift-card-left-side-title {
-  margin-bottom: 10px;
-  color: white;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .shift-card-date {
   color: white;
   background-color: $lilac;
   border-radius: 20px;
-  padding: 2px 8px;
+  padding: 2px 12px;
   margin-bottom: 11px;
 }
 
@@ -64,26 +65,25 @@
 }
 
 .shift-card-drop-buttons {
-  display: flexbox;
+  display: flex;
   flex-direction: row;
-  align-content: flex-end;
+  justify-content: flex-end;
 }
 
 .shift-card-drop {
   background-color: $lighter-purple;
   color: black;
   position: relative;
-  width: 314px;
+  width: 313px;
+  border: none;
 }
 
-.shift-card-drop-details {
-  padding: 10px;
-  background-color: $white;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  width: 280px;
-  position: absolute;
-}
+// .shift-card-drop-details {
+//   padding: 10px;
+//   background-color: $white;
+//   border-radius: 10px;
+//   margin-bottom: 8px;
+// }
 
 .shift-card-active {
   background-color: white;
