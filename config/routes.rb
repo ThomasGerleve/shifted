@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get '/users/edit', to: 'devise/registrations#edit', as:
 
   root to: 'pages#home'
   resources :shifts, only: %i[index]
