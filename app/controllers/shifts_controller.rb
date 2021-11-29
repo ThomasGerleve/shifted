@@ -23,13 +23,13 @@ class ShiftsController < ApplicationController
       @open_user_shifts = open_user_shifts.select do |user_shift|
         (user_shift.shift.date.year == @year && user_shift.shift.date.month == @month) \
         || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month) \
-        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month)
+        || (user_shift.shift.date.year == @current.last_month.year && user_shift.shift.date.month == @current.last_month.month)
       end
 
       @my_user_shifts = my_user_shifts.select do |user_shift|
         (user_shift.shift.date.year == @year && user_shift.shift.date.month == @month) \
         || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month) \
-        || (user_shift.shift.date.year == @current.next_month.year && user_shift.shift.date.month == @current.next_month.month)
+        || (user_shift.shift.date.year == @current.last_month.year && user_shift.shift.date.month == @current.last_month.month)
       end
     else
       # this is if we want to view all shifts - without calendar
