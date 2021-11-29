@@ -47,14 +47,15 @@ class ShiftsController < ApplicationController
     days = {}
     first = Time.parse("#{year}-#{month}-01")
     # determine first day of the month we want to show
-    days_last_month = (22..Time.days_in_month(first.last_month.month, first.last_month.year)).last(first.wday - 1)
+    last_weekday_last_month = first.wday.zero? ? 6 : first.wday - 1
+    days_last_month = (23..Time.days_in_month(first.last_month.month, first.last_month.year)).last(last_weekday_last_month)
     # determine the last days of the previous month that belong to this month's first week
     days[:last_month] = days_last_month.length.positive? ? days_last_month : []
 
     days_this_month = (1..Time.days_in_month(month, year))
     days[:this_month] = days_this_month
     # inject the amount of days this month
-    missing = (days_this_month.last + first.wday - 1) % 7
+    missing = (days_this_month.last + last_weekday_last_month) % 7
     days[:next_month] = missing.zero? ? [] : (1..(7 - missing))
     # populate rest of last week with start of next month
     days
