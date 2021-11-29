@@ -42,7 +42,9 @@
       &-weekday {
         border-left: 1px solid $white;
         border-right: 1px solid $white;
-        background-color: $purple;
+        border-bottom-left-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+        background-color: #00bfba;
         color: $white;
       }
     }
@@ -60,7 +62,7 @@
         grid-template-rows: repeat(3, 1fr);
 
         &-myshift {
-          height: 20px;
+          font-size: 0.8rem;
         }
 
         &-openshifts {
@@ -76,9 +78,22 @@
   height: 20px;
 
   &-timeslot {
-    background-color: #00bfba;
-    border-radius: 1rem;
-    color: $white;
+
+    &-early {
+      background-color: rgb(226, 152, 13);
+      border-radius: 1rem;
+      color: $white;
+    }
+    &-late {
+      background-color: #3071ff;
+      border-radius: 1rem;
+      color: $white;
+    }
+    &-night {
+      background-color: $dark-purple;
+      border-radius: 1rem;
+      color: $white;
+    }
   }
 
   &-circle {
