@@ -1,39 +1,78 @@
-<% shifts = shifts_controller_output.map(&:shift) %>
-<% user_shifts = shifts_controller_output %>
-<%#  %>
-<div class="calendar">
-	<div class="dates">
-		<div class="month">
-      <div>
-        <%= link_to '<',
-        shifts_with_calendar_path(version: version, year: (month == 1 ? (year - 1) : year), month: (month == 1 ? 12 : (month - 1)) ),
-        class: "arrows prev-mth"
-        %>
+<div data-controller="calendar">
+  <div class="calendar" data-calendar-target="container">
+    <% shifts = shifts_controller_output.map(&:shift) %>
+    <% user_shifts = shifts_controller_output %>
+    <div class="dates">
+      <div class="month">
+        <div>
+          <%= link_to '<',
+          shifts_with_calendar_path(version: version, year: (month == 1 ? (year - 1) : year), month: (month == 1 ? 12 : (month - 1)) ),
+          class: "arrows prev-mth",
+          remote: true,
+          data: {
+            action: "click->calendar#navigate"
+          }
+          %>
+        </div>
+        <div class="mth"><%= mth %> <%= year %></div>
+        <div>
+          <%= link_to '>',
+          shifts_with_calendar_path(version: version, year: (month == 12 ? (year + 1) : year), month: (month == 12 ? 1 : (month + 1)) ),
+          class: "arrows next-mth",
+          remote: true,
+          data: {
+            action: "click->calendar#navigate"
+          }
+          %>
+        </div>
       </div>
-			<div class="mth"><%= mth %> <%= year %></div>
-      <div>
-        <%= link_to '>',
-        shifts_with_calendar_path(version: version, year: (month == 12 ? (year + 1) : year), month: (month == 12 ? 1 : (month + 1)) ),
-        class: "arrows next-mth"
-        %>
-      </div>
-		</div>
-		<div class="days">
-      <% days.each do |day| %>
-        <div class="day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day } %>">
-          <div class="day-number"><%= day %></div>
-          <% user_shifts.each do |user_shift| %>
-            <% if user_shift.shift.date.day == day %>
-              <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
-                <div class="shift">
-                  <div class="shift-time"><%= user_shift.shift.slot.start_time.hour %> - <%= user_shift.shift.slot.end_time.hour %></div>
-                  <div class="shift-points"><%= user_shift.bonus_points %></div>
-                </div>
+      <div class="days">
+        <% days[0].each do |day| %>
+          <div class="day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+            <div class="day-number"><%= day %></div>
+            <% user_shifts.each do |user_shift| %>
+              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.last_month %>
+                <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
+                  <div class="shift">
+                    <div class="shift-time"><%= user_shift.shift.slot.start_time.hour %> - <%= user_shift.shift.slot.end_time.hour %></div>
+                    <div class="shift-points"><%= user_shift.bonus_points %></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+        <% days[1].each do |day| %>
+          <div class="day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+            <div class="day-number"><%= day %></div>
+            <% user_shifts.each do |user_shift| %>
+              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == month %>
+                <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
+                  <div class="shift">
+                    <div class="shift-time"><%= user_shift.shift.slot.start_time.hour %> - <%= user_shift.shift.slot.end_time.hour %></div>
+                    <div class="shift-points"><%= user_shift.bonus_points %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        <% days[2].each do |day| %>
+          <div class="day <%= "has-shift" if shifts.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+            <div class="day-number"><%= day %></div>
+            <% user_shifts.each do |user_shift| %>
+              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.next_month %>
+                <%= link_to shifts_this_month_with_calendar_path(version: version) do %>
+                  <div class="shift">
+                    <div class="shift-time"><%= user_shift.shift.slot.start_time.hour %> - <%= user_shift.shift.slot.end_time.hour %></div>
+                    <div class="shift-points"><%= user_shift.bonus_points %></div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-	</div>
+  </div>
 </div>
