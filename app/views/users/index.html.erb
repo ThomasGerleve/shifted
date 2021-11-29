@@ -3,7 +3,7 @@
   <h2><strong>Your colleagues</strong></h2>
   <% @users.each do |user|  %>
     <div class="box">
-      <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered" />
+      <%= image_tag(user.photo, class: "card-trip-user avatar-bordered") %>
       <%= user.first_name %>
       <%= user.last_name %>
       <div class="text">

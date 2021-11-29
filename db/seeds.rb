@@ -70,6 +70,7 @@ user_first_name.length.times do
     password: "asdfff",
     password_confirmation: "asdfff"
   )
+  user.photo.attach(io: File.open(File.join(Rails.root, "app/assets/images/#{index}.png")))
   users << user
   index += 1
 end
@@ -85,6 +86,7 @@ karl = User.create!(
   password: "coachoo",
   password_confirmation: "coachoo"
 )
+karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.png')))
 users << karl
 puts "Created #{users.length} users"
 

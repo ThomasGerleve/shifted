@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :user_shifts
   has_many :shifts, through: :user_shifts
   has_many :preferred_slots
+  has_one_attached :photo
   EXPERIENCE_LEVEL = ["beginner", "experienced"]
 
   validates :first_name, :last_name, :experience_level, :functional_role, presence: true
