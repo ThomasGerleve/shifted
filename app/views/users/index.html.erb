@@ -2,62 +2,54 @@
   <br>
   <h2><strong>Your colleagues</strong></h2>
   <% @users.each do |user|  %>
-    <div class="box" data-bs-toggle="collapse" data-bs-target="#profileCard<%= user.id %>" aria-expanded="false" aria-controls="profileCard<%= user.id %>">
+    <div class="box" data-bs-toggle="collapse" data-bs-target="#colleagueCard<%= user.id %>" aria-expanded="false" aria-controls="colleagueCard<%= user.id %>">
       <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered" />
       <%= user.first_name %>
       <%= user.last_name %>
-      <div class="text">
-        <i class="fas fa-user-tie i"></i>
-        <%= user.functional_role.name %>
-      </div>
-      <div class="text">
-        <i class="fas fa-coins i"></i>
-        <%= user.bonus_points %> bps
-      </div>
-      <div class="collapse mt-1" id="profileCard<%= user.id %>">
+        <div class="text">
+          <i class="fas fa-user-tie i"></i>
+          <%= user.functional_role.name %>
+        </div>
+        <div class="text">
+          <i class="fas fa-coins i"></i>
+          <%= user.bonus_points %> bps
+        </div>
+        <div class="collapse mt-1" id="colleagueCard<%= user.id %>">
           <div class="card card-body shift-card-drop col2">
             <div class="d-flex flex-column align-items-center justify-content-center">
-
-
-    <%# <div class="d-flex justify-content-between">
-      <%= link_to '', edit_user_registration_path, class: "fas fa-pencil-alt pencil" %>
-    <%# </div> Don't forget to this one back after uncommenting ===> %>
-    <div class="text">
-      <i class="fas fa-book-medical i"></i>
-      <%= user.experience_level %>
-    </div>
-    <div class="text">
-      <i class="fas fa-user-tie i"></i>
-      <%= user.functional_role.name %>
-    </div>
-    <div class="text">
-      <i class="fas fa-coins i"></i>
-      <%= user.bonus_points %> bps
-    </div>
-    <div class="text">
-      <i class="fas fa-comments i"></i>
-      "<%= user.additional_infos %>"
-    </div>
-
-
-    <div class="d-flex justify-content-between">
-      <h3 id="name">Your preferred slots</h3>
-      <a href="#">
-        <i class="fas fa-pencil-alt pencil"></i>
-      </a>
-    </div>
-    <% current_user.preferred_slots.each do |preferred_slot| %>
-      <div class="text">
-        <i class="fas fa-clock i"></i>
-        <%= preferred_slot.weekday %>
-        <%= preferred_slot.slot.name %>
-      </div>
-    <% end %>
-</div>
-
+              <div class="text">
+                <i class="fas fa-book-medical i"></i>
+                <%= user.experience_level %>
+              </div>
+              <div class="text">
+                <i class="fas fa-user-tie i"></i>
+                <%= user.functional_role.name %>
+              </div>
+              <div class="text">
+                <i class="fas fa-coins i"></i>
+                <%= user.bonus_points %> bps
+              </div>
+              <div class="text">
+                <i class="fas fa-comments i"></i>
+                "<%= user.additional_infos %>"
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3 id="name">Your preferred slots</h3>
+                <a href="#">
+                  <i class="fas fa-pencil-alt pencil"></i>
+                </a>
+              </div>
+              <% current_user.preferred_slots.each do |preferred_slot| %>
+                <div class="text">
+                  <i class="fas fa-clock i"></i>
+                  <%= preferred_slot.weekday %>
+                  <%= preferred_slot.slot.name %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

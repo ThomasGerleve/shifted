@@ -50,11 +50,25 @@
         <div class="collapse mt-1" id="cardForShift<%= shift.id %>">
           <div class="card card-body shift-card-drop">
             <strong>Details</strong>
-            <p class="shift-card-drop-details">Expecting surge due to COVID-19 wave evolution.</p>
+            <div class="details">
+              <p class="shift-card-drop-details">Expecting surge due to COVID-19 wave evolution.</p>
+              <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                  <div class="card card-body " style="width: 280px;">
+                    This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="shift-card-drop-buttons">
               <p class="btn btn-primary mb-0">accept</p>
               <p class="btn btn-secondary mb-0">reject</p>
+              <p><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                 Toggle width collapse
+                 </button>
+              </p>
             </div>
+
           </div>
         </div>
       </div>

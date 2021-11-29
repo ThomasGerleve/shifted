@@ -53,6 +53,11 @@
   font-size: 15px;
 }
 
+.details {
+  display: flex;
+  flex-direction: row;
+}
+
 .shift-card-icon {
   color: white;
   font-size: large;
@@ -67,6 +72,8 @@
 .shift-card-drop {
   background-color: $lighter-purple;
   color: black;
+  position: relative;
+  width: 314px;
 }
 
 .shift-card-drop-details {
@@ -74,6 +81,8 @@
   background-color: $white;
   border-radius: 10px;
   margin-bottom: 8px;
+  width: 280px;
+  position: absolute;
 }
 
 .shift-card-active {
