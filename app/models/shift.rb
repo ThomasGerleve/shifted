@@ -4,4 +4,8 @@ class Shift < ApplicationRecord
   has_many :users, through: :user_shifts
 
   validates :date, presence: true
+
+  def user_on_shift?(user)
+    users.include?(user)
+  end
 end

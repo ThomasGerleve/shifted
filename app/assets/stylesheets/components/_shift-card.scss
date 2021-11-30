@@ -69,13 +69,14 @@
 
       &-buttons {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
       }
 
       &-avatars {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        margin-bottom: .5rem;
       }
     }
   }
