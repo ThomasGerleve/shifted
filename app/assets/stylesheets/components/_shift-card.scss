@@ -1,50 +1,32 @@
 .shift-card {
-  color: white;
+  color: $white;
   width: 90vw;
   display: flex;
   background-color: $purple;
-  padding: 21px;
+  padding: 1.3rem;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+
+  &-date {
+    color: $white;
+    background-color: $lilac;
+    border-radius: 20px;
+    padding: 2px 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  &-points {
+    color: $white;
+    font-size: .8rem;
+    margin-bottom: 0;
+    margin-left: 4px;
+  }
 }
 
-.shift-card-left-side {
-  background-color: transparent;
-  display: block;
-}
-
-.shift-card-right-side {
-  background-color: transparent;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.shift-card-left-side-title {
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.shift-card-date {
-  color: white;
-  background-color: $lilac;
-  border-radius: 20px;
-  padding: 2px 12px;
-  margin-bottom: 11px;
-}
-
-.shift-card-points {
-  color: white;
-  font-size: 12px;
-  margin-bottom: 0;
-  margin-left: 4px;
-  display: inline;
-}
 
 .shift-card-time {
   color: white;
@@ -78,16 +60,10 @@
   border-radius: 10px;
 }
 
-// .shift-card-drop-details {
-//   padding: 10px;
-//   background-color: $white;
-//   border-radius: 10px;
-//   margin-bottom: 8px;
-// }
-
 .shift-card-active {
-  background-color: white;
+  background-color: $white;
   color: $purple;
+
   i {
     color: gray;
   }
