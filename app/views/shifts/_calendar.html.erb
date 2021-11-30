@@ -39,61 +39,88 @@
         <% days[:last_month].each do |day| %>
           <div class="calendar-dates-days-day <%= "last-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
           <%= "last-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
-            <div><%= day %></div>
-            <% open_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.last_month.month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            <div class="calendar-dates-days-day-number">
+              <%= day %>
+            </div>
+            <div class="calendar-dates-days-day-myshift">
+              <% my_user_shifts.each do |user_shift| %>
+                <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.last_month.month %>
+                  <div class="calendar-shift">
+                    <% case user_shift.shift.slot.name
+                        when "early" %>
+                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                    <% when "late" %>
+                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                    <% when "night" %>
+                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                    <% end %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% my_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.last_month.month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            </div>
+            <div class="calendar-dates-days-day-openshifts">
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.last_month.month } %>
+                <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
-            <% end %>
+            </div>
           </div>
         <% end %>
         <% days[:this_month].each do |day| %>
           <div class="calendar-dates-days-day <%= "this-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
           <%= "this-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
-            <div><%= day %></div>
-            <% open_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            <div class="calendar-dates-days-day-number">
+              <%= day %>
+            </div>
+            <div class="calendar-dates-days-day-myshift">
+              <% my_user_shifts.each do |user_shift| %>
+                <% if user_shift.shift.date.day == day && user_shift.shift.date.month == month %>
+                  <div class="calendar-shift">
+                    <% case user_shift.shift.slot.name
+                        when "early" %>
+                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                    <% when "late" %>
+                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                    <% when "night" %>
+                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                    <% end %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% my_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            </div>
+            <div class="calendar-dates-days-day-openshifts">
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month } %>
+                <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
-            <% end %>
+            </div>
           </div>
         <% end %>
         <% days[:next_month].each do |day| %>
           <div class="calendar-dates-days-day <%= "next-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
           <%= "next-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
-            <div><%= day %></div>
-            <% open_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.next_month.month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            <div class="calendar-dates-days-day-number">
+              <%= day %>
+            </div>
+            <div class="calendar-dates-days-day-myshift">
+              <% my_user_shifts.each do |user_shift| %>
+                <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.next_month.month %>
+                  <div class="calendar-shift">
+                    <% case user_shift.shift.slot.name
+                        when "early" %>
+                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                    <% when "late" %>
+                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                    <% when "night" %>
+                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                    <% end %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-            <% my_user_shifts.each do |user_shift| %>
-              <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.next_month.month %>
-                <div class="calendar-shift">
-                  <div class="calendar-shift-time"><%= user_shift.shift.slot.name %></div>
-                </div>
+            </div>
+            <div class="calendar-dates-days-day-openshifts">
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.next_month.month } %>
+                <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
-            <% end %>
+            </div>
           </div>
         <% end %>
       </div>

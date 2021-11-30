@@ -42,7 +42,9 @@
       &-weekday {
         border-left: 1px solid $white;
         border-right: 1px solid $white;
-        background-color: $purple;
+        border-bottom-left-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+        background-color: #00bfba;
         color: $white;
       }
     }
@@ -56,6 +58,17 @@
         border-radius: .25rem;
         height: 80px;
         background-color: rgba(211, 213, 248, 0.9);
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+
+        &-myshift {
+          font-size: 0.8rem;
+        }
+
+        &-openshifts {
+          display: flex;
+          justify-content: center;
+        }
       }
     }
   }
@@ -64,9 +77,34 @@
 .calendar-shift {
   height: 20px;
 
-  &-time {
-    background-color: #00bfba;
-    border-radius: 1rem;
+  &-timeslot {
+
+    &-early {
+      background-color: rgb(226, 152, 13);
+      border-radius: 1rem;
+      color: $white;
+    }
+    &-late {
+      background-color: #3071ff;
+      border-radius: 1rem;
+      color: $white;
+    }
+    &-night {
+      background-color: $dark-purple;
+      border-radius: 1rem;
+      color: $white;
+    }
+  }
+
+  &-circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: rgb(218, 64, 64);
     color: $white;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
