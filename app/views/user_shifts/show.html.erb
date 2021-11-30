@@ -14,11 +14,20 @@
     <%= @user_shift.shift.bonus_points %> bps
   </div>
   <div class="text">
-  details
+    <i class="fas fa-info-circle i"></i>
+    <%= @user_shift.details %>
   </div>
+  <div class="text">
   avatars
+  </div>
 
-
-
-  <p class="btn btn-primary mb-0">Offer</p>
+  <p class="btn btn-primary mb-0">Offer shift</p>
+  <%= simple_form_for @user_shifts do |f| %>
+    <%= f.input :details %>
+    <% if @user_shifts.persisted? %>
+      <%= f.submit 'Submit offer changes', class:'btn-primary' %>
+    <% else %>
+      <%= f.submit 'Submit new offer', class:'btn-primary' %>
+    <% end %>
+  <% end %>
 </div>
