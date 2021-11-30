@@ -22,12 +22,19 @@
   </div>
   <br>
   <p class="btn btn-primary mb-0">Offer shift</p>
-  <%#= simple_form_for @user_shifts do |f| %>
-    <%#= f.input :details %>
-    <%# if @user_shifts.persisted? %>
-      <%#= f.submit 'Submit offer changes', class:'btn-primary' %>
-    <%# else %>
-      <%#= f.submit 'Submit new offer', class:'btn-primary' %>
-    <%# end %>
-  <%# end %>
+  <br>
+  <br>
+  <div class="container user-shift">
+    <h3>Comments</h3>
+    <div class="messages" data-controller="user-shift-subscription"
+      data-user-shift-subscription-user-shift-id-value="<%= @user_shift.id %>">
+      <% @user_shift.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+  </div>
+  <%= simple_form_for [@user_shift, @message], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@user_shift.shift.date.strftime("%b %d")}" %>
+    <%= f.submit %>
+  <% end %>
 </div>

@@ -2,6 +2,7 @@ class UserShiftsController < ApplicationController
 
   def show
     @user_shift = UserShift.find(params[:id])
+    @message = Message.new
   end
 
   def index
