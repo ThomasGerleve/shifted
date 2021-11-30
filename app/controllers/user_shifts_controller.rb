@@ -1,4 +1,9 @@
 class UserShiftsController < ApplicationController
+
+  def show
+    @user_shift = UserShift.find(params[:id])
+  end
+
   def index
     # this is if we want to display a calendar
     open_user_shifts = UserShift.all.select(&:open)
