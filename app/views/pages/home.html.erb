@@ -7,16 +7,14 @@
         <div class="shift-card-left-side">
           <h3 class="shift-card-left-side-title"><%= @next_shift_slot.capitalize %> shift</h3>
           <div class="d-flex align-items-center">
-          <i class="shift-card-icon fas fa-clock"></i>
-          <p class="shift-card-time"><%= @next_shift.slot.start_time.strftime("%H:%M") %> - <%= @next_shift.slot.end_time.strftime("%H:%M") %></p>
+          <p class="shift-card-time"><i class="shift-card-icon fas fa-clock"></i>&nbsp&nbsp<%= @next_shift.slot.start_time.strftime("%H:%M") %> - <%= @next_shift.slot.end_time.strftime("%H:%M") %></p>
           </div>
         </div>
         <div class="shift-card-right-side">
           <p class="shift-card-date"><%= @next_shift.date.strftime("%b %d") %></p>
           <% unless @next_shift.bonus_points == 0 %>
             <div class="d-flex align-items-center">
-              <i class="shift-card-icon fas fa-coins"></i>
-              <p class="shift-card-points"><%= @next_shift.bonus_points %> bps</p>
+              <p class="shift-card-points"><i class="shift-card-icon fas fa-coins"></i>&nbsp&nbsp<%= @next_shift.bonus_points %> bps</p>
             </div>
           <% end %>
         </div>
@@ -35,16 +33,14 @@
         <div class="shift-card-left-side">
           <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift</h3>
           <div class="d-flex align-items-center">
-            <i class="shift-card-icon fas fa-clock shift-card-active"></i>
-            <p class="shift-card-time shift-card-active"><%= u_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= u_shift.shift.slot.end_time.strftime("%H:%M") %></p>
+            <p class="shift-card-time shift-card-active"><i class="shift-card-icon fas fa-clock shift-card-active"></i>&nbsp&nbsp<%= u_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= u_shift.shift.slot.end_time.strftime("%H:%M") %></p>
           </div>
         </div>
         <div class="shift-card-right-side">
           <p class="shift-card-date"><%= u_shift.shift.date.strftime("%b %d") %></p>
           <% unless u_shift.bonus_points == 0 %>
             <div class="d-flex align-items-center">
-              <i class="shift-card-icon fas fa-coins shift-card-active"></i>
-              <p class="shift-card-points shift-card-active"> <%= u_shift.bonus_points %> bps</p>
+              <p class="shift-card-points shift-card-active"><i class="shift-card-icon fas fa-coins shift-card-active"></i>&nbsp&nbsp<%= u_shift.bonus_points %> bps</p>
             </div>
           <% end %>
         </div>

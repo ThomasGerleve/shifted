@@ -23,18 +23,16 @@
     color: $white;
     font-size: .8rem;
     margin-bottom: 0;
-    margin-left: 4px;
+  }
+
+  &-time {
+    color: $white;
+    margin-bottom: 0;
+    font-size: 1rem;
   }
 }
 
 
-.shift-card-time {
-  color: white;
-  margin-bottom: 0;
-  margin-left: 3px;
-  display: inline;
-  font-size: 15px;
-}
 
 .details {
   display: flex;
