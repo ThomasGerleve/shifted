@@ -1,0 +1,24 @@
+<div class="show-box">
+  <div class="d-flex justify-content-between text">
+    <h1><%= @user_shift.shift.slot.name.capitalize %> shift</h1>
+    <h3 class="shift-card-date-p">
+      <%= @user_shift.shift.date.strftime("%b %d") %>
+    </h3>
+  </div>
+  <div class="text">
+    <i class="shift-card-icon fas fa-clock i"></i>
+    <%= @user_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= @user_shift.shift.slot.end_time.strftime("%H:%M") %>
+  </div>
+  <div class="text">
+    <i class="fas fa-coins i"></i>
+    <%= @user_shift.shift.bonus_points %> bps
+  </div>
+  <div class="text">
+  details
+  </div>
+  avatars
+
+
+
+  <p class="btn btn-primary mb-0">Offer</p>
+</div>
