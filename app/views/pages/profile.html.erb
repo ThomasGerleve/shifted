@@ -2,7 +2,11 @@
   <br>
   <h2><strong>Your profile</strong></h2>
   <div class="col1 avatar-box">
-    <img src="https://kitt.lewagon.com/placeholder/users/thomasgerleve" class="card-trip-user avatar-bordered" />
+    <% unless current_user.photo.attached? %>
+      <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered">
+    <% else %>
+      <img src="<%= cl_image_path(current_user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered">
+    <% end %>
   </div>
 
   <div class="col2 box">

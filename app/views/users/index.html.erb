@@ -2,62 +2,42 @@
   <br>
   <h2><strong>Your colleagues</strong></h2>
   <% @users.each do |user|  %>
-    <div class="box" data-bs-toggle="collapse" data-bs-target="#profileCard<%= user.id %>" aria-expanded="false" aria-controls="profileCard<%= user.id %>">
-      <img src="https://kitt.lewagon.com/placeholder/users/WizardOfMenlo" class="card-trip-user avatar-bordered" />
-      <%= user.first_name %>
-      <%= user.last_name %>
-      <div class="text">
-        <i class="fas fa-user-tie i"></i>
-        <%= user.functional_role.name %>
-      </div>
-      <div class="text">
-        <i class="fas fa-coins i"></i>
-        <%= user.bonus_points %> bps
-      </div>
-      <div class="collapse mt-1" id="profileCard<%= user.id %>">
-          <div class="card card-body shift-card-drop col2">
-            <div class="d-flex flex-column align-items-center justify-content-center">
-
-
-    <%# <div class="d-flex justify-content-between">
-      <%= link_to '', edit_user_registration_path, class: "fas fa-pencil-alt pencil" %>
-    <%# </div> Don't forget to this one back after uncommenting ===> %>
-    <div class="text">
-      <i class="fas fa-book-medical i"></i>
-      <%= user.experience_level %>
-    </div>
-    <div class="text">
-      <i class="fas fa-user-tie i"></i>
-      <%= user.functional_role.name %>
-    </div>
-    <div class="text">
-      <i class="fas fa-coins i"></i>
-      <%= user.bonus_points %> bps
-    </div>
-    <div class="text">
-      <i class="fas fa-comments i"></i>
-      "<%= user.additional_infos %>"
-    </div>
-
-
-    <div class="d-flex justify-content-between">
-      <h3 id="name">Your preferred slots</h3>
-      <a href="#">
-        <i class="fas fa-pencil-alt pencil"></i>
-      </a>
-    </div>
-    <% current_user.preferred_slots.each do |preferred_slot| %>
-      <div class="text">
-        <i class="fas fa-clock i"></i>
-        <%= preferred_slot.weekday %>
-        <%= preferred_slot.slot.name %>
-      </div>
-    <% end %>
-</div>
-
+    <div class="box colleague-card" data-bs-toggle="collapse" data-bs-target="#colleagueCard<%= user.id %>" aria-expanded="false" aria-controls="colleagueCard<%= user.id %>">
+      <div>
+        <div class="colleague-banner">
+          <div class="colleague-full-name">
+            <h2><%= user.first_name %></h2>
+            <h2><%= user.last_name %></h2>
+          </div>
+          <% unless user.photo.attached? %>
+            <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+          <% else %>
+            <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+          <% end %>
+        </div>
+        <div class="text role">
+          <i class="fas fa-user-tie i mx-1"></i>
+          <%= user.functional_role.name.capitalize %>
+        </div>
+        <div class="collapse mt-1 colleague-card" id="colleagueCard<%= user.id %>">
+          <div class="card colleague-card-drop col2">
+            <div class="d-flex flex-row justify-content-between">
+              <div class="text">
+                <i class="fas fa-book-medical i"></i>
+                <%= user.experience_level %>
+              </div>
+              <div class="text">
+                <i class="fas fa-coins i"></i>
+                <%= user.bonus_points %> bps
+              </div>
+            </div>
+            <div class="user-infos-box">
+              <i class="fas fa-bullhorn mx-3"></i>
+              <em>"<%= user.additional_infos %>"</em>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   <% end %>
-  </div>
 </div>
