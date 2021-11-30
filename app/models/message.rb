@@ -1,4 +1,4 @@
 class Message < ApplicationRecord
-  belongs_to :shift
+  belongs_to :user_shift
   belongs_to :user
 end
