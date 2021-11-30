@@ -44,19 +44,104 @@
     <% end %>
   </div>
 
-  <div class="col4 box">
-    <div class="d-flex justify-content-between">
-      <h3 id="name">Your preferred slots</h3>
-      <a href="#">
-        <i class="fas fa-pencil-alt pencil"></i>
-      </a>
-    </div>
-    <% current_user.preferred_slots.each do |preferred_slot| %>
-      <div class="text">
-        <i class="fas fa-clock i"></i>
-        <%= preferred_slot.weekday %>
-        <%= preferred_slot.slot.name %>
+  <div class="col4 box ">
+
+      <div class="grid-container preferred-slots">
+        <div class="grid-container days">
+          <div class="weekdays">M</div>
+          <div class="weekdays">T</div>
+          <div class="weekdays">W</div>
+          <div class="weekdays">T</div>
+          <div class="weekdays">F</div>
+          <div class="weekdays">S</div>
+          <div class="weekdays">S</div>
+        </div>
+        <div class="slots">
+          <div class="slot slot-labels-col">
+            <p class="slot-labels">Early</p>
+            <p class="slot-labels">Late</p>
+            <p class="slot-labels">Night</p>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+            </div>
+            <div class="slot">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+              </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+          <div class="slot">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-early" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-late" value="option1" checked>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slot-radio" id="slot-radio-night" value="option1" checked>
+            </div>
+          </div>
+        </div>
       </div>
-    <% end %>
+
+
   </div>
 </div>
