@@ -1,0 +1,1 @@
+json.calendar json.partial!('user_shifts/calendar.html.erb', my_user_shifts: @my_user_shifts, open_user_shifts: @open_user_shifts, year: @year, month: @month, mth: @mth, days: @days, current: @current)
