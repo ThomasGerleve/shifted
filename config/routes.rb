@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   resources :shifts, only: %i[index]
-  get '/shifts/:version/:year/:month/', to: 'shifts#index', as: :shifts_with_calendar
-  get '/shifts/:version/', to: 'shifts#index', as: :shifts_this_month_with_calendar
-  get '/shifts/:id', to: 'user_shifts#show', as: :user_shift
+  get '/shifts/:year/:month/', to: 'shifts#index', as: :shifts_with_calendar
+  get '/shifts/:calendar', to: 'shifts#index', as: :shifts_this_month_with_calendar
+  get '/shifts/:id', to: 'user_shifts#show', as: :user_shifts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'pages#dashboard'
   get '/profile', to: 'pages#profile'

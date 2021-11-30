@@ -6,7 +6,7 @@
       <div class="calendar-dates-month">
         <div>
           <%= link_to '<',
-          shifts_with_calendar_path(version: version, year: current.last_month.year, month: current.last_month.month ),
+          shifts_with_calendar_path(year: current.last_month.year, month: current.last_month.month ),
           class: "calendar-dates-month-arrows",
           remote: true,
           data: {
@@ -17,7 +17,7 @@
         <div><%= mth %> <%= year %></div>
         <div>
           <%= link_to '>',
-          shifts_with_calendar_path(version: version, year: current.next_month.year, month: current.next_month.month ),
+          shifts_with_calendar_path(year: current.next_month.year, month: current.next_month.month ),
           class: "calendar-dates-month-arrows",
           remote: true,
           data: {
