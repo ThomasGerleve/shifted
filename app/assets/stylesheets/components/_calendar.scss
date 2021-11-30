@@ -80,17 +80,17 @@
   &-timeslot {
 
     &-early {
-      background-color: rgb(226, 152, 13);
+      background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
     }
     &-late {
-      background-color: #3071ff;
+      background-color: hsla(238, 73%, 50%, 0.9);
       border-radius: 1rem;
       color: $white;
     }
     &-night {
-      background-color: $dark-purple;
+      background-color: hsla(238, 73%, 30%, 0.9);
       border-radius: 1rem;
       color: $white;
     }
