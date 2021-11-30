@@ -2,8 +2,6 @@ class ShiftsController < ApplicationController
   def index
     if params.present?
       # this is if we want to display a calendar
-      @version = params[:version]
-
       open_user_shifts = UserShift.all.select(&:open)
       my_user_shifts = current_user.user_shifts
       # if the searchword is exactly "open": index open shifts, else: index current user's shifts
