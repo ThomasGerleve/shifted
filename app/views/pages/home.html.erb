@@ -78,7 +78,7 @@
                 <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
               <div class="shift-card-container-drop-buttons">
-                <% unless u_shift.shift.users.include?(current_user) %>
+                <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <p class="btn btn-primary">accept shift</p>
                 <% end %>
               </div>
@@ -127,7 +127,7 @@
                 <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
               <div class="shift-card-container-drop-buttons">
-                <% unless u_shift.shift.users.include?(current_user) %>
+                <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <p class="btn btn-primary">accept shift</p>
                 <% end %>
               </div>
