@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :set_up_background_image, if: :homepage?
 
   def homepage?
-    # return unless user_signed_in?
-    helpers.current_page?(controller: :pages, action: :home)
-    # end
+    return unless user_signed_in?
+      helpers.current_page?(controller: :pages, action: :home)
+    end
   end
 
   def set_up_background_image
