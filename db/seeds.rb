@@ -88,6 +88,20 @@ karl = User.create!(
 )
 karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.png')), filename: 'karl')
 users << karl
+vero = User.create!(
+  admin: true,
+  first_name: "Vero",
+  last_name: "MW",
+  additional_infos: user_additional_infos[0],
+  experience_level: user_experience_level.sample,
+  bonus_points: rand(0..10) * 5,
+  functional_role_id: functional_roles.sample.id,
+  email: "vero@mailbox.com",
+  password: "shifted",
+  password_confirmation: "shifted"
+)
+vero.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/vero.png')), filename: 'vero')
+users << vero
 puts "Created #{users.length} users"
 
 early = Slot.create!(
