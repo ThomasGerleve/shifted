@@ -8,7 +8,11 @@
                              <%= "shift-card--night" if @next_user_shift.shift.slot.name == "night" %>"
         data-bs-toggle="collapse" data-bs-target="#nextShift" aria-expanded="false" aria-controls="nextShift">
         <div class="shift-card-left-side">
-          <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %> shift</h3>
+          <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %> shift
+            <% if @next_user_shift.shift.user_on_shift?(current_user) %>
+              <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+            <% end %>
+          </h3>
           <div class="d-flex align-items-center">
           <p class="shift-card-time"><i class="shift-card-icon fas fa-clock"></i>&nbsp&nbsp<%= @next_user_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= @next_user_shift.shift.slot.end_time.strftime("%H:%M") %></p>
           </div>
@@ -26,11 +30,13 @@
             <div class="shift-card-container-drop-avatars">
               <% @next_user_shift.shift.user_ids.each do |user_id| %>
                 <% user=User.find(user_id) %>
-                <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                <% unless user == current_user %>
+                  <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                <% end %>
               <% end %>
             </div>
             <strong>Details</strong>
-            <p class="next-shift-card-drop-details"><%= @next_user_shift.details %></p>
+            <p class="shift-card-container-drop-details"><%= @next_user_shift.details %></p>
           </div>
         </div>
       </div>
@@ -40,7 +46,11 @@
       <% @emergency_shifts.each do |u_shift| %>
         <div class="shift-card shift-card--emergency" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title"><%= u_shift.shift.slot.name.capitalize %> shift</h3>
+            <h3 class="shift-card-left-side-title"><%= u_shift.shift.slot.name.capitalize %> shift
+              <% if u_shift.shift.user_on_shift?(current_user) %>
+                <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+              <% end %>
+            </h3>
             <div class="d-flex align-items-center">
               <p class="shift-card-time"><i class="shift-card-icon fas fa-clock"></i>&nbsp&nbsp<%= u_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= u_shift.shift.slot.end_time.strftime("%H:%M") %></p>
             </div>
@@ -58,7 +68,9 @@
               <div class="shift-card-container-drop-avatars">
                 <% u_shift.shift.user_ids.each do |user_id| %>
                   <% user=User.find(user_id) %>
-                  <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                  <% unless user == current_user %>
+                    <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                  <% end %>
                 <% end %>
               </div>
               <strong>Details</strong>
@@ -66,7 +78,9 @@
                 <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
               <div class="shift-card-container-drop-buttons">
-                <p class="btn btn-primary">accept shift</p>
+                <% unless u_shift.shift.user_on_shift?(current_user) %>
+                  <p class="btn btn-primary">accept shift</p>
+                <% end %>
               </div>
             </div>
           </div>
@@ -81,7 +95,11 @@
                                <%= "shift-card--night" if u_shift.shift.slot.name == "night" %>"
         data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift</h3>
+            <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift
+              <% if u_shift.shift.user_on_shift?(current_user) %>
+                <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+              <% end %>
+            </h3>
             <div class="d-flex align-items-center">
               <p class="shift-card-time shift-card-active"><i class="shift-card-icon fas fa-clock shift-card-active"></i>&nbsp&nbsp<%= u_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= u_shift.shift.slot.end_time.strftime("%H:%M") %></p>
             </div>
@@ -99,15 +117,19 @@
               <div class="shift-card-container-drop-avatars">
                 <% u_shift.shift.user_ids.each do |user_id| %>
                   <% user=User.find(user_id) %>
-                  <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                  <% unless user == current_user %>
+                    <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                  <% end %>
                 <% end %>
               </div>
               <strong>Details</strong>
               <div class="details">
-                <p class="shift-card-drop-details"><%= u_shift.details %></p>
+                <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
-              <div class="shift-card-drop-buttons">
-                <p class="btn btn-primary">accept shift</p>
+              <div class="shift-card-container-drop-buttons">
+                <% unless u_shift.shift.user_on_shift?(current_user) %>
+                  <p class="btn btn-primary">accept shift</p>
+                <% end %>
               </div>
             </div>
           </div>
