@@ -62,8 +62,9 @@
     }
 
     &-drop {
-      background-color: $lighter-purple;
-      color: black;
+      background: hsla(0, 0%, 100%,  0.1);
+      backdrop-filter: blur(2rem);
+      color: $white;
       padding: 10px;
       border-radius: 10px;
 
