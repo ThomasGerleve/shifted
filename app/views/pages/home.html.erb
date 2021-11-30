@@ -30,25 +30,25 @@
     </div>
     <div class="shift-box">
       <h2 class="shift-box-heading">Open shifts</h2>
-      <% @open_shifts.each do |shift| %>
-      <div class="shift-card shift-card-active" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= shift.id %>">
+      <% @open_shifts.each do |u_shift| %>
+      <div class="shift-card shift-card-active" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
         <div class="shift-card-left-side">
-          <h3 class="shift-card-left-side-title shift-card-active"><%= shift.slot.name.capitalize %> shift</h3>
+          <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift</h3>
           <div class="d-flex align-items-center">
             <i class="shift-card-icon fas fa-clock shift-card-active"></i>
-            <p class="shift-card-time shift-card-active"><%= shift.slot.start_time.strftime("%H:%M") %> - <%= shift.slot.end_time.strftime("%H:%M") %></p>
+            <p class="shift-card-time shift-card-active"><%= u_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= u_shift.shift.slot.end_time.strftime("%H:%M") %></p>
           </div>
         </div>
         <div class="shift-card-right-side">
-          <p class="shift-card-date"><%= shift.date.strftime("%b %d") %></p>
-          <% unless @next_shift.bonus_points == 0 %>
+          <p class="shift-card-date"><%= u_shift.shift.date.strftime("%b %d") %></p>
+          <% unless u_shift.bonus_points == 0 %>
             <div class="d-flex align-items-center">
               <i class="shift-card-icon fas fa-coins shift-card-active"></i>
-              <p class="shift-card-points shift-card-active"> <%= shift.user_shift.bonus_points %> bps</p>
+              <p class="shift-card-points shift-card-active"> <%= u_shift.bonus_points %> bps</p>
             </div>
           <% end %>
         </div>
-        <div class="collapse mt-1" id="cardForShift<%= shift.id %>">
+        <div class="collapse mt-1" id="cardForShift<%= u_shift.id %>">
           <div class="shift-card-drop">
             <strong>Details</strong>
             <div class="details">
