@@ -6,16 +6,9 @@
     <%= link_to users_path do %>
       <i class="fas fa-users i"></i>
     <% end %>
-    <div class="btn-group dropup">
-      <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-calendar-alt i"></i>
-      </button>
-      <ul class="dropdown-menu">
-        <%= link_to 'My shifts', shifts_path(version: "my shifts"), class: "dropdown-item" %>
-        <%#= link_to 'Team shifts', shifts__path, class: "dropdown-item" %>
-        <%= link_to 'Open shifts', shifts_path(version: "open"), class: "dropdown-item" %>
-      </ul>
-    </div>
+    <%= link_to shifts_this_month_with_calendar_path do %>
+      <i class="fas fa-calendar-alt i"></i>
+    <% end %>
     <%= link_to root_path do %>
       <i class="fas fa-home i"></i>
     <% end %>
