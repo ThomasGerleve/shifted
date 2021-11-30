@@ -18,16 +18,16 @@
     <%= @user_shift.details %>
   </div>
   <div class="text">
-  avatars
+    <%# avatars to be added here %>
   </div>
-
+  <br>
   <p class="btn btn-primary mb-0">Offer shift</p>
-  <%= simple_form_for @user_shifts do |f| %>
-    <%= f.input :details %>
-    <% if @user_shifts.persisted? %>
-      <%= f.submit 'Submit offer changes', class:'btn-primary' %>
-    <% else %>
-      <%= f.submit 'Submit new offer', class:'btn-primary' %>
-    <% end %>
-  <% end %>
+  <%#= simple_form_for @user_shifts do |f| %>
+    <%#= f.input :details %>
+    <%# if @user_shifts.persisted? %>
+      <%#= f.submit 'Submit offer changes', class:'btn-primary' %>
+    <%# else %>
+      <%#= f.submit 'Submit new offer', class:'btn-primary' %>
+    <%# end %>
+  <%# end %>
 </div>
