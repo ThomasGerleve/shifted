@@ -1,6 +1,10 @@
 <div class="show-box">
   <div class="d-flex justify-content-between text">
-    <h1><%= @user_shift.shift.slot.name.capitalize %> shift</h1>
+    <h1><%= @user_shift.shift.slot.name.capitalize %> shift
+      <% if @user_shift.shift.users.include?(current_user) %>
+        <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+      <% end %>
+    </h1>
     <h3 class="shift-card-date-p">
       <%= @user_shift.shift.date.strftime("%b %d") %>
     </h3>
