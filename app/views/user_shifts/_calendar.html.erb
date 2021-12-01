@@ -1,31 +1,8 @@
-<div data-controller="calendar">
+<div class="wrapper-calendar" data-controller="calendar">
   <div class="calendar" data-calendar-target="container">
     <% shifts_my = my_user_shifts.map(&:shift) %>
     <% shifts_open = open_user_shifts.map(&:shift) %>
     <div class="calendar-dates">
-      <div class="calendar-dates-month">
-        <div>
-          <%= link_to '<',
-          shifts_with_calendar_path(year: current.last_month.year, month: current.last_month.month ),
-          class: "calendar-dates-month-arrows",
-          remote: true,
-          data: {
-            action: "click->calendar#navigate"
-          }
-          %>
-        </div>
-        <div><%= mth %> <%= year %></div>
-        <div>
-          <%= link_to '>',
-          shifts_with_calendar_path(year: current.next_month.year, month: current.next_month.month ),
-          class: "calendar-dates-month-arrows",
-          remote: true,
-          data: {
-            action: "click->calendar#navigate"
-          }
-          %>
-        </div>
-      </div>
       <div class="calendar-dates-weekdays">
         <div class="calendar-dates-weekdays-weekday">Mon</div>
         <div class="calendar-dates-weekdays-weekday">Tue</div>
@@ -37,8 +14,7 @@
       </div>
       <div class="calendar-dates-days">
         <% days[:last_month].each do |day| %>
-          <div class="calendar-dates-days-day <%= "last-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
-          <%= "last-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+          <div class="calendar-dates-days-day calendar-dates-days-day--previous">
             <div class="calendar-dates-days-day-number">
               <%= day %>
             </div>
@@ -48,11 +24,11 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "early" %>
-                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--previous"><%= user_shift.shift.slot.name %></div>
                     <% when "late" %>
-                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--previous"><%= user_shift.shift.slot.name %></div>
                     <% when "night" %>
-                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--previous"><%= user_shift.shift.slot.name %></div>
                     <% end %>
                   </div>
                 <% end %>
@@ -66,8 +42,7 @@
           </div>
         <% end %>
         <% days[:this_month].each do |day| %>
-          <div class="calendar-dates-days-day <%= "this-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
-          <%= "this-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+          <div class="calendar-dates-days-day">
             <div class="calendar-dates-days-day-number">
               <%= day %>
             </div>
@@ -95,8 +70,7 @@
           </div>
         <% end %>
         <% days[:next_month].each do |day| %>
-          <div class="calendar-dates-days-day <%= "next-month-my" if shifts_my.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>
-          <%= "next-month-open" if shifts_open.any? { |shift| shift.slot.start_time.day == day && shift.slot.start_time.month == month } %>">
+          <div class="calendar-dates-days-day calendar-dates-days-day--next">
             <div class="calendar-dates-days-day-number">
               <%= day %>
             </div>
@@ -106,11 +80,11 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "early" %>
-                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--next"><%= user_shift.shift.slot.name %></div>
                     <% when "late" %>
-                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--next"><%= user_shift.shift.slot.name %></div>
                     <% when "night" %>
-                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--next"><%= user_shift.shift.slot.name %></div>
                     <% end %>
                   </div>
                 <% end %>
@@ -123,6 +97,29 @@
             </div>
           </div>
         <% end %>
+      </div>
+      <div class="calendar-dates-month">
+        <div>
+          <%= link_to '<',
+          shifts_with_calendar_path(year: current.last_month.year, month: current.last_month.month ),
+          class: "calendar-dates-month-arrows",
+          remote: true,
+          data: {
+            action: "click->calendar#navigate"
+          }
+          %>
+        </div>
+        <div><%= mth %> <%= year %></div>
+        <div>
+          <%= link_to '>',
+          shifts_with_calendar_path(year: current.next_month.year, month: current.next_month.month ),
+          class: "calendar-dates-month-arrows",
+          remote: true,
+          data: {
+            action: "click->calendar#navigate"
+          }
+          %>
+        </div>
       </div>
     </div>
   </div>
