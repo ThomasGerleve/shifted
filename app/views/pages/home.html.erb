@@ -3,7 +3,7 @@
     <h2>Hello <%= current_user.first_name %> </h2>
     <div class="shift-box">
       <h2 class="shift-box-heading">Your next Shift</h2>
-      <%= render 'shifts/your_shift', shift: @next_user_shift %>
+      <%= render 'shifts/your_shift', shift: @next_user_shift, last_seen_shift: @last_seen_shift %>
     </div>
     <div class="shift-box shift-box--emergency">
       <h2 class="shift-box--emergency-heading">Emergency shifts</h2>
