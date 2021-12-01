@@ -1,14 +1,17 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
   <br>
-  <h2><strong>Your colleague</strong></h2>
-  <div class="col1 avatar-box">
-    <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered">
+  <h1><strong>Your colleague</strong></h1>
+  <div class="col1 d-flex flex-column align-items-center justify-content-center box">
+    <div class="col">
+      <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered-show">
+    </div>
+    <div class="col">
+      <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt i"></i> Call me</a>
+    </div>
   </div>
 
   <div class="col2 box">
-    <div class="d-flex justify-content-between">
-      <h3 id="name"><%= @user.first_name %>&nbsp<%= @user.last_name %></h3>
-    </div>
+    <h3 id="name"><%= @user.first_name %>&nbsp<%= @user.last_name %></h3>
     <div class="text">
       <i class="fas fa-book-medical i"></i>
       <%= @user.experience_level %>
