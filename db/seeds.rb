@@ -1,5 +1,7 @@
 Prize.destroy_all
 puts "Deleted prizes"
+Message.destroy_all
+puts "Deleted all messages"
 UserShift.destroy_all
 puts "Deleted user shifts"
 Shift.destroy_all
