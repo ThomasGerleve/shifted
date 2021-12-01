@@ -10,11 +10,11 @@
             <h2><%= user.last_name %></h2>
           </div>
           <% unless user.photo.attached? %>
-            <%= link_to user_path(user) %>
+            <%= link_to user_path(user) do %>
               <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
             <% end %>
           <% else %>
-            <%= link_to user_path(user) %>
+            <%= link_to user_path(user) do %>
               <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
             <% end %>
           <% end %>
