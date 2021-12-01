@@ -1,0 +1,44 @@
+<div class="shift-card shift-card--emergency" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= shift.id %>">
+  <div class="shift-card-left-side">
+    <h3 class="shift-card-left-side-title"><%= shift.shift.slot.name.capitalize %> shift
+      <% if shift.shift.user_on_shift?(current_user) %>
+        <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+      <% end %>
+    </h3>
+    <div class="d-flex align-items-center">
+      <p class="shift-card-time"><i class="shift-card-icon fas fa-clock"></i>&nbsp&nbsp<%= shift.shift.slot.start_time.strftime("%H:%M") %> - <%= shift.shift.slot.end_time.strftime("%H:%M") %></p>
+    </div>
+  </div>
+  <div class="shift-card-right-side">
+    <p class="shift-card-date"><%= shift.shift.date.strftime("%b %d") %></p>
+    <% unless shift.bonus_points == 0 %>
+      <div class="d-flex align-items-center">
+        <p class="shift-card-points"><i class="shift-card-icon fas fa-coins"></i>&nbsp&nbsp<%= shift.bonus_points %> bps</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="collapse mt-1 shift-card-container" id="cardForShift<%= shift.id %>">
+    <div class="shift-card-container-drop">
+      <div class="shift-card-container-drop-avatars">
+        <% shift.shift.user_ids.each do |user_id| %>
+          <% user=User.find(user_id) %>
+          <% unless user == current_user %>
+            <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+          <% end %>
+        <% end %>
+      </div>
+      <strong>Details</strong>
+      <div class="details">
+        <p class="shift-card-container-drop-details"><%= shift.details %></p>
+      </div>
+      <div class="shift-card-container-drop-buttons">
+        <%= link_to user_shift_path(shift), class: "shift-card-icon-link" do %>
+          <i class="shift-card-icon-info fas fa-info-circle"></i>
+        <% end %>
+        <% unless shift.shift.user_on_shift?(current_user) %>
+          <p class="btn btn-primary">accept shift</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

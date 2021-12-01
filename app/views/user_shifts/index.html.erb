@@ -1,3 +1,9 @@
 <% if @year %>
-    <%= render 'calendar', my_user_shifts: @my_user_shifts, open_user_shifts: @open_user_shifts, year: @year, month: @month, mth: @mth, days: @days, current: @current %>
+    <%= render 'calendar', my_user_shifts: @my_user_shifts,
+                           open_user_shifts: @open_user_shifts,
+                           year: @year,
+                           month: @month,
+                           mth: @mth,
+                           days: @days,
+                           current: @current %>
 <% end %>
