@@ -11,7 +11,7 @@
   margin: 8px;
 }
 
-input[type="checkbox"] {
+.form-check-input {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -23,7 +23,7 @@ input[type="checkbox"] {
   align-self: center;
 }
 
-container {
+.grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: $purple;

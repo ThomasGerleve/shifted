@@ -1,5 +1,3 @@
-
-
 <div class="d-flex flex-column align-items-center justify-content-center">
   <br>
   <h2><strong>Your profile</strong></h2>
@@ -10,7 +8,6 @@
       <img src="<%= cl_image_path(current_user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered">
     <% end %>
   </div>
-
   <div class="col2 box">
     <div class="d-flex justify-content-between">
       <h3 id="name"><%= current_user.first_name %>&nbsp<%= current_user.last_name %></h3>
@@ -32,7 +29,6 @@
       "<%= current_user.additional_infos %>"
     </div>
   </div>
-
   <div class="col3 box">
     <div class="d-flex justify-content-between">
       <h3 id="name">Currently offered prizes</h3>
@@ -45,7 +41,6 @@
       </div>
     <% end %>
   </div>
-
   <div class="preferred-slots">
     <h3 class="preferred-slot-tag">Your preferred slots</h3>
     <div class="grid-container">
