@@ -11,7 +11,8 @@
           </div>
           <% unless user.photo.attached? %>
             <%=  %>
-            <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+              <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
+            <%=  %>
           <% else %>
             <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered colleague-card-avatar">
           <% end %>
