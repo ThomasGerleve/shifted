@@ -3,9 +3,9 @@
     <h2>Hello <%= current_user.first_name %> </h2>
     <div class="shift-box">
       <h2 class="shift-box-heading">Your next Shift</h2>
-      <div class="shift-card <%= "shift-card--early" if @next_user_shift.shift.slot.name == "early" %>
-                             <%= "shift-card--late" if @next_user_shift.shift.slot.name == "late" %>
-                             <%= "shift-card--night" if @next_user_shift.shift.slot.name == "night" %>"
+      <div class="shift-card <%= "shift-card--early" if @next_user_shift.shift.slot.name == "Early" %>
+                             <%= "shift-card--late" if @next_user_shift.shift.slot.name == "Late" %>
+                             <%= "shift-card--night" if @next_user_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#nextShift" aria-expanded="false" aria-controls="nextShift">
         <div class="shift-card-left-side">
           <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %> shift
@@ -37,6 +37,9 @@
             </div>
             <strong>Details</strong>
             <p class="shift-card-container-drop-details"><%= @next_user_shift.details %></p>
+            <%= link_to user_shift_path(@next_user_shift), class: "shift-card-icon-link" do %>
+              <i class="shift-card-icon-info fas fa-info-circle"></i>
+            <% end %>
           </div>
         </div>
       </div>
@@ -78,6 +81,9 @@
                 <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
               <div class="shift-card-container-drop-buttons">
+                <%= link_to user_shift_path(u_shift), class: "shift-card-icon-link" do %>
+                  <i class="shift-card-icon-info fas fa-info-circle"></i>
+                <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <p class="btn btn-primary">accept shift</p>
                 <% end %>
@@ -90,9 +96,9 @@
     <div class="shift-box">
       <h2 class="shift-box-heading">Other open shifts</h2>
       <% @open_shifts.each do |u_shift| %>
-        <div class="shift-card <%= "shift-card--early" if u_shift.shift.slot.name == "early" %>
-                               <%= "shift-card--late" if u_shift.shift.slot.name == "late" %>
-                               <%= "shift-card--night" if u_shift.shift.slot.name == "night" %>"
+        <div class="shift-card <%= "shift-card--early" if u_shift.shift.slot.name == "Early" %>
+                               <%= "shift-card--late" if u_shift.shift.slot.name == "Late" %>
+                               <%= "shift-card--night" if u_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
             <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift
@@ -127,6 +133,9 @@
                 <p class="shift-card-container-drop-details"><%= u_shift.details %></p>
               </div>
               <div class="shift-card-container-drop-buttons">
+                <%= link_to user_shift_path(u_shift), class: "shift-card-icon-link" do %>
+                  <i class="shift-card-icon-info fas fa-info-circle"></i>
+                <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <p class="btn btn-primary">accept shift</p>
                 <% end %>
