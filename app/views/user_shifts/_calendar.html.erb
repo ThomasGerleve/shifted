@@ -106,25 +106,25 @@
       </div>
       <div class="calendar-dates-month">
         <div>
-          <%= link_to '<',
-          shifts_with_calendar_path(year: current.last_month.year, month: current.last_month.month ),
+          <%= link_to shifts_with_calendar_path(year: current.last_month.year, month: current.last_month.month ),
           class: "calendar-dates-month-arrows",
           remote: true,
           data: {
             action: "click->calendar#navigate"
-          }
-          %>
+          } do %>
+          <i class="fas fa-caret-square-left"></i>
+          <% end %>
         </div>
         <div><%= mth %> <%= year %></div>
         <div>
-          <%= link_to '>',
-          shifts_with_calendar_path(year: current.next_month.year, month: current.next_month.month ),
+          <%= link_to shifts_with_calendar_path(year: current.next_month.year, month: current.next_month.month ),
           class: "calendar-dates-month-arrows",
           remote: true,
           data: {
             action: "click->calendar#navigate"
-          }
-          %>
+          } do %>
+          <i class="fas fa-caret-square-right"></i>
+          <% end %>
         </div>
       </div>
     </div>
