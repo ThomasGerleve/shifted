@@ -23,11 +23,11 @@
                 <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.last_month.month %>
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
-                        when "early" %>
+                        when "Early" %>
                       <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--previous"><%= user_shift.shift.slot.name %></div>
-                    <% when "late" %>
+                    <% when "Late" %>
                       <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--previous"><%= user_shift.shift.slot.name %></div>
-                    <% when "night" %>
+                    <% when "Night" %>
                       <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--previous"><%= user_shift.shift.slot.name %></div>
                     <% end %>
                   </div>
@@ -51,12 +51,18 @@
                 <% if user_shift.shift.date.day == day && user_shift.shift.date.month == month %>
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
-                        when "early" %>
-                      <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
-                    <% when "late" %>
-                      <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
-                    <% when "night" %>
-                      <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                        when "Early" %>
+                      <%= link_to user_shift_path(user_shift) do %>
+                        <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                      <% end %>
+                    <% when "Late" %>
+                      <%= link_to user_shift_path(user_shift) do %>
+                        <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                      <% end %>
+                    <% when "Night" %>
+                      <%= link_to user_shift_path(user_shift) do %>
+                        <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                      <% end %>
                     <% end %>
                   </div>
                 <% end %>
@@ -79,11 +85,11 @@
                 <% if user_shift.shift.date.day == day && user_shift.shift.date.month == current.next_month.month %>
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
-                        when "early" %>
+                        when "Early" %>
                       <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--next"><%= user_shift.shift.slot.name %></div>
-                    <% when "late" %>
+                    <% when "Late" %>
                       <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--next"><%= user_shift.shift.slot.name %></div>
-                    <% when "night" %>
+                    <% when "Night" %>
                       <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--next"><%= user_shift.shift.slot.name %></div>
                     <% end %>
                   </div>

@@ -51,6 +51,15 @@
 
   &-icon {
     font-size: large;
+
+    &-link {
+      color: $white;
+    }
+
+    &-info {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
 
   &-container {
@@ -70,7 +79,7 @@
 
       &-buttons {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
       }
 
       &-avatars {

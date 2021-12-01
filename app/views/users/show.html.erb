@@ -1,0 +1,42 @@
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <br>
+  <h2><strong>Your colleague</strong></h2>
+  <div class="col1 avatar-box">
+    <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered">
+  </div>
+
+  <div class="col2 box">
+    <div class="d-flex justify-content-between">
+      <h3 id="name"><%= @user.first_name %>&nbsp<%= @user.last_name %></h3>
+    </div>
+    <div class="text">
+      <i class="fas fa-book-medical i"></i>
+      <%= @user.experience_level %>
+    </div>
+    <div class="text">
+      <i class="fas fa-user-tie i"></i>
+      <%= @user.functional_role.name %>
+    </div>
+    <div class="text">
+      <i class="fas fa-coins i"></i>
+      <%= @user.bonus_points %> bps
+    </div>
+    <div class="text">
+      <i class="fas fa-comments i"></i>
+      "<%= @user.additional_infos %>"
+    </div>
+  </div>
+
+  <div class="col4 box">
+    <div class="d-flex justify-content-between">
+      <h3 id="name"><%= @user.first_name %>'s preferred slots</h3>
+    </div>
+    <% @user.preferred_slots.each do |preferred_slot| %>
+      <div class="text">
+        <i class="fas fa-clock i"></i>
+        <%= preferred_slot.weekday %>
+        <%= preferred_slot.slot.name %>
+      </div>
+    <% end %>
+  </div>
+</div>
