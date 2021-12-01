@@ -1,11 +1,13 @@
 // Specific CSS for your home-page
 .page-container {
-  background-image: url("doctor.png");
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 92vh;
+}
+.page-container.solid-background {
+  background-image: url("doctor.png");
 }
 
 .banner-landing-page {

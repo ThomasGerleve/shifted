@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   patch 'shifts/:id/offer', to: 'user_shifts#offer', as: :offer_shift
   get 'shifts/:id/retract_offer', to: 'user_shifts#retract_offer', as: :retract_offer
   get 'shifts/:id/accept', to: 'user_shifts#accept', as: :accept_shift
+  resources :user_shifts, only: %i[show] do
+    resources :messages, only: :create
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get '/dashboard', to: 'pages#dashboard'
   get '/profile', to: 'pages#profile'
-  get '/users', to: 'users#index'
+  resources :users, only: %i[index show]
 end

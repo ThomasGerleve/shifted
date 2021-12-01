@@ -10,11 +10,28 @@
   width: 40px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 4px solid;
+  border: white 2px solid;
+
+  &--small {
+    width:30px;
+  }
 }
+
 .avatar-square {
   width: 40px;
   border-radius: 0px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.avatar-card {
+  background-color: $white;
+  border-radius: 10px;
+  background-color: $lilac;
+  padding: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px !important;
+  width: 90%;
 }

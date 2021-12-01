@@ -1,6 +1,10 @@
 <div class="show-box">
   <div class="d-flex justify-content-between text">
-    <h1><%= @user_shift.shift.slot.name.capitalize %> shift</h1>
+    <h1><%= @user_shift.shift.slot.name.capitalize %> shift
+      <% if @user_shift.shift.users.include?(current_user) %>
+        <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
+      <% end %>
+    </h1>
     <h3 class="shift-card-date-p">
       <%= @user_shift.shift.date.strftime("%b %d") %>
     </h3>
@@ -18,9 +22,18 @@
     <%= @user_shift.details %>
   </div>
   <div class="text">
-    <%# avatars to be added here %>
+    <div class="text">
+      <i class="fas fa-users i"></i>
+      <%= "Colleagues on this shift:" %>
+    </div>
+    <div class="avatar-card d-flex justify-content-around">
+      <% @user_shift.shift.users.each do |user| %>
+        <% unless user == current_user %>
+          <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <br>
   <% if !@user_shift.open && @user_shift.user == current_user %>
     <div>
       <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
@@ -44,18 +57,21 @@
   <% end %>
   <% if @user_shift.open && @user_shift.user != current_user %>
     <div>
-      <%= link_to offer_shift_path(@user_shift) do %>
+      <%= link_to accept_shift_path(@user_shift) do %>
         <p class="btn btn-primary mb-0">Take Over This Shift</p>
       <% end %>
     </div>
   <% end %>
-
-  <%#= simple_form_for @user_shifts do |f| %>
-    <%#= f.input :details %>
-    <%# if @user_shifts.persisted? %>
-      <%#= f.submit 'Submit offer changes', class:'btn-primary' %>
-    <%# else %>
-      <%#= f.submit 'Submit new offer', class:'btn-primary' %>
-    <%# end %>
-  <%# end %>
+  <div class="container user-shift">
+    <h3>Comments</h3>
+    <div class="messages" data-controller="user-shift-subscription"
+      data-user-shift-subscription-user-shift-id-value="<%= @user_shift.id %>">
+      <% @user_shift.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+  </div>
+  <%= simple_form_for [@user_shift, @message], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@user_shift.shift.date.strftime("%b %d")}" %>
+  <% end %>
 </div>
