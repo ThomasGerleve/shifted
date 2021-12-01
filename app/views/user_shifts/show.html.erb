@@ -11,7 +11,7 @@
   </div>
   <div class="text">
     <i class="fas fa-coins i"></i>
-    <%= @user_shift.shift.bonus_points %> bps
+    <%= @user_shift.bonus_points %> bps
   </div>
   <div class="text">
     <i class="fas fa-info-circle i"></i>
@@ -21,7 +21,35 @@
     <%# avatars to be added here %>
   </div>
   <br>
-  <p class="btn btn-primary mb-0">Offer shift</p>
+  <% if !@user_shift.open && @user_shift.user == current_user %>
+    <div>
+      <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
+        <%= f.input :bonus_points, label: "Do you want to add some bonus points to your offer?", :error_html => { :id => "bonus_points_error" } %>
+        <%= f.hidden_field :open, value: true %>
+        <%= f.button :submit, "Offer Shift" %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @user_shift.open && @user_shift.user == current_user %>
+    <div class="offered-alert"><p>You offered this shift up for grabs</p></div>
+    <div>
+      <%= link_to retract_offer_path(@user_shift),
+      data: {
+        controller: "offer",
+        action: "click->retract"
+      } do %>
+        <p class="btn btn-primary mb-0">I Changed My Mind</p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @user_shift.open && @user_shift.user != current_user %>
+    <div>
+      <%= link_to offer_shift_path(@user_shift) do %>
+        <p class="btn btn-primary mb-0">Take Over This Shift</p>
+      <% end %>
+    </div>
+  <% end %>
+
   <%#= simple_form_for @user_shifts do |f| %>
     <%#= f.input :details %>
     <%# if @user_shifts.persisted? %>
