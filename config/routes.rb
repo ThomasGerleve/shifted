@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :shifts, only: %i[index]
   get '/shifts/calendar/:year/:month/', to: 'user_shifts#index', as: :shifts_with_calendar
   get '/shifts/calendar', to: 'user_shifts#index', as: :shifts_this_month_with_calendar
+  patch 'shifts/:id/offer', to: 'user_shifts#offer', as: :offer_shift
+  get 'shifts/:id/retract_offer', to: 'user_shifts#retract_offer', as: :retract_offer
+  get 'shifts/:id/accept', to: 'user_shifts#accept', as: :accept_shift
   resources :user_shifts, only: %i[show] do
     resources :messages, only: :create
   end

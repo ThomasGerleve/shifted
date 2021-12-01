@@ -42,7 +42,48 @@ class UserShiftsController < ApplicationController
     end
   end
 
+  def offer
+    @user_shift = UserShift.find(params[:id])
+    return unless @user_shift.user == current_user
+
+    bps = strong_params[:bonus_points].to_i
+    @user_shift.user.bonus_points -= bps
+    if @user_shift.update(strong_params)
+      @user_shift.user.update({ bonus_points: @user_shift.user.bonus_points })
+      redirect_to user_shift_path(@user_shift)
+    else
+      @user_shift.open = false
+      @user_shift.bonus_points = 0
+      @message = Message.new
+      render :show
+    end
+  end
+
+  def retract_offer
+    user_shift = UserShift.find(params[:id])
+    return unless user_shift.user == current_user
+
+    user_shift.user.bonus_points += user_shift.bonus_points
+    user_shift.user.update!({ bonus_points: user_shift.user.bonus_points })
+    user_shift.update!({ open: false, bonus_points: 0 })
+    redirect_to user_shift_path(user_shift)
+  end
+
+  def accept
+    user_shift = UserShift.find(params[:id])
+    return unless user_shift.open
+
+    current_user.bonus_points += user_shift.bonus_points
+    user_shift.update!({ open: false, bonus_points: 0, user: current_user })
+    current_user.update!({ bonus_points: user_shift.user.bonus_points })
+    redirect_to user_shift_path(user_shift)
+  end
+
   private
+
+  def strong_params
+    params.require(:user_shift).permit(:bonus_points, :open)
+  end
 
   def year?(year)
     year.to_i.to_s == year && year.length == 4
