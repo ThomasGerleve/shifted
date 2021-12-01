@@ -1,101 +1,52 @@
-.preferred-slots-box {
-  background-color: $purple !important;
-  padding: 10px !important;
+.preferred-slot-tag {
+  color: white !important;
+  padding: 2vh 0 0 2vh;
 }
 
 .preferred-slots {
-  display: flex;
-  align-items: right;
-  flex-direction: column;
-  border: 1px solid $purple;
-}
-
-.slots {
-  display: flex;
+  width: 90%;
   background-color: $purple;
-  justify-content: right;
-}
-
-.slot-labels-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly !important;
-  color: white;
-  padding: 0 !important;
-}
-
-.slot-labels {
-  margin: 0;
-}
-
-.days {
-  background-color: $purple;
-  display: flex;
-  justify-content: right;
-  color: white;
-  font-weight: bold;
-  border-radius: 10px 10px 0 0;
-}
-
-.weekdays {
-  display: flex;
-  border-right: 1px solid rgb(255, 255, 255);
-  background-color: transparent;
-  width: 100%;
-  justify-content: center;
-}
-
-.sunday {
-  display: flex;
-  background-color: transparent;
-  width: 100%;
-  justify-content: center;
-}
-
-.slot {
-  display: flex;
-  border-right: 1px solid rgb(255, 255, 255);
-  background-color: transparent;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  font-size: 0.6rem;
-  margin-right: 1px solid white;
-  padding-bottom: 5px 0;
-}
-
-.slot-sunday {
-  display: flex;
-  background-color: transparent;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  font-size: 0.6rem;
-  margin-right: 1px solid white;
-  padding: 5px 0;
-}
-
-.form-check {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px;
+  margin: 8px;
 }
 
 input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 100%;
+  width: 90%;
   height: 100%;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
+  background-color: $purple;
+  border: 1px solid rgba(211, 213, 248, 0.2);
 }
 input[type="checkbox"]:checked {
   background-color: $light-purple;
 }
-input[type="checkbox"]:checked:before {
-  padding: initial;
-  font-weight: bold;
+// input[type="checkbox"]:checked:before {
+//   font-weight: bold;
+// }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: $purple;
+  padding-bottom: 10px;
+  width: 95%;
+  border-radius: 20px;
+}
+
+.grid-item {
+  justify-content: center;
+  background-color: $purple;
+  color: white;
+  height: 100%;
+  width: 100%;
+  padding: 5px 0 5px 0;
+  text-align: center;
+}
+
+.day {
+  margin-top: 5px;
+  border-radius: 10px;
 }
