@@ -3,6 +3,7 @@
                         <%= "shift-card--night" if shift.shift.slot.name == "Night" %>"
 data-bs-toggle="collapse" data-bs-target="#cardForShift<%= shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= shift.id %>">
   <div class="shift-card-left-side">
+    <%= render 'shifts/notification', shift: shift, last_seen_shift: @last_seen_shift %>
     <h3 class="shift-card-left-side-title shift-card-active"><%= shift.shift.slot.name.capitalize %> shift
       <% if shift.shift.user_on_shift?(current_user) %>
         <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
