@@ -1,19 +1,27 @@
+.preferred-slots-box {
+  background-color: $purple !important;
+  padding: 10px !important;
+}
+
 .preferred-slots {
   display: flex;
   align-items: right;
   flex-direction: column;
+  border: 1px solid $purple;
 }
 
 .slots {
   display: flex;
-  // border: 5px solid red;
+  background-color: $purple;
   justify-content: right;
 }
 
 .slot-labels-col {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly !important;
+  color: white;
+  padding: 0 !important;
 }
 
 .slot-labels {
@@ -21,31 +29,73 @@
 }
 
 .days {
+  background-color: $purple;
   display: flex;
   justify-content: right;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
 }
 
 .weekdays {
   display: flex;
-  border: 1px solid black;
+  border-right: 1px solid rgb(255, 255, 255);
   background-color: transparent;
-  width: 38px;
+  width: 100%;
+  justify-content: center;
+}
+
+.sunday {
+  display: flex;
+  background-color: transparent;
+  width: 100%;
   justify-content: center;
 }
 
 .slot {
   display: flex;
-  border: 1px solid black;
+  border-right: 1px solid rgb(255, 255, 255);
   background-color: transparent;
-  width: 38px;
+  width: 100%;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-content: center;
   font-size: 0.6rem;
+  margin-right: 1px solid white;
+  padding-bottom: 5px 0;
+}
+
+.slot-sunday {
+  display: flex;
+  background-color: transparent;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 0.6rem;
+  margin-right: 1px solid white;
+  padding: 5px 0;
 }
 
 .form-check {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+input[type="checkbox"]:checked {
+  background-color: $light-purple;
+}
+input[type="checkbox"]:checked:before {
+  padding: initial;
+  font-weight: bold;
 }
