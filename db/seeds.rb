@@ -78,8 +78,8 @@ user_first_name.length.times do
 end
 karl = User.create!(
   admin: true,
-  first_name: "Richard",
-  last_name: "Erics",
+  first_name: "Shmarl",
+  last_name: "Shmonder",
   additional_infos: user_additional_infos[0],
   experience_level: user_experience_level.sample,
   bonus_points: rand(0..10) * 5,
@@ -88,7 +88,7 @@ karl = User.create!(
   password: "coachoo",
   password_confirmation: "coachoo"
 )
-karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.png')), filename: 'karl')
+karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.jpg')), filename: 'karl')
 users << karl
 vero = User.create!(
   admin: true,

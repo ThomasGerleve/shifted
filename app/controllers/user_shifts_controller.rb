@@ -54,6 +54,7 @@ class UserShiftsController < ApplicationController
     else
       @user_shift.open = false
       @user_shift.bonus_points = 0
+      @message = Message.new
       render :show
     end
   end
