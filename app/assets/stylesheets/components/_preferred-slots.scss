@@ -22,10 +22,8 @@ input[type="checkbox"] {
   margin: 0;
   align-self: center;
 }
-// input[type="checkbox"]:checked {
-//   background-color: $light-purple;
-// }
-.grid-container {
+
+container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: $purple;
@@ -36,18 +34,18 @@ input[type="checkbox"] {
 
 .grid-item {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   background-color: $purple;
   color: white;
   height: 100%;
   width: 100%;
-  padding: 5px 0 5px 0;
+  padding: 5px 0 5px 2vh;
   text-align: center;
 }
 
 .day {
   border-radius: 10px;
-  height: 40px;
+  height: 30px;
 }
 
 .check-box-container {
@@ -55,7 +53,16 @@ input[type="checkbox"] {
   width: 60px !important;
   justify-content: center;
   align-items: center;
+  padding-left: 15px;
 }
-.slot-label {
-  padding-right: 15px;
+
+.slot-label-early {
+  padding-left: 2.6vh;
+}
+
+.slot-label-late {
+  padding-left: 3vh;
+}
+.slot-label-night {
+  padding-left: 2vh;
 }
