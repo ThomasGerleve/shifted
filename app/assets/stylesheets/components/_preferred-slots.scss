@@ -15,28 +15,27 @@ input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 90%;
+  width: 100%;
   height: 100%;
   background-color: $purple;
   border: 1px solid rgba(211, 213, 248, 0.2);
+  margin: 0;
+  align-self: center;
 }
-input[type="checkbox"]:checked {
-  background-color: $light-purple;
-}
-// input[type="checkbox"]:checked:before {
-//   font-weight: bold;
+// input[type="checkbox"]:checked {
+//   background-color: $light-purple;
 // }
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   background-color: $purple;
   padding-bottom: 10px;
-  width: 95%;
+  width: 100%;
   border-radius: 20px;
 }
 
 .grid-item {
+  display: flex;
   justify-content: center;
   background-color: $purple;
   color: white;
@@ -47,6 +46,16 @@ input[type="checkbox"]:checked {
 }
 
 .day {
-  margin-top: 5px;
   border-radius: 10px;
+  height: 40px;
+}
+
+.check-box-container {
+  display: flex;
+  width: 60px !important;
+  justify-content: center;
+  align-items: center;
+}
+.slot-label {
+  padding-right: 15px;
 }
