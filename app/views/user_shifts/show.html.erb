@@ -46,6 +46,5 @@
   </div>
   <%= simple_form_for [@user_shift, @message], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message ##{@user_shift.shift.date.strftime("%b %d")}" %>
-    <%= f.submit %>
   <% end %>
 </div>
