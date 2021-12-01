@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
   <br>
-  <h2><strong>Your profile</strong></h2>
+  <h2 class="profile-heading"><strong>Your profile</strong></h2>
   <div class="col1 avatar-box">
     <% unless current_user.photo.attached? %>
       <img src="<%= asset_path('default_avatar.png') %>" width="40" alt="default-avatar-image" class="card-trip-user avatar-bordered">

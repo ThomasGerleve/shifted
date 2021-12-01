@@ -2,17 +2,19 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: $white;
-  border-radius: 10px 10px 0px 0px;
   height: 8vh;
-  box-shadow: 0 3px 10px 1px $purple;
-}
+  background-color: $background;
+  box-shadow: 0 3px 10px 1px $accent;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
-.i {
-  color: $purple;
-  font-size: 2rem;
-}
+  &-icon {
+    color: $accent;
+    font-size: 2rem;
+  }
 
-.i:hover {
-  color: $dark-purple;
+  &-icon:hover {
+    color: $accent-dark;
+  }
 }

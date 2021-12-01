@@ -52,15 +52,15 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "Early" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% when "Late" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% when "Night" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% end %>

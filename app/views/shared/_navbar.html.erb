@@ -1,20 +1,20 @@
-<div class="d-flex align-items-center justify-content-around menu-bar">
+<div class="menu-bar">
   <% if user_signed_in? %>
     <%= link_to profile_path do %>
-      <i class="fas fa-user i"></i>
+      <i class="menu-bar-icon fas fa-user"></i>
     <% end %>
     <%= link_to users_path do %>
-      <i class="fas fa-users i"></i>
+      <i class="menu-bar-icon fas fa-users"></i>
     <% end %>
     <%= link_to shifts_this_month_with_calendar_path do %>
-      <i class="fas fa-calendar-alt i"></i>
+      <i class="menu-bar-icon fas fa-calendar-alt"></i>
     <% end %>
     <%= link_to root_path do %>
-      <i class="fas fa-home i"></i>
+      <i class="menu-bar-icon fas fa-home"></i>
     <% end %>
   <% else %>
     <%= link_to root_path do %>
-      <i class="fas fa-home i"></i>
+      <i class="menu-bar-icon fas fa-home"></i>
     <% end %>
   <% end %>
 </div>

@@ -1,45 +1,53 @@
 // Specific CSS for your home-page
+body {
+  background-color: $background;
+}
+
 .page-container {
+  min-height: 92vh;
+  background-color: $background;
+}
+
+.banner-landing {
+  background-image: url("nurse.png");
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 92vh;
-}
-.page-container.solid-background {
-  background-image: url("doctor.png");
-}
 
-.banner-landing-page {
+  &-page {
+  margin: 3rem auto 0;
   display: flex;
-  padding: 5rem 2.5rem;
   flex-direction: column;
   align-self: flex-start;
-}
 
-#h1-tag,
-#p-tag {
-  color: $white;
-  text-shadow: 1px 1px 1px $dark-grey, 0 0 1em $pink, 0 0 0.2em $white;
-}
+    &-heading,
+    &-subtitle {
+      color: $white;
+    }
 
-#h1-tag {
-  margin: 2px 0;
-  font-size: 50px;
-  align-self: flex-start;
-}
+    &-heading {
+      font-size: 4rem;
+    }
 
-#p-tag {
-  font-size: 16px;
-}
+    &-subtitle {
+      font-size: 1rem;
+    }
 
-.login-btn {
-  color: $white;
-  width: fit-content;
-}
+    &-button {
+      margin: 2rem auto 0;
+      text-decoration: none;
+      padding: 1rem 3rem;
+      background-color: hsl(178, 100%, 37%);
+      color: $white;
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      font-weight: bolder;
+      letter-spacing: .1rem;
 
-.login-btn:hover {
-  color: $white;
-  background-color: #974397;
-  border-color: #974397;
+      &:hover {
+        background-color: hsl(191, 88%, 40%);
+      }
+    }
+  }
 }

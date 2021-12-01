@@ -1,0 +1,33 @@
+.login-wrapper {
+  background-image: url("nurse.png");
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-box {
+    margin-top: 1rem;
+
+    &-heading {
+      color: $white;
+    }
+
+    &-form-inputs,
+    &-form-actions {
+      color: $white;
+    }
+
+    &-button {
+      padding: .5rem 1rem;
+      background-color: $button-login;
+
+      &:hover {
+        background-color: $button-login-hover;
+      }
+    }
+  }
+}
