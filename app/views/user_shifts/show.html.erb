@@ -15,7 +15,7 @@
   </div>
   <div class="text">
     <i class="fas fa-coins i"></i>
-    <%= @user_shift.shift.bonus_points %> bps
+    <%= @user_shift.bonus_points %> bps
   </div>
   <div class="text">
     <i class="fas fa-info-circle i"></i>
@@ -27,18 +27,41 @@
       <%= "Colleagues on this shift:" %>
     </div>
     <div class="avatar-card d-flex justify-content-around">
-      <% @user_shift.shift.user_ids.each do |user_id| %>
-        <% user=User.find(user_id) %>
+      <% @user_shift.shift.users.each do |user| %>
         <% unless user == current_user %>
           <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
         <% end %>
       <% end %>
     </div>
   </div>
-  <br>
-  <p class="btn btn-primary mb-0">Offer shift</p>
-  <br>
-  <br>
+  <% if !@user_shift.open && @user_shift.user == current_user %>
+    <div>
+      <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
+        <%= f.input :bonus_points, label: "Do you want to add some bonus points to your offer?", :error_html => { :id => "bonus_points_error" } %>
+        <%= f.hidden_field :open, value: true %>
+        <%= f.button :submit, "Offer Shift" %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @user_shift.open && @user_shift.user == current_user %>
+    <div class="offered-alert"><p>You offered this shift up for grabs</p></div>
+    <div>
+      <%= link_to retract_offer_path(@user_shift),
+      data: {
+        controller: "offer",
+        action: "click->retract"
+      } do %>
+        <p class="btn btn-primary mb-0">I Changed My Mind</p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @user_shift.open && @user_shift.user != current_user %>
+    <div>
+      <%= link_to accept_shift_path(@user_shift) do %>
+        <p class="btn btn-primary mb-0">Take Over This Shift</p>
+      <% end %>
+    </div>
+  <% end %>
   <div class="container user-shift">
     <h3>Comments</h3>
     <div class="messages" data-controller="user-shift-subscription"

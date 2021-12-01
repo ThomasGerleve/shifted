@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :experience_level, :functional_role, presence: true
   validates :experience_level, inclusion: { in: EXPERIENCE_LEVEL }
+  validates :bonus_points, numericality: { greater_than_or_equal_to: 0 }
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 end
