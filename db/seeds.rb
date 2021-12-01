@@ -13,9 +13,9 @@ puts "Deleted users"
 FunctionalRole.destroy_all
 puts "Deleted functional roles"
 
-functional_role_names = ["nurse manager", "radiology nurse",
-                         "labor & delivery nurse", "emergency-room nurse",
-                         "intensive-care-unit nurse"]
+functional_role_names = ["Nurse manager", "Radiology nurse",
+                         "Labor & delivery nurse", "Emergency-room nurse",
+                         "Intensive-care-unit nurse"]
 
 functional_roles = functional_role_names.map do |name|
   FunctionalRole.create!(name: name)
@@ -44,16 +44,16 @@ user_additional_infos = ["Hey there - your cardiologist is here.",
                          "Do not disturb - not taking any offers🤪",
                          "Nihil since causa", "29.05.2022", "💙",
                          "Passionate delivery nurse #lovemyjob",
-                         "All these christmas lights 🎶🎵", "tired😴",
+                         "All these christmas lights 🎶🎵", "Tired😴",
                          "Hey there!", "We are expecting - so excited🤰🏼",
                          "Caught Covid 😥", "Looking forward to my vacantions.",
                          "I got a new pair of shoes😎", "Work work", "🥱", "😁",
-                         "Habemus papam!", "is typing...", "I know, right?!",
+                         "Habemus papam!", "Is typing...", "I know, right?!",
                          "🥶", "So cold outside...", "User details", "Meow!🐱",
-                         "I'm a dogperson", "21 days untill...", "Hey there!",
+                         "I'm a dogperson", "21 days until...", "Hey there!",
                          "42", "I like turtles", "Be your best self!", "🤩",
                          "Harder, better, stronger, faster", "What are thooose?"]
-user_experience_level = ["experienced", "beginner"]
+user_experience_level = ["Experienced", "Beginner"]
 
 index = 0
 users = []
@@ -76,8 +76,8 @@ user_first_name.length.times do
 end
 karl = User.create!(
   admin: true,
-  first_name: "Shmarl",
-  last_name: "Shmonder",
+  first_name: "Richard",
+  last_name: "Erics",
   additional_infos: user_additional_infos[0],
   experience_level: user_experience_level.sample,
   bonus_points: rand(0..10) * 5,
@@ -91,7 +91,7 @@ users << karl
 vero = User.create!(
   admin: true,
   first_name: "Vero",
-  last_name: "MW",
+  last_name: "Laconita",
   additional_infos: user_additional_infos[0],
   experience_level: user_experience_level.sample,
   bonus_points: rand(0..10) * 5,
@@ -105,17 +105,17 @@ users << vero
 puts "Created #{users.length} users"
 
 early = Slot.create!(
-  name: "early",
+  name: "Early",
   start_time: Time.new(2021, 1, 1, 5, 45, 0),
   end_time: Time.new(2021, 1, 1, 14, 15, 0)
 )
 late = Slot.create!(
-  name: "late",
+  name: "Late",
   start_time: Time.new(2021, 1, 1, 13, 45, 0),
   end_time: Time.new(2021, 1, 1, 22, 15, 0)
 )
 night = Slot.create!(
-  name: "night",
+  name: "Night",
   start_time: Time.new(2021, 1, 1, 21, 45, 0),
   end_time: Time.new(2021, 1, 1, 6, 15, 0)
 )
@@ -198,10 +198,10 @@ shift_dates.each do |date|
   end
 end
 
-user_shift_details_swap = ["burned out... please someone take over",
+user_shift_details_swap = ["Burned out... please someone take over",
                            "Have to go to the vet with my dog",
                            "My kids are sick", "I'm sick :(",
-                           "private circumstances",
+                           "Private circumstances",
                            "There's a family event I forgot, please jump in"]
 
 open_user_shifts = user_shifts.select(&:open)
@@ -217,12 +217,12 @@ puts "Created #{user_shifts.length} user shifts"
 emergency_days = shifts.select { |shift| DateTime.now <= shift.date && (shift.date - DateTime.now) < 7 }
 
 user_shift_details_emergency = ["Premature baby needs 1 to 1 care",
-                                "early delivery",
-                                "many intensive care patients - support needed",
-                                "we have many emergency cases - help is needed",
-                                "we will need some help on the station",
-                                "we need help the in the operating room",
-                                "help needed for the oncology"]
+                                "Early delivery",
+                                "Many intensive care patients - support needed",
+                                "We have many emergency cases - help is needed",
+                                "We will need some help on the station",
+                                "We need help the in the operating room",
+                                "Help needed for the oncology"]
 
 emergency_shifts = []
 rand(3..7).times do
