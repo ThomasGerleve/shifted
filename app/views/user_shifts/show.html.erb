@@ -18,7 +18,18 @@
     <%= @user_shift.details %>
   </div>
   <div class="text">
-    <%# avatars to be added here %>
+    <div class="text">
+      <i class="fas fa-users i"></i>
+      <%= "Colleagues on this shift:" %>
+    </div>
+    <div class="avatar-card d-flex justify-content-around">
+      <% @user_shift.shift.user_ids.each do |user_id| %>
+        <% user=User.find(user_id) %>
+        <% unless user == current_user %>
+          <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <br>
   <p class="btn btn-primary mb-0">Offer shift</p>
