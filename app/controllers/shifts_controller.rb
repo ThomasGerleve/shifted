@@ -4,5 +4,4 @@ class ShiftsController < ApplicationController
     shifts = Shift.all
     @shifts = shifts.select { |shift| shift.date > DateTime.new }
   end
-
 end

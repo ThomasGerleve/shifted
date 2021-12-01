@@ -1,8 +1,26 @@
+.wrapper {
+  padding: 1rem .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shift-box {
+  margin: 1rem .5rem;
+  border-radius: 10px;
+
+  &--emergency {
+    margin: 0;
+    padding: 1rem .5rem;
+    // background-color: rgba(240, 128, 128, 0.7);
+  }
+}
+
 .shift-card {
   color: $white;
+  background-color: $purple;
   width: 90vw;
   display: flex;
-  background-color: $purple;
   padding: 1.3rem;
   flex-direction: row;
   justify-content: space-between;
@@ -23,56 +41,74 @@
     color: $white;
     font-size: .8rem;
     margin-bottom: 0;
-    margin-left: 4px;
-  }
-}
-
-
-.shift-card-time {
-  color: white;
-  margin-bottom: 0;
-  margin-left: 3px;
-  display: inline;
-  font-size: 15px;
-}
-
-.details {
-  display: flex;
-  flex-direction: row;
-}
-
-.shift-card-icon {
-  color: white;
-  font-size: large;
-}
-
-.shift-card-drop-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.shift-card-drop {
-  background-color: $lighter-purple;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-
-.shift-card-active {
-  background-color: $white;
-  color: $purple;
-
-  i {
-    color: gray;
   }
 
-  .shift-card-points {
-    color: gray;
+  &-time {
+    color: $white;
+    margin-bottom: 0;
+    font-size: 1rem;
   }
 
-  .shift-card-time {
-    color: gray;
+  &-icon {
+    font-size: large;
+  }
+
+  &-container {
+    width: 100%;
+
+    &-avatar {
+      width: 40px;
+      border: 1px solid white;
+    }
+
+    &-drop {
+      background: hsla(0, 0%, 100%,  0.1);
+      backdrop-filter: blur(2rem);
+      color: $white;
+      padding: 10px;
+      border-radius: 10px;
+
+      &-buttons {
+        display: flex;
+        justify-content: center;
+      }
+
+      &-avatars {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+    &--emergency {
+      background-color: rgba(240, 128, 128, .9);
+    }
+    &--early {
+      background-color: hsla(238, 73%, 70%, 0.9);
+    }
+    &--late {
+      background-color: hsla(238, 73%, 50%, 0.9);
+    }
+    &--night {
+      background-color: hsla(238, 73%, 30%, 0.9);
+    }
+
+  &--open {
+    background-color: $white;
+    color: $purple;
+
+    i {
+      color: gray;
+    }
+
+    .shift-card-points {
+      color: gray;
+    }
+
+    .shift-card-time {
+      color: gray;
+    }
   }
 }
