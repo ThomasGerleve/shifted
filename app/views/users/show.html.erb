@@ -5,31 +5,35 @@
     <div class="col">
       <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered-show">
     </div>
-    <div class="d-flex">
-      <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt ii"></i> Call me</a>
-    </div>
-    <div class="d-flex">
-      <a href="#" class="call"><i class="fas fa-envelope ii"></i> Send me a message</a>
+    <div class="parent-box-a">
+      <div class="d-flex">
+        <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt ii"></i> Call me</a>
+      </div>
+      <div class="d-flex">
+        <a href="#" class="call"><i class="fas fa-envelope ii"></i> Send me a message</a>
+      </div>
     </div>
   </div>
 
   <div class="col2 box">
-    <h3 id="name"><%= @user.first_name %>&nbsp<%= @user.last_name %></h3>
-    <div class="text">
-      <i class="fas fa-book-medical i"></i>
-      <%= @user.experience_level %>
-    </div>
-    <div class="text">
-      <i class="fas fa-user-tie i"></i>
-      <%= @user.functional_role.name %>
-    </div>
-    <div class="text">
-      <i class="fas fa-coins i"></i>
-      <%= @user.bonus_points %> bps
-    </div>
-    <div class="text">
-      <i class="fas fa-comments i"></i>
-      "<%= @user.additional_infos %>"
+    <h3 class="text-center" id="name"><%= @user.first_name %>&nbsp<%= @user.last_name %></h3>
+    <div class="parent-box">
+      <div class="text">
+        <i class="fas fa-book-medical i"></i>
+        <%= @user.experience_level %>
+      </div>
+      <div class="text">
+        <i class="fas fa-user-tie i"></i>
+        <%= @user.functional_role.name %>
+      </div>
+      <div class="text">
+        <i class="fas fa-coins i"></i>
+        <%= @user.bonus_points %> bps
+      </div>
+      <div class="text">
+        <i class="fas fa-comments i"></i>
+        "<%= @user.additional_infos %>"
+      </div>
     </div>
   </div>
 </div>

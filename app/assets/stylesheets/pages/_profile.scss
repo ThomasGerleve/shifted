@@ -1,7 +1,7 @@
 .box {
   padding: 2vh;
   border-radius: 10px;
-  background-color: $lighter-purple2;
+  background-color: $purple2;
   margin: 1rem 0px 1rem 0px !important;
   width: 90vw;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -24,14 +24,14 @@
 }
 
 #name {
-  color: $purple;
+  color: $white;
 }
 
 .text {
-  color: $darker-purple;
+  color: $white;
   font-size: 20px;
   .i {
-    color: $purple;
+    color: $white;
     font-size: 16px;
   }
 }

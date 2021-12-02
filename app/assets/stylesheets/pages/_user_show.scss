@@ -4,6 +4,20 @@
   justify-content: center;
 }
 
+.parent-box-a {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  backdrop-filter: blur(2rem);
+  border-radius: 10px;
+}
+
+.parent-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  backdrop-filter: blur(2rem);
+  border-radius: 10px;
+}
+
 .avatar-bordered-show {
   width: 100px;
   border-radius: 50%;
@@ -15,3 +29,27 @@
     width: 30px;
   }
 }
+<<<<<<< HEAD
+=======
+
+.call {
+  text-decoration: none;
+  font-size: 20px;
+  color: $white;
+}
+
+.call:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.ii {
+color: $white;
+font-size: 20px;
+}
+
+.ii:hover {
+transform: scale(1.1);
+transition: 0.3s;
+}
+>>>>>>> master
