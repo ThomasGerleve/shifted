@@ -31,15 +31,13 @@
   </div>
 
   <div class="col4 box">
-    <div class="d-flex justify-content-between">
-      <h3 id="name"><%= @user.first_name %>'s preferred slots</h3>
+    <div class="d-flex align-items-center justify-content-center">
+      <h3 id="message-title">Send a</h3>&nbsp&nbsp
+      <i class="fas fa-envelope i"></i>&nbsp&nbsp
+      <h3 id="message-title">to <%= @user.first_name %></h3>
     </div>
-    <% @user.preferred_slots.each do |preferred_slot| %>
-      <div class="text">
-        <i class="fas fa-clock i"></i>
-        <%= preferred_slot.weekday %>
-        <%= preferred_slot.slot.name %>
-      </div>
-    <% end %>
+
+    <div>
+    </div>
   </div>
 </div>

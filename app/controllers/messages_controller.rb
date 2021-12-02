@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       )
       redirect_to user_shift_path(@user_shift, anchor: "message-#{@message.id}")
     else
-      render "shift/:id/show"
+      render "user_shifts/:id"
     end
   end
 
