@@ -12,7 +12,10 @@
   &--emergency {
     margin: 0;
     padding: 1rem .5rem;
-    // background-color: rgba(240, 128, 128, 0.7);
+
+    &-heading {
+      color: hsl(0, 80%, 50%);
+    }
   }
 }
 
@@ -31,7 +34,7 @@
 
   &-date {
     color: $white;
-    background-color: $lilac;
+    background-color: $petrol;
     border-radius: 20px;
     padding: 2px 12px;
     margin-bottom: 0.75rem;
@@ -62,13 +65,17 @@
     }
   }
 
+      &-avatar {
+        width: 40px;
+        border: 2px solid $white;
+
+        &--highlight {
+          border: 2px solid hsl(0, 80%, 50%);
+        }
+      }
+
   &-container {
     width: 100%;
-
-    &-avatar {
-      width: 40px;
-      border: 1px solid white;
-    }
 
     &-drop {
       background: hsla(0, 0%, 100%,  0.1);

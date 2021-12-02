@@ -1,9 +1,9 @@
 .box {
   padding: 2vh;
   border-radius: 10px;
-  background-color: $white;
-  margin: 8px !important;
-  width: 90%;
+  background-color: $lighter-purple2;
+  margin: 1rem 0px 1rem 0px !important;
+  width: 90vw;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -44,4 +44,13 @@
 
 .pencil:hover {
   color: $dark-purple;
+}
+
+.profile-logout-button {
+  background-color: hsl(348, 83%, 60%);
+  border: none;
+  margin: 1rem;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  color: white;
 }
