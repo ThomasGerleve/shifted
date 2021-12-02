@@ -4,6 +4,20 @@
   justify-content: center;
 }
 
+.parent-box-a {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  backdrop-filter: blur(2rem);
+  border-radius: 10px;
+}
+
+.parent-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  backdrop-filter: blur(2rem);
+  border-radius: 10px;
+}
+
 .avatar-bordered-show {
   width: 120px;
   border-radius: 50%;
@@ -19,7 +33,7 @@
 .call {
   text-decoration: none;
   font-size: 20px;
-  color: $darker-purple;
+  color: $white;
 }
 
 .call:hover {
@@ -28,7 +42,7 @@
 }
 
 .ii {
-color: $purple;
+color: $white;
 font-size: 20px;
 }
 
