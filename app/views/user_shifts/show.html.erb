@@ -1,6 +1,9 @@
-<div class="show-box">
+<div class="show-box <%= "show-box--early" if @user_shift.shift.slot.name == "Early" && @user_shift.user_id != nil %>
+                     <%= "show-box--late" if @user_shift.shift.slot.name == "Late" && @user_shift.user_id != nil %>
+                     <%= "show-box--night" if @user_shift.shift.slot.name == "Night" && @user_shift.user_id != nil %>
+                     <%= "show-box--emergency" if @user_shift.open && @user_shift.user_id == nil %>">
   <div class="d-flex justify-content-between text">
-    <h1><%= @user_shift.shift.slot.name.capitalize %> shift
+    <h1 id="shift-title"><%= @user_shift.shift.slot.name.capitalize %> shift
       <% if @user_shift.shift.users.include?(current_user) %>
         <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
       <% end %>
@@ -9,61 +12,68 @@
       <%= @user_shift.shift.date.strftime("%b %d") %>
     </h3>
   </div>
-  <div class="text">
-    <i class="shift-card-icon fas fa-clock i"></i>
-    <%= @user_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= @user_shift.shift.slot.end_time.strftime("%H:%M") %>
-  </div>
-  <div class="text">
-    <i class="fas fa-coins i"></i>
-    <%= @user_shift.bonus_points %> bps
-  </div>
-  <div class="text">
-    <i class="fas fa-info-circle i"></i>
-    <%= @user_shift.details %>
-  </div>
-  <div class="text">
-    <div class="text">
-      <i class="fas fa-users i"></i>
-      <%= "Colleagues on this shift:" %>
+  <div class="shift-card-info-box">
+
+      <div class="text shift-card-text time">
+        <i class="shift-card-icon fas fa-clock i"></i>
+        <%= @user_shift.shift.slot.start_time.strftime("%H:%M") %> - <%= @user_shift.shift.slot.end_time.strftime("%H:%M") %>
+      </div>
+      <div class="text shift-card-text points">
+        <i class="fas fa-coins i shift-card-icon"></i>
+        <%= @user_shift.bonus_points %> bps
+      </div>
+
+
+    <div class="text shift-card-text shift-infos">
+      <i class="fas fa-info-circle i shift-card-icon"></i>
+      <%= @user_shift.details %>
     </div>
-    <div class="avatar-card d-flex justify-content-around">
-      <% @user_shift.shift.users.each do |user| %>
-        <% unless user == current_user %>
-          <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+    <div class="text shift-card-text">
+      <div class="text shift-card-text">
+        <i class="fas fa-users i shift-card-icon"></i>
+        <%= "Colleagues on this shift:" %>
+      </div>
+      <div class="shift-card-colleagues-avatar d-flex justify-content-around">
+        <% @user_shift.shift.users.each do |user| %>
+          <% unless user == current_user %>
+            <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
   <% if !@user_shift.open && @user_shift.user == current_user %>
-    <div>
+    <div class="offer-shift">
       <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
-        <%= f.input :bonus_points, label: "Do you want to add some bonus points to your offer?", :error_html => { :id => "bonus_points_error" } %>
+        <%= f.input :bonus_points, label: "Would you like to offer some bonus points with your shift?", :error_html => { :id => "bonus_points_error" }, class:"font-weight-bold" %>
         <%= f.hidden_field :open, value: true %>
-        <%= f.button :submit, "Offer Shift" %>
+        <%= f.button :submit, "Offer Shift", class:"btn btn-primary shift-show-btn" %>
       <% end %>
     </div>
   <% end %>
   <% if @user_shift.open && @user_shift.user == current_user %>
-    <div class="offered-alert"><p>You offered this shift up for grabs</p></div>
-    <div>
-      <%= link_to retract_offer_path(@user_shift),
-      data: {
-        controller: "offer",
-        action: "click->retract"
-      } do %>
-        <p class="btn btn-primary mb-0">I Changed My Mind</p>
-      <% end %>
+    <div class="offer-shift">
+      <div class="offered-alert"><p>You offered this shift up for grabs</p></div>
+      <div>
+        <%= link_to retract_offer_path(@user_shift),
+        data: {
+          controller: "offer",
+          action: "click->retract"
+        } do %>
+          <p class="btn btn-primary mb-0 shift-show-btn">I Changed My Mind</p>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <% if @user_shift.open && @user_shift.user != current_user %>
-    <div>
+    <div class="take-shift-btn">
       <%= link_to accept_shift_path(@user_shift) do %>
         <p class="btn btn-primary mb-0">Take Over This Shift</p>
       <% end %>
     </div>
   <% end %>
-  <div class="container user-shift">
-    <h3>Comments</h3>
+  <div class="container user-shift comments-box">
+    <p class="comment">Conversation</p>
     <div class="messages" data-controller="user-shift-subscription"
       data-user-shift-subscription-user-shift-id-value="<%= @user_shift.id %>">
       <% @user_shift.messages.each do |message| %>

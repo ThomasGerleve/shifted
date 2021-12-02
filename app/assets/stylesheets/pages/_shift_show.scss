@@ -4,13 +4,105 @@
   margin: 24px !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   padding: 2rem 1rem !important;
+
+  &--emergency {
+    background-color: rgba(240, 128, 128, 0.9);
+  }
+  &--early {
+    background-color: hsla(238, 73%, 70%, 0.9);
+  }
+  &--late {
+    background-color: hsla(238, 73%, 50%, 0.9);
+  }
+  &--night {
+    background-color: hsla(238, 73%, 30%, 0.9);
+  }
+}
+
+.shift-card-text {
+  color: white;
+}
+
+#shift-title {
+  color: white;
+  margin-bottom: 4vh;
 }
 
 .shift-card-date-p {
   color: white;
-  background-color: $lilac;
+  background-color: $petrol;
   border-radius: 20px;
   padding: 2px 12px;
-  margin-bottom: 11px;
+  margin-bottom: 4vh;
   max-width: 110px;
+  align-self: center;
+}
+
+.shift-card-info-box {
+  background: hsla(0, 0%, 100%, 0.1);
+  padding: 2vh;
+  border-radius: 10px;
+}
+
+.shift-card-colleagues-avatar {
+  background: hsla(0, 0%, 100%, 0.1);
+  padding: 2vh;
+  border-radius: 10px;
+}
+
+.shift-card-icon {
+  color: white !important;
+  margin-right: 4px;
+}
+
+.shift-infos {
+  display: flex;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  align-items: baseline;
+  background: hsla(0, 0%, 100%, 0.1);
+  padding: 2vh;
+  border-radius: 10px;
+}
+
+.time {
+  display: inline-block;
+}
+
+.points {
+  display: inline-block;
+  float: right;
+}
+
+.take-shift-btn {
+  display: flex;
+  margin: 2vh auto;
+  justify-content: center;
+}
+
+.comments-box {
+  background: hsla(0, 0%, 100%, 0.1);
+  color: lightgray;
+  border-radius: 10px;
+  margin-bottom: 2vh;
+  padding: 2vh;
+}
+
+.comment {
+  border-bottom: 1px solid $purple;
+  padding-bottom: 2vh;
+  align-self: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.offer-shift {
+  color: white;
+  margin: 2vh 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.shift-show-btn {
+  font-weight: bold;
 }
