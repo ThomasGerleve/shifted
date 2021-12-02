@@ -56,7 +56,7 @@
       &-weekday {
         border: 1px solid $white;
         border-top: 2px solid $white;
-        background-color: #00bfba;
+        background-color: $purple;
         color: $white;
 
         &:first-child {
@@ -126,8 +126,8 @@
       background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
-      margin: 0px 5px;
-      font-size: 12px;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -135,11 +135,11 @@
       }
     }
     &-late {
-      background-color: hsla(238, 73%, 50%, 0.9);
+      background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
-      margin: 0px 5px;
-      font-size: 12px;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -147,11 +147,11 @@
       }
     }
     &-night {
-      background-color: hsla(238, 73%, 30%, 0.9);
+      background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
-      margin: 0px 5px;
-      font-size: 12px;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -178,5 +178,5 @@
 }
 
 .arrow {
-  color: $petrol;
+  color: $purple;
 }
