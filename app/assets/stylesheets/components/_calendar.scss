@@ -1,7 +1,7 @@
 .wrapper-calendar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 }
 .calendar {
   width: 100%;
@@ -126,6 +126,8 @@
       background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 5px;
+      font-size: 12px;
 
       &--next,
       &--previous {
@@ -136,16 +138,20 @@
       background-color: hsla(238, 73%, 50%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 5px;
+      font-size: 12px;
 
       &--next,
       &--previous {
-        background-color: hsla(238, 73%, 70%, 0.4);
+        background-color: $purple;
       }
     }
     &-night {
       background-color: hsla(238, 73%, 30%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 5px;
+      font-size: 12px;
 
       &--next,
       &--previous {
@@ -163,10 +169,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(218, 126, 64);
+    background-color: $organe;
 
     &--emergency {
     background-color: rgb(218, 64, 64);
     }
   }
+}
+
+.arrow {
+  color: $petrol;
 }

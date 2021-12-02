@@ -1,5 +1,7 @@
 <div class="wrapper-calendar" data-controller="calendar">
   <div class="calendar" data-calendar-target="container">
+    <br>
+    <h2 class="d-flex justify-content-center"><strong>Your calendar</strong></h2>
     <% shifts_my = my_user_shifts.map(&:shift) %>
     <% shifts_open = open_user_shifts.map(&:shift) %>
     <div class="calendar-dates">
@@ -114,7 +116,7 @@
           data: {
             action: "click->calendar#navigate"
           } do %>
-          <i class="fas fa-caret-square-left"></i>
+          <i class="fas fa-caret-square-left arrow"></i>
           <% end %>
         </div>
         <div><%= mth %> <%= year %></div>
@@ -125,7 +127,7 @@
           data: {
             action: "click->calendar#navigate"
           } do %>
-          <i class="fas fa-caret-square-right"></i>
+          <i class="fas fa-caret-square-right arrow"></i>
           <% end %>
         </div>
       </div>
