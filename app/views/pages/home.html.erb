@@ -85,7 +85,9 @@
                   <i class="shift-card-icon-info fas fa-info-circle"></i>
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
-                  <p class="btn btn-primary">accept shift</p>
+                  <%= link_to accept_shift_path(u_shift) do %>
+                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -137,7 +139,9 @@
                   <i class="shift-card-icon-info fas fa-info-circle"></i>
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
-                  <p class="btn btn-primary">accept shift</p>
+                  <%= link_to accept_shift_path(u_shift) do %>
+                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                  <% end %>
                 <% end %>
               </div>
             </div>
