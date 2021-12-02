@@ -62,13 +62,17 @@
     }
   }
 
+      &-avatar {
+        width: 40px;
+        border: 2px solid $white;
+
+        &--highlight {
+          border: 2px solid $pink;
+        }
+      }
+
   &-container {
     width: 100%;
-
-    &-avatar {
-      width: 40px;
-      border: 1px solid white;
-    }
 
     &-drop {
       background: hsla(0, 0%, 100%,  0.1);
