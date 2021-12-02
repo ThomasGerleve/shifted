@@ -45,7 +45,7 @@
   <% if !@user_shift.open && @user_shift.user == current_user %>
     <div class="offer-shift">
       <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
-        <%= f.input :bonus_points, label: "Would you like to offer some bonus points to your shift?", :error_html => { :id => "bonus_points_error" }, class:"font-weight-bold" %>
+        <%= f.input :bonus_points, label: "Would you like to offer some bonus points with your shift?", :error_html => { :id => "bonus_points_error" }, class:"font-weight-bold" %>
         <%= f.hidden_field :open, value: true %>
         <%= f.button :submit, "Offer Shift", class:"btn btn-primary shift-show-btn" %>
       <% end %>
@@ -73,7 +73,7 @@
     </div>
   <% end %>
   <div class="container user-shift comments-box">
-    <h3>Comments</h3>
+    <p class="comment">Conversation</p>
     <div class="messages" data-controller="user-shift-subscription"
       data-user-shift-subscription-user-shift-id-value="<%= @user_shift.id %>">
       <% @user_shift.messages.each do |message| %>

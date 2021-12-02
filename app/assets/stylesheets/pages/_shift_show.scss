@@ -30,11 +30,12 @@
 
 .shift-card-date-p {
   color: white;
-  background-color: $lilac;
+  background-color: $petrol;
   border-radius: 20px;
   padding: 2px 12px;
   margin-bottom: 4vh;
   max-width: 110px;
+  align-self: center;
 }
 
 .shift-card-info-box {
@@ -81,10 +82,18 @@
 
 .comments-box {
   background: hsla(0, 0%, 100%, 0.1);
-  color: white !important;
+  color: lightgray;
   border-radius: 10px;
   margin-bottom: 2vh;
   padding: 2vh;
+}
+
+.comment {
+  border-bottom: 1px solid $purple;
+  padding-bottom: 2vh;
+  align-self: center;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .offer-shift {
@@ -94,6 +103,6 @@
   font-weight: bold;
 }
 
-:shift-show-btn {
+.shift-show-btn {
   font-weight: bold;
 }
