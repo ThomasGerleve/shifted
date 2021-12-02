@@ -8,7 +8,7 @@
                              <%= "shift-card--night" if @next_user_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#nextShift" aria-expanded="false" aria-controls="nextShift">
         <div class="shift-card-left-side">
-          <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %> shift
+          <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %>
             <% if @next_user_shift.shift.user_on_shift?(current_user) %>
               <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
             <% end %>
@@ -45,11 +45,11 @@
       </div>
     </div>
     <div class="shift-box shift-box--emergency">
-      <h2 class="shift-box--emergency-heading">Emergency shifts</h2>
+      <h2 class="shift-box--emergency-heading">Emergencies <i class="fas fa-exclamation-triangle"></i></h2>
       <% @emergency_shifts.each do |u_shift| %>
         <div class="shift-card shift-card--emergency" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title"><%= u_shift.shift.slot.name.capitalize %> shift
+            <h3 class="shift-card-left-side-title"><%= u_shift.shift.slot.name.capitalize %>
               <% if u_shift.shift.user_on_shift?(current_user) %>
                 <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
               <% end %>
@@ -85,7 +85,9 @@
                   <i class="shift-card-icon-info fas fa-info-circle"></i>
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
-                  <p class="btn btn-primary">accept shift</p>
+                  <%= link_to accept_shift_path(u_shift) do %>
+                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -101,7 +103,7 @@
                                <%= "shift-card--night" if u_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %> shift
+            <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %>
               <% if u_shift.shift.user_on_shift?(current_user) %>
                 <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
               <% end %>
@@ -124,7 +126,7 @@
                 <% u_shift.shift.user_ids.each do |user_id| %>
                   <% user=User.find(user_id) %>
                   <% unless user == current_user %>
-                    <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar">
+                    <img src="<%= cl_image_path(user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="avatar-bordered shift-card-avatar <%= "shift-card-avatar--highlight" if user == u_shift.user %>">
                   <% end %>
                 <% end %>
               </div>
@@ -137,7 +139,9 @@
                   <i class="shift-card-icon-info fas fa-info-circle"></i>
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
-                  <p class="btn btn-primary">accept shift</p>
+                  <%= link_to accept_shift_path(u_shift) do %>
+                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                  <% end %>
                 <% end %>
               </div>
             </div>

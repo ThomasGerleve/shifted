@@ -45,3 +45,12 @@
 .pencil:hover {
   color: $dark-purple;
 }
+
+.profile-logout-button {
+  background-color: hsl(348, 83%, 60%);
+  border: none;
+  margin: 1rem;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  color: white;
+}
