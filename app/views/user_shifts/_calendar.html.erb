@@ -52,15 +52,15 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "Early" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% when "Late" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% when "Night" %>
-                      <%= link_to user_shift_path(user_shift) do %>
+                      <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
                         <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
                       <% end %>
                     <% end %>
@@ -69,7 +69,9 @@
               <% end %>
             </div>
             <div class="calendar-dates-days-day-openshifts">
-              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month } %>
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month && !u_shift.user } %>
+                <div class="calendar-shift-circle calendar-shift-circle--emergency"><i class="fas fa-bell"></i></div>
+              <% elsif open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month } %>
                 <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
             </div>
