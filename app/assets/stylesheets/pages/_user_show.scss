@@ -4,18 +4,16 @@
   justify-content: center;
 }
 
-.parent-box-a {
+.parent-box {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px;
   backdrop-filter: blur(2rem);
   border-radius: 10px;
 }
 
-.parent-box {
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  backdrop-filter: blur(2rem);
-  border-radius: 10px;
+.col-image {
+  display: flex;
+  justify-content: center;
 }
 
 .avatar-bordered-show {
