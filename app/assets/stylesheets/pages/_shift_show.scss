@@ -63,6 +63,7 @@
   background: hsla(0, 0%, 100%, 0.1);
   padding: 2vh;
   border-radius: 10px;
+  font-size: 0.9rem;
 }
 
 .time {
@@ -70,7 +71,6 @@
 }
 
 .points {
-  display: inline-block;
   float: right;
 }
 
@@ -105,4 +105,9 @@
 
 .shift-show-btn {
   font-weight: bold;
+}
+
+.take-over-button {
+  background-color: $petrol;
+  border: none;
 }

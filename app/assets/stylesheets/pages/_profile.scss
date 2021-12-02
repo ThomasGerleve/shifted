@@ -10,7 +10,7 @@
 .avatar-box {
   padding: 2vh;
   border-radius: 8px;
-  background-color: $white;
+  background-color: $purple2;
   margin: 8px !important;
   width: 90%;
   display: flex;
@@ -19,7 +19,6 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   img {
     flex-grow: 0.3;
-    box-shadow: 18px 9px 15px -3px $lilac;
   }
 }
 

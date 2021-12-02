@@ -68,7 +68,7 @@
   <% if @user_shift.open && @user_shift.user != current_user %>
     <div class="take-shift-btn">
       <%= link_to accept_shift_path(@user_shift) do %>
-        <p class="btn btn-primary mb-0">Take Over This Shift</p>
+        <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
       <% end %>
     </div>
   <% end %>

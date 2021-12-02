@@ -86,7 +86,7 @@
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <%= link_to accept_shift_path(u_shift) do %>
-                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                    <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
                   <% end %>
                 <% end %>
               </div>
@@ -140,7 +140,7 @@
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <%= link_to accept_shift_path(u_shift) do %>
-                    <p class="btn btn-primary mb-0">Take Over This Shift</p>
+                    <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
                   <% end %>
                 <% end %>
               </div>
