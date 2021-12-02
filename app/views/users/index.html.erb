@@ -23,7 +23,7 @@
           <i class="fas fa-user-tie i mx-1"></i>
           <%= user.functional_role.name.capitalize %>
         </div>
-        <div class="collapse mt-1 colleague-card" id="colleagueCard<%= user.id %>">
+        <div class="collapse mt-1" id="colleagueCard<%= user.id %>">
           <div class="card colleague-card-drop col2">
             <div class="d-flex flex-row justify-content-between">
               <div class="text">
@@ -36,8 +36,8 @@
               </div>
             </div>
             <div class="user-infos-box">
-              <i class="fas fa-bullhorn mx-3"></i>
-              <em>"<%= user.additional_infos %>"</em>
+              <i class="fas fa-bullhorn mx-3 shout"></i>
+              <em class="quote">"<%= user.additional_infos %>"</em>
             </div>
           </div>
         </div>

@@ -1,9 +1,15 @@
-.colleague-card {
+.box.colleague-card {
+  background-color: $light-purple;
   display: flex;
   flex-direction: column;
 }
 
 .colleague-full-name {
+}
+
+.shout {
+  margin-left: 0 !important;
+  color: $purple;
 }
 
 .colleague-banner {
@@ -19,7 +25,7 @@
 }
 
 .colleague-card-drop {
-  background-color: $lighter-purple;
+  background-color: $light-purple;
   color: black;
   border: none;
   padding: 10px 20px;
@@ -27,13 +33,14 @@
 
 .colleague-card-avatar {
   width: 20vw;
+  margin-left: 6vw;
 }
 
 .user-infos-box {
   display: flex;
   flex-direction: row;
-  justify-items: center;
   align-items: center;
+  margin-top: 2vh;
 }
 
 .user-infos {
@@ -41,9 +48,9 @@
   align-self: center;
 }
 
-// .colleagues-card-drop {
-//   background-color: $lighter-purple;
-//   color: black;
-//   position: relative;
-//   border: none;
-// }
+.quote {
+  background-color: $lighter-purple;
+  flex-grow: 1;
+  padding: 1vh;
+  border-radius: 10px;
+}
