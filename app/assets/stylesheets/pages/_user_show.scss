@@ -18,10 +18,21 @@
 
 .call {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 20px;
   color: $darker-purple;
 }
-#message-title {
-  color: $darker-purple;
-  margin-top: 8px;
+
+.call:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.ii {
+color: $purple;
+font-size: 20px;
+}
+
+.ii:hover {
+transform: scale(1.1);
+transition: 0.3s;
 }

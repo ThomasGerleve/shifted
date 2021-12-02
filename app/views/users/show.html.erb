@@ -5,8 +5,11 @@
     <div class="col">
       <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered-show">
     </div>
-    <div class="col">
-      <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt i"></i> Call me</a>
+    <div class="d-flex">
+      <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt ii"></i> Call me</a>
+    </div>
+    <div class="d-flex">
+      <a href="#" class="call"><i class="fas fa-envelope ii"></i> Send me a message</a>
     </div>
   </div>
 
@@ -27,17 +30,6 @@
     <div class="text">
       <i class="fas fa-comments i"></i>
       "<%= @user.additional_infos %>"
-    </div>
-  </div>
-
-  <div class="col4 box">
-    <div class="d-flex align-items-center justify-content-center">
-      <h3 id="message-title">Send a</h3>&nbsp&nbsp
-      <i class="fas fa-envelope i"></i>&nbsp&nbsp
-      <h3 id="message-title">to <%= @user.first_name %></h3>
-    </div>
-
-    <div>
     </div>
   </div>
 </div>
