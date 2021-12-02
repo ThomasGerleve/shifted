@@ -1,15 +1,15 @@
 <div class="d-flex flex-column align-items-center justify-content-center">
   <br>
   <h1><strong>Your colleague</strong></h1>
-  <div class="col1 d-flex flex-column align-items-center justify-content-center box">
-    <div class="col">
+  <div class="col1 box">
+    <div class="col-image">
       <img src="<%= cl_image_path(@user.photo.key, width: 120, height: 120, crop: :thumb, gravity: :face) %>" alt="avatar-image" class="card-trip-user avatar-bordered-show">
     </div>
-    <div class="parent-box-a">
-      <div class="d-flex">
+    <div class="parent-box">
+      <div>
         <a href="tel:+491606929045" class="call"><i class="fas fa-phone-alt ii"></i> Call me</a>
       </div>
-      <div class="d-flex">
+      <div>
         <a href="#" class="call"><i class="fas fa-envelope ii"></i> Send me a message</a>
       </div>
     </div>
