@@ -32,7 +32,7 @@ user_first_name = ["Peter", "Veronika", "Thomas", "Karl", "Morgan", "Tim",
                    "Elena", "Fiona", "Gisela", "Hannah", "Inga", "Julia", "Kip",
                    "Ludwig", "Mona", "Nina", "Olga", "Paul", "Quentin", "Ria",
                    "Susi"]
-user_last_name = ["Hill", "Landberg", "Hintermeyer", "Leoni", "Richardson",
+user_last_name = ["Hill", "Landberg", "Gerleve", "Leoni", "Richardson",
                   "Lagerfeld", "Arana", "Apmann", "Arco", "Sadi", "Tiedemann",
                   "Wittelberg", "Neisemeier", "Iarossi", "Jenkara",
                   "Scherhausen", "Linkhammer", "Ginser", "Patoli", "Dahme",
@@ -78,17 +78,17 @@ user_first_name.length.times do
 end
 karl = User.create!(
   admin: true,
-  first_name: "Shmarl",
-  last_name: "Shmonder",
+  first_name: "Karl",
+  last_name: "Wonder",
   additional_infos: user_additional_infos[0],
   experience_level: user_experience_level.sample,
   bonus_points: rand(0..10) * 5,
   functional_role_id: functional_roles.sample.id,
-  email: "shmarl.shmonder@mailbox.com",
+  email: "Karl.Wonder@mailbox.com",
   password: "coachoo",
   password_confirmation: "coachoo"
 )
-karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.jpg')), filename: 'karl')
+karl.photo.attach(io: File.open(File.join(Rails.root, 'app/assets/images/karl.png')), filename: 'karl')
 users << karl
 vero = User.create!(
   admin: true,
