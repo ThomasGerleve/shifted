@@ -1,7 +1,7 @@
 .wrapper-calendar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .calendar {
   width: 100%;
@@ -35,7 +35,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #313131;
+        color: $purple;
         font-size: 20px;
         text-decoration: none;
 
@@ -56,7 +56,7 @@
       &-weekday {
         border: 1px solid $white;
         border-top: 2px solid $white;
-        background-color: #00bfba;
+        background-color: $purple;
         color: $white;
 
         &:first-child {
@@ -126,6 +126,8 @@
       background-color: hsla(238, 73%, 70%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -136,6 +138,8 @@
       background-color: hsla(238, 73%, 50%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -146,6 +150,8 @@
       background-color: hsla(238, 73%, 30%, 0.9);
       border-radius: 1rem;
       color: $white;
+      margin: 0px 6px;
+      font-size: 11px;
 
       &--next,
       &--previous {
@@ -163,7 +169,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(218, 126, 64);
+    background-color: $purple;
 
     &--emergency {
     background-color: rgb(218, 64, 64);
