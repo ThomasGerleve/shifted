@@ -1,5 +1,6 @@
 <div class="wrapper-calendar" data-controller="calendar">
   <div class="calendar" data-calendar-target="container">
+    <h2 class="d-flex justify-content-center"><strong>Your calendar</strong></h2>
     <% shifts_my = my_user_shifts.map(&:shift) %>
     <% shifts_open = open_user_shifts.map(&:shift) %>
     <div class="calendar-dates">
