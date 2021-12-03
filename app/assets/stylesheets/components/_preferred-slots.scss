@@ -5,7 +5,7 @@
 
 .preferred-slots {
   width: 90%;
-  background-color: $purple2;
+  background-color: $purple;
   border-radius: 10px;
   box-shadow: 0 0 15px;
   margin: 8px;
@@ -26,16 +26,16 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background-color: $light-purple-inner-box;
-  padding: 2vh;
-  margin: 10px;
+  background-color: $purple;
+  padding: 10px;
+  width: 100%;
   border-radius: 10px;
 }
 
 .grid-item {
   display: flex;
   justify-content: left;
-  background-color: $light-purple-inner-box;
+  background-color: $purple;
   color: white;
   height: 100%;
   width: 100%;
