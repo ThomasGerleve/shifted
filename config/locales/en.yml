@@ -1,2 +1,36 @@
 en:
-  subtitle: 'Work planning made easy'
+  subtitle: Work planning made easy
+  login-data: Login data to look around
+  password: Password
+  hello: Hello
+  next_shift: Your next Shift
+  emergencies: Emergencies
+  other_open_shifts: Other open Shifts
+  early: Early
+  late: Late
+  night: Night
+  your_calendar: Your Calendar
+  mon: mon
+  tue: tue
+  wed: wed
+  thu: thu
+  fri: fri
+  sat: sat
+  sun: sun
+  monday: Monday
+  tuesday: Tuesday
+  wednesday: Wednesday
+  thursday: Thursday
+  friday: Friday
+  saturday: Saturday
+  sunday: Sunday
+  colleagues_on_shift: Colleagues on this shift
+  offered_up: You offered this shift up for grabs
+  change_mind: I Changed My Mind
+  take_over: Take Over This Shift
+  conversation: Conversation
+  your_colleagues: Your Colleagues
+  your_profile: Your profile
+  current_prizes: Currently offered prizes
+  bps_for: bps for
+  your_preferred_slots: Your preferred slots

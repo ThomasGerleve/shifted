@@ -1,14 +1,16 @@
 <%if user_signed_in? %>
   <div class="wrapper">
-    <h2>Hello <%= current_user.first_name %> </h2>
+    <h2><%= t 'hello' %> <%= current_user.first_name %> </h2>
     <div class="shift-box">
-      <h2 class="shift-box-heading">Your next Shift</h2>
+      <h2 class="shift-box-heading"><%= t 'next_shift' %></h2>
       <div class="shift-card <%= "shift-card--early" if @next_user_shift.shift.slot.name == "Early" %>
                              <%= "shift-card--late" if @next_user_shift.shift.slot.name == "Late" %>
                              <%= "shift-card--night" if @next_user_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#nextShift" aria-expanded="false" aria-controls="nextShift">
         <div class="shift-card-left-side">
-          <h3 class="shift-card-left-side-title"><%= @next_user_shift.shift.slot.name.capitalize %>
+          <h3 class="shift-card-left-side-title"><%= t 'early' if @next_user_shift.shift.slot.name == "Early" %>
+                                                 <%= t 'late' if @next_user_shift.shift.slot.name == "Late" %>
+                                                 <%= t 'night' if @next_user_shift.shift.slot.name == "Night" %>
             <% if @next_user_shift.shift.user_on_shift?(current_user) %>
               <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
             <% end %>
@@ -18,7 +20,7 @@
           </div>
         </div>
         <div class="shift-card-right-side">
-          <p class="shift-card-date"><%= @next_user_shift.shift.date.strftime("%b %d") %></p>
+          <p class="shift-card-date"><%= params[:locale] == 'de' ? l(@next_user_shift.shift.date, format: "%d. %b") : l(@next_user_shift.shift.date, format: "%b %d") %></p>
           <% unless @next_user_shift.bonus_points == 0 %>
             <div class="d-flex align-items-center">
               <p class="shift-card-points"><i class="shift-card-icon fas fa-coins"></i>&nbsp&nbsp<%= @next_user_shift.bonus_points %> bps</p>
@@ -45,11 +47,13 @@
       </div>
     </div>
     <div class="shift-box shift-box--emergency">
-      <h2 class="shift-box--emergency-heading">Emergencies <i class="fas fa-exclamation-triangle"></i></h2>
+      <h2 class="shift-box--emergency-heading"><%= t 'emergencies' %> <i class="fas fa-exclamation-triangle"></i></h2>
       <% @emergency_shifts.each do |u_shift| %>
         <div class="shift-card shift-card--emergency" data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title"><%= u_shift.shift.slot.name.capitalize %>
+            <h3 class="shift-card-left-side-title"><%= t 'early' if u_shift.shift.slot.name == "Early" %>
+                                                   <%= t 'late' if u_shift.shift.slot.name == "Late" %>
+                                                   <%= t 'night' if u_shift.shift.slot.name == "Night" %>
               <% if u_shift.shift.user_on_shift?(current_user) %>
                 <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
               <% end %>
@@ -59,7 +63,7 @@
             </div>
           </div>
           <div class="shift-card-right-side">
-            <p class="shift-card-date"><%= u_shift.shift.date.strftime("%b %d") %></p>
+            <p class="shift-card-date"><%= params[:locale] == 'de' ? l(u_shift.shift.date, format: "%d. %b") : l(u_shift.shift.date, format: "%b %d") %></p>
             <% unless u_shift.bonus_points == 0 %>
               <div class="d-flex align-items-center">
                 <p class="shift-card-points"><i class="shift-card-icon fas fa-coins"></i>&nbsp&nbsp<%= u_shift.bonus_points %> bps</p>
@@ -86,7 +90,7 @@
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <%= link_to accept_shift_path(u_shift) do %>
-                    <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
+                    <p class="btn btn-primary mb-0 take-over-button"><%= t 'take_over' %></p>
                   <% end %>
                 <% end %>
               </div>
@@ -96,14 +100,16 @@
       <% end %>
     </div>
     <div class="shift-box">
-      <h2 class="shift-box-heading">Other open shifts</h2>
+      <h2 class="shift-box-heading"><%= t 'other_open_shifts' %></h2>
       <% @open_shifts.each do |u_shift| %>
         <div class="shift-card <%= "shift-card--early" if u_shift.shift.slot.name == "Early" %>
                                <%= "shift-card--late" if u_shift.shift.slot.name == "Late" %>
                                <%= "shift-card--night" if u_shift.shift.slot.name == "Night" %>"
         data-bs-toggle="collapse" data-bs-target="#cardForShift<%= u_shift.id %>" aria-expanded="false" aria-controls="cardForShift<%= u_shift.id %>">
           <div class="shift-card-left-side">
-            <h3 class="shift-card-left-side-title shift-card-active"><%= u_shift.shift.slot.name.capitalize %>
+            <h3 class="shift-card-left-side-title shift-card-active"><%= t 'early' if u_shift.shift.slot.name == "Early" %>
+                                                                     <%= t 'late' if u_shift.shift.slot.name == "Late" %>
+                                                                     <%= t 'night' if u_shift.shift.slot.name == "Night" %>
               <% if u_shift.shift.user_on_shift?(current_user) %>
                 <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
               <% end %>
@@ -113,7 +119,7 @@
             </div>
           </div>
           <div class="shift-card-right-side">
-            <p class="shift-card-date"><%= u_shift.shift.date.strftime("%b %d") %></p>
+            <p class="shift-card-date"><%= params[:locale] == 'de' ? l(u_shift.shift.date, format: "%d. %b") : l(u_shift.shift.date, format: "%b %d") %></p>
             <% unless u_shift.bonus_points == 0 %>
               <div class="d-flex align-items-center">
                 <p class="shift-card-points shift-card-active"><i class="shift-card-icon fas fa-coins shift-card-active"></i>&nbsp&nbsp<%= u_shift.bonus_points %> bps</p>
@@ -140,7 +146,7 @@
                 <% end %>
                 <% unless u_shift.shift.user_on_shift?(current_user) %>
                   <%= link_to accept_shift_path(u_shift) do %>
-                    <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
+                    <p class="btn btn-primary mb-0 take-over-button"><%= t 'take_over' %></p>
                   <% end %>
                 <% end %>
               </div>
@@ -151,14 +157,18 @@
     </div>
   </div>
 <% else %>
-  <div class="banner-landing-page">
-    <h1 id="h1-tag"><strong>Shifted</strong></h1>
-    <p id="p-tag"><strong><%= t 'subtitle' %>.</strong></p>
-    <p>Login data to look around:<br>
-    Email: Karl.Wonder@mailbox.com<br>
-    password: coachoo</p>
-    <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+  <div class="background-image">
+    <div class="banner-landing-page">
+      <h1 id="h1-tag"><strong>Shifted</strong></h1>
+      <p id="p-tag"><strong><%= t 'subtitle' %>.</strong></p>
+      <p><%= t 'login-data' %>:<br>
+      E-Mail: Karl.Wonder@mailbox.com<br>
+      <%= t 'password' %>: coachoo</p>
+      <%= link_to 'Login', new_user_session_path, class: "btn btn-warning login-btn" %>
+      <div class="language-buttons">
+        <%= link_to 'View site in english', root_path(locale: :en), class: "btn language-btn" if params[:locale] == 'de' || params[:locale] == nil %>
+        <%= link_to 'Seite auf deutsch ansehen', root_path(locale: :de), class: "btn language-btn" if params[:locale] == 'en' %>
+      </div>
+    </div>
   </div>
-    <%= link_to 'english', root_path(locale: :en), class: "btn language-btn" %>
-    <%= link_to 'deutsch', root_path(locale: :de), class: "btn language-btn" %>
 <% end %>

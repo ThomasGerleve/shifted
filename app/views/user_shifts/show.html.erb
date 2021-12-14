@@ -3,13 +3,15 @@
                      <%= "show-box--night" if @user_shift.shift.slot.name == "Night" && @user_shift.user_id != nil %>
                      <%= "show-box--emergency" if @user_shift.open && @user_shift.user_id == nil %>">
   <div class="d-flex justify-content-between text">
-    <h1 id="shift-title"><%= @user_shift.shift.slot.name.capitalize %> shift
+    <h1 id="shift-title"><%= t 'early' if @user_shift.shift.slot.name == "Early" %>
+                         <%= t 'late' if @user_shift.shift.slot.name == "Late" %>
+                         <%= t 'night' if @user_shift.shift.slot.name == "Night" %>
       <% if @user_shift.shift.users.include?(current_user) %>
         <img class="avatar-bordered avatar-bordered--small" src="<%= cl_image_path(current_user.photo.key, width: 75, height: 75, crop: :thumb, gravity: :face) %>" alt="avatar-image">
       <% end %>
     </h1>
     <h3 class="shift-card-date-p">
-      <%= @user_shift.shift.date.strftime("%b %d") %>
+      <%= params[:locale] == 'de' ? l(@user_shift.shift.date, format: "%d. %b") : l(@user_shift.shift.date, format: "%b %d") %>
     </h3>
   </div>
   <div class="shift-card-info-box">
@@ -31,7 +33,7 @@
     <div class="text shift-card-text">
       <div class="text shift-card-text">
         <i class="fas fa-users i shift-card-icon"></i>
-        <%= "Colleagues on this shift:" %>
+        <%= t 'colleagues_on_shift' %>
       </div>
       <div class="shift-card-colleagues-avatar d-flex justify-content-around">
         <% @user_shift.shift.users.each do |user| %>
@@ -47,22 +49,22 @@
   <% if !@user_shift.open && @user_shift.user == current_user %>
     <div class="offer-shift">
       <%= simple_form_for @user_shift, url: offer_shift_path do |f| %>
-        <%= f.input :bonus_points, label: "Would you like to offer some bonus points with your shift?", :error_html => { :id => "bonus_points_error" }, class:"font-weight-bold" %>
+        <%= f.input :bonus_points, label: params[:locale] == 'de' ? "Möchtest du Bonuspunkte für die Schicht anbieten?" : "Would you like to offer some bonus points with your shift?", :error_html => { :id => "bonus_points_error" }, class:"font-weight-bold" %>
         <%= f.hidden_field :open, value: true %>
-        <%= f.button :submit, "Offer Shift", class:"btn btn-primary shift-show-btn" %>
+        <%= f.button :submit, params[:locale] == 'de' ? "Schicht anbieten" : "Offer Shift", class:"btn btn-primary shift-show-btn" %>
       <% end %>
     </div>
   <% end %>
   <% if @user_shift.open && @user_shift.user == current_user %>
     <div class="offer-shift">
-      <div class="offered-alert"><p>You offered this shift up for grabs</p></div>
+      <div class="offered-alert"><p><%= t 'offered_up' %></p></div>
       <div>
         <%= link_to retract_offer_path(@user_shift),
         data: {
           controller: "offer",
           action: "click->retract"
         } do %>
-          <p class="btn btn-primary mb-0 shift-show-btn">I Changed My Mind</p>
+          <p class="btn btn-primary mb-0 shift-show-btn"><%= t 'change_mind' %></p>
         <% end %>
       </div>
     </div>
@@ -70,12 +72,12 @@
   <% if @user_shift.open && @user_shift.user != current_user %>
     <div class="take-shift-btn">
       <%= link_to accept_shift_path(@user_shift) do %>
-        <p class="btn btn-primary mb-0 take-over-button">Take Over This Shift</p>
+        <p class="btn btn-primary mb-0 take-over-button"><%= t 'take_over' %></p>
       <% end %>
     </div>
   <% end %>
   <div class="container user-shift comments-box">
-    <p class="comment">Conversation</p>
+    <p class="comment"><%= t 'conversation' %></p>
     <div class="messages" data-controller="user-shift-subscription"
       data-user-shift-subscription-user-shift-id-value="<%= @user_shift.id %>">
       <% @user_shift.messages.each do |message| %>
@@ -84,6 +86,6 @@
     </div>
   </div>
   <%= simple_form_for [@user_shift, @message], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@user_shift.shift.date.strftime("%b %d")}" %>
+    <%= f.input :content, label: false, placeholder: params[:locale] == 'de' ? "Nachricht ##{l(@user_shift.shift.date, format: "%d. %b")}" : "Message ##{l(@user_shift.shift.date, format: "%b %d")}" %>
   <% end %>
 </div>

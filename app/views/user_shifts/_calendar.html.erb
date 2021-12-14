@@ -1,17 +1,17 @@
 <div class="wrapper-calendar" data-controller="calendar">
   <div class="calendar" data-calendar-target="container">
-    <h2 class="d-flex justify-content-center"><strong>Your calendar</strong></h2>
+    <h2 class="d-flex justify-content-center"><strong><%= t 'your_calendar' %></strong></h2>
     <% shifts_my = my_user_shifts.map(&:shift) %>
     <% shifts_open = open_user_shifts.map(&:shift) %>
     <div class="calendar-dates">
       <div class="calendar-dates-weekdays">
-        <div class="calendar-dates-weekdays-weekday">Mon</div>
-        <div class="calendar-dates-weekdays-weekday">Tue</div>
-        <div class="calendar-dates-weekdays-weekday">Wed</div>
-        <div class="calendar-dates-weekdays-weekday">Thu</div>
-        <div class="calendar-dates-weekdays-weekday">Fri</div>
-        <div class="calendar-dates-weekdays-weekday">Sat</div>
-        <div class="calendar-dates-weekdays-weekday">Sun</div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'mon' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'tue' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'wed' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'thu' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'fri' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'sat' %></div>
+        <div class="calendar-dates-weekdays-weekday"><%= t 'sun' %></div>
       </div>
       <div class="calendar-dates-days">
         <% days[:last_month].each do |day| %>
@@ -25,11 +25,11 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "Early" %>
-                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--previous"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--previous"><%= t 'early' %></div>
                     <% when "Late" %>
-                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--previous"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--previous"><%= t 'late' %></div>
                     <% when "Night" %>
-                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--previous"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--previous"><%= t 'night' %></div>
                     <% end %>
                   </div>
                 <% end %>
@@ -54,15 +54,15 @@
                     <% case user_shift.shift.slot.name
                         when "Early" %>
                       <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
-                        <div class="calendar-shift-timeslot-early"><%= user_shift.shift.slot.name %></div>
+                        <div class="calendar-shift-timeslot-early"><%= t 'early' %></div>
                       <% end %>
                     <% when "Late" %>
                       <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
-                        <div class="calendar-shift-timeslot-late"><%= user_shift.shift.slot.name %></div>
+                        <div class="calendar-shift-timeslot-late"><%= t 'late' %></div>
                       <% end %>
                     <% when "Night" %>
                       <%= link_to user_shift_path(user_shift), class: "calendar-shift-link" do %>
-                        <div class="calendar-shift-timeslot-night"><%= user_shift.shift.slot.name %></div>
+                        <div class="calendar-shift-timeslot-night"><%= t 'night' %></div>
                       <% end %>
                     <% end %>
                   </div>
@@ -89,11 +89,11 @@
                   <div class="calendar-shift">
                     <% case user_shift.shift.slot.name
                         when "Early" %>
-                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--next"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-early calendar-shift-timeslot-early--next"><%= t 'early' %></div>
                     <% when "Late" %>
-                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--next"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-late calendar-shift-timeslot-late--next"><%= t 'late' %></div>
                     <% when "Night" %>
-                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--next"><%= user_shift.shift.slot.name %></div>
+                      <div class="calendar-shift-timeslot-night calendar-shift-timeslot-night--next"><%= t 'night' %></div>
                     <% end %>
                   </div>
                 <% end %>

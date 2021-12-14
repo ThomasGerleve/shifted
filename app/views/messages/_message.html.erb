@@ -1,7 +1,7 @@
 <div id="message-<%= message.id %>">
   <small>
     <strong><%= message.user.first_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+    <i><%= params[:locale] == 'de' ? l(message.created_at, format: "%a %e. %b um %l:%M") : l(message.created_at, format: "%a %b %e at %l:%M %p") %></i>
   </small>
   <p><%= message.content %></p>
 </div>

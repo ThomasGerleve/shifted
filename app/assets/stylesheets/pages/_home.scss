@@ -6,7 +6,12 @@
   background-attachment: fixed;
   min-height: 92vh;
 }
-.page-container.solid-background {
+.background-image {
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 92vh;
   background-image: url("nurse.png");
 }
 
@@ -15,6 +20,12 @@
   padding: 5rem 2.5rem;
   flex-direction: column;
   align-self: flex-start;
+}
+
+.language-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 13rem;
 }
 
 #h1-tag,
@@ -42,4 +53,16 @@
   color: $white;
   background-color: #974397;
   border-color: #974397;
+}
+
+.language-btn {
+  color: $white;
+  width: fit-content;
+  background: #a1bfff;
+}
+
+.language-btn:hover {
+  color: $white;
+  background-color: hsl(221, 100%, 62%);
+  border-color: hsl(221, 100%, 62%);
 }
