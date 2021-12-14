@@ -1,33 +1,36 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  subtitle: Work planning made easy
+  login-data: Login data to look around
+  password: Password
+  hello: Hello
+  next_shift: Your next Shift
+  emergencies: Emergencies
+  other_open_shifts: Other open Shifts
+  early: Early
+  late: Late
+  night: Night
+  your_calendar: Your Calendar
+  mon: mon
+  tue: tue
+  wed: wed
+  thu: thu
+  fri: fri
+  sat: sat
+  sun: sun
+  monday: Monday
+  tuesday: Tuesday
+  wednesday: Wednesday
+  thursday: Thursday
+  friday: Friday
+  saturday: Saturday
+  sunday: Sunday
+  colleagues_on_shift: Colleagues on this shift
+  offered_up: You offered this shift up for grabs
+  change_mind: I Changed My Mind
+  take_over: Take Over This Shift
+  conversation: Conversation
+  your_colleagues: Your Colleagues
+  your_profile: Your profile
+  current_prizes: Currently offered prizes
+  bps_for: bps for
+  your_preferred_slots: Your preferred slots
