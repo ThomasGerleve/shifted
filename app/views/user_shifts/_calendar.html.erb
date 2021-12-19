@@ -36,7 +36,7 @@
               <% end %>
             </div>
             <div class="calendar-dates-days-day-openshifts">
-              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.last_month.month } %>
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.last_month.month && u_shift.shift.date > DateTime.now } %>
                 <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
             </div>
@@ -70,9 +70,9 @@
               <% end %>
             </div>
             <div class="calendar-dates-days-day-openshifts">
-              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month && !u_shift.user } %>
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month && !u_shift.user && u_shift.shift.date > DateTime.now } %>
                 <div class="calendar-shift-circle calendar-shift-circle--emergency"><i class="fas fa-bell"></i></div>
-              <% elsif open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month } %>
+              <% elsif open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == month && u_shift.shift.date > DateTime.now } %>
                 <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
             </div>
@@ -100,7 +100,7 @@
               <% end %>
             </div>
             <div class="calendar-dates-days-day-openshifts">
-              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.next_month.month } %>
+              <% if open_user_shifts.any? { |u_shift| u_shift.shift.date.day == day && u_shift.shift.date.month == current.next_month.month && u_shift.shift.date > DateTime.now } %>
                 <div class="calendar-shift-circle"><i class="fas fa-bell"></i></div>
               <% end %>
             </div>
