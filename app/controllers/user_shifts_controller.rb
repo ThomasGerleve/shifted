@@ -14,7 +14,11 @@ class UserShiftsController < ApplicationController
     # if there are year params: show calendar of that year, else: show calendar of current year
     @month = params[:month].present? && (1..12).include?(params[:month].to_i) ? params[:month].to_i : Time.new.month
     # if there are month params: show that month, else: show current month
-    mth = %w[nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
+    if params[:locale] == 'de'
+      mth = %w[nil Januar Februar März April Mai Juni Juli August September Oktober November Dezember]
+    else
+      mth = %w[nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec]
+    end
     @mth = mth[@month]
     @days = days(@month, @year)
     # range of amount of days in that month
