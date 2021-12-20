@@ -85,6 +85,11 @@
           opacity: 0.4;
         }
 
+        &--today {
+          background-color: $light-petrol;
+          color: $white;
+        }
+
         &:nth-child(-n+7) {
           border-top-right-radius: 0;
           border-top-left-radius: 0;
