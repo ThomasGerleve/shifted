@@ -108,18 +108,18 @@ puts "Created #{users.length} users"
 
 early = Slot.create!(
   name: "Early",
-  start_time: Time.new(2021, 1, 1, 5, 45, 0),
-  end_time: Time.new(2021, 1, 1, 14, 15, 0)
+  start_time: Time.new(2022, 1, 1, 5, 45, 0),
+  end_time: Time.new(2022, 1, 1, 14, 15, 0)
 )
 late = Slot.create!(
   name: "Late",
-  start_time: Time.new(2021, 1, 1, 13, 45, 0),
-  end_time: Time.new(2021, 1, 1, 22, 15, 0)
+  start_time: Time.new(2022, 1, 1, 13, 45, 0),
+  end_time: Time.new(2022, 1, 1, 22, 15, 0)
 )
 night = Slot.create!(
   name: "Night",
-  start_time: Time.new(2021, 1, 1, 21, 45, 0),
-  end_time: Time.new(2021, 1, 1, 6, 15, 0)
+  start_time: Time.new(2022, 1, 1, 21, 45, 0),
+  end_time: Time.new(2022, 1, 1, 6, 15, 0)
 )
 slots = [early, late, night]
 puts "Created #{slots.length} slots"
@@ -140,37 +140,37 @@ users.length.times do
 end
 puts "Created #{preferred_slots.length} preferred slots"
 
-shift_dates = [Date.new(2021, 11, 30), Date.new(2021, 12, 1),
-               Date.new(2021, 12, 2), Date.new(2021, 12, 3),
-               Date.new(2021, 12, 4), Date.new(2021, 12, 5),
-               Date.new(2021, 12, 6), Date.new(2021, 12, 7),
-               Date.new(2021, 12, 8), Date.new(2021, 12, 9),
-               Date.new(2021, 12, 10), Date.new(2021, 12, 11),
-               Date.new(2021, 12, 12), Date.new(2021, 12, 13),
-               Date.new(2021, 12, 14), Date.new(2021, 12, 15),
-               Date.new(2021, 12, 16), Date.new(2021, 12, 17),
-               Date.new(2021, 12, 18), Date.new(2021, 12, 19),
-               Date.new(2021, 12, 20), Date.new(2021, 12, 21),
-               Date.new(2021, 12, 22), Date.new(2021, 12, 23),
-               Date.new(2021, 12, 24), Date.new(2021, 12, 25),
-               Date.new(2021, 12, 26), Date.new(2021, 12, 27),
-               Date.new(2021, 12, 28), Date.new(2021, 12, 29),
-               Date.new(2021, 12, 30), Date.new(2021, 12, 31),
-               Date.new(2022, 1, 1), Date.new(2022, 1, 2),
-               Date.new(2022, 1, 3), Date.new(2022, 1, 4),
-               Date.new(2022, 1, 5), Date.new(2022, 1, 6),
-               Date.new(2022, 1, 7), Date.new(2022, 1, 8),
-               Date.new(2022, 1, 9), Date.new(2022, 1, 10),
-               Date.new(2022, 1, 11), Date.new(2022, 1, 12),
-               Date.new(2022, 1, 13), Date.new(2022, 1, 14),
-               Date.new(2022, 1, 15), Date.new(2022, 1, 16),
-               Date.new(2022, 1, 17), Date.new(2022, 1, 18),
-               Date.new(2022, 1, 19), Date.new(2022, 1, 20),
-               Date.new(2022, 1, 21), Date.new(2022, 1, 22),
-               Date.new(2022, 1, 23), Date.new(2022, 1, 24),
-               Date.new(2022, 1, 25), Date.new(2022, 1, 26),
-               Date.new(2022, 1, 27), Date.new(2022, 1, 28),
-               Date.new(2022, 1, 29), Date.new(2022, 1, 30)]
+shift_dates = [Date.new(2021, 12, 31), Date.new(2022, 1, 1),
+               Date.new(2022, 1, 2), Date.new(2022, 1, 3),
+               Date.new(2022, 1, 4), Date.new(2022, 1, 5),
+               Date.new(2022, 1, 6), Date.new(2022, 1, 7),
+               Date.new(2022, 1, 8), Date.new(2022, 1, 9),
+               Date.new(2022, 1, 10), Date.new(2022, 1, 11),
+               Date.new(2022, 1, 12), Date.new(2022, 1, 13),
+               Date.new(2022, 1, 14), Date.new(2022, 1, 15),
+               Date.new(2022, 1, 16), Date.new(2022, 1, 17),
+               Date.new(2022, 1, 18), Date.new(2022, 1, 19),
+               Date.new(2022, 1, 20), Date.new(2022, 1, 21),
+               Date.new(2022, 1, 22), Date.new(2022, 1, 23),
+               Date.new(2022, 1, 24), Date.new(2022, 1, 25),
+               Date.new(2022, 1, 26), Date.new(2022, 1, 27),
+               Date.new(2022, 1, 28), Date.new(2022, 1, 29),
+               Date.new(2022, 1, 30), Date.new(2022, 1, 31),
+               Date.new(2022, 2, 1), Date.new(2022, 2, 2),
+               Date.new(2022, 2, 3), Date.new(2022, 2, 4),
+               Date.new(2022, 2, 5), Date.new(2022, 2, 6),
+               Date.new(2022, 2, 7), Date.new(2022, 2, 8),
+               Date.new(2022, 2, 9), Date.new(2022, 2, 10),
+               Date.new(2022, 2, 11), Date.new(2022, 2, 12),
+               Date.new(2022, 2, 13), Date.new(2022, 2, 14),
+               Date.new(2022, 2, 15), Date.new(2022, 2, 16),
+               Date.new(2022, 2, 17), Date.new(2022, 2, 18),
+               Date.new(2022, 2, 19), Date.new(2022, 2, 20),
+               Date.new(2022, 2, 21), Date.new(2022, 2, 22),
+               Date.new(2022, 2, 23), Date.new(2022, 2, 24),
+               Date.new(2022, 2, 25), Date.new(2022, 2, 26),
+               Date.new(2022, 2, 27), Date.new(2022, 2, 28),
+               Date.new(2022, 3, 1), Date.new(2022, 3, 2)]
 
 shifts = []
 user_shifts = []
