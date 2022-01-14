@@ -43,7 +43,7 @@
           </div>
         <% end %>
         <% days[:this_month].each do |day| %>
-          <div class="calendar-dates-days-day <%= "calendar-dates-days-day--today" if day == Date.today.day %>">
+          <div class="calendar-dates-days-day <%= "calendar-dates-days-day--today" if day == Date.today.day && month == Date.today.month && year == Date.today.year %>">
             <div class="calendar-dates-days-day-number">
               <%= day %>
             </div>
